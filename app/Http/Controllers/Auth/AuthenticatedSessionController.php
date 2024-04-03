@@ -29,7 +29,12 @@ class AuthenticatedSessionController extends Controller
 
         $request->session()->regenerate();
 
-        return redirect()->intended(RouteServiceProvider::HOME);
+        //add direct session sesuai role
+        if ($request->user()->role === 'company') {
+            return redirect()->intended(RouteServiceProvider::COMPANY_DASHBOARD);
+        } elseif (($request->user()->role === 'candidate')) {
+            return redirect()->intended(RouteServiceProvider::CANDIDATE_DASHBOARD);
+        }
     }
 
     /**
