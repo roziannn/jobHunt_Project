@@ -18,14 +18,6 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::get('/dashboard', function () {
-    return view('dashboard');
-})->middleware(['auth', 'verified', 'user.role:candidate'])->name('dashboard');
-
-Route::get('/company/dashboard', function () {
-    return view('frontend.company_dashboard.dashboard');
-})->middleware(['auth', 'verified', 'user.role:company'])->name('company.dashboard');
-
 Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
@@ -33,3 +25,31 @@ Route::middleware('auth')->group(function () {
 });
 
 require __DIR__ . '/auth.php';
+
+/** Candidate Dashboard Routes */
+Route::group(
+    [
+        'middleware' => ['auth', 'verified', 'user.role:candidate'],
+        'prefix' => 'candidate', //for routes url so it will be /candidate/../,
+        'as' => 'candidate.' //for name
+    ],
+    function () {
+        Route::get('/dashboard', function () {
+            return view('dashboard');
+        })->name('dashboard');
+    }
+);
+
+/** Company Dashboard Routes */
+Route::group(
+    [
+        'middleware' => ['auth', 'verified', 'user.role:company'],
+        'prefix' => 'company', //for routes url so it will be /candidate/../,
+        'as' => 'company.' //for name
+    ],
+    function () {
+        Route::get('/dashboard', function () {
+            return view('frontend.company_dashboard.dashboard');
+        })->name('dashboard');
+    }
+);
