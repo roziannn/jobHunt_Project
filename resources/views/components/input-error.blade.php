@@ -1,9 +1,9 @@
 @props(['messages'])
 
 @if ($messages)
-    <div class="invalid-feedback">
-        @foreach ((array) $messages as $message)
+    @foreach ((array) $messages as $message)
+        <div class="invalid-feedback">
             {{ $message }}
-        @endforeach
-    </div>
+        </div>
+    @endforeach
 @endif
