@@ -1,0 +1,109 @@
+.nav-tavs-profile {
+    padding-right: 30px;
+    ul {
+        li {
+            width: 100%;
+            a {
+                display: block;
+                text-align: left;
+                font-size: $font-xs;
+                padding-top: 7px;
+                padding-bottom: 7px;
+                background-position: 17px center;
+                padding-left: 42px;
+                box-shadow: $drop-shadow;
+            }
+        }
+    }
+}
+.image-profile {
+    display: inline-block;
+    max-width: 85px;
+    vertical-align: middle;
+    margin-right: 25px;
+    img {
+        border-radius: 16px;
+        display: block;
+    }
+}
+.form-contact {
+    .form-control {
+        width: 100%;
+        border: 2px solid $border-color;
+        border-radius: 4px;
+        font-size: $font-sm;
+        line-height: 22px;
+        &:focus {
+            border: 2px solid $color-border-3;
+        }
+    }
+    textarea.form-control {
+        height: auto;
+    }
+    .search-icon {
+        background-image: url(../imgs/page/candidates/search.svg);
+        background-position: right 15px top 11px;
+        background-repeat: no-repeat;
+    }
+    .border-bottom {
+        border-color: $color-border-2;
+    }
+}
+.box-skills {
+    border: 2px solid $border-color;
+    padding: 22px 27px;
+    margin-top: 33px;
+    border-radius: 4px;
+}
+.box-tags {
+    a {
+        margin-bottom: 10px;
+    }
+}
+.close-icon {
+    background-image: url(../imgs/page/candidates/close.svg);
+    background-position: center;
+    display: inline-block;
+    height: 7px;
+    width: 10px;
+    background-repeat: no-repeat;
+    margin-left: 10px;
+}
+.card-info {
+    display: inline-block;
+    padding: 0px 0px 0px 20px;
+    background-image: url(../imgs/page/candidates/info.svg);
+    background-position: left center;
+    background-repeat: no-repeat;
+}
+.link-red {
+    color: $color-red;
+    font-size: $font-xs;
+    line-height: 12px;
+    font-weight: 500;
+}
+.lbl-checkbox {
+    float: left;
+    margin: 2px 8px 0px 0px;
+    height: 13px;
+}
+.box-button {
+    .btn {
+        width: 100%;
+    }
+}
+.btn-editor {
+    background-image: url(../imgs/page/candidates/editor.svg);
+    background-position: center;
+    background-repeat: no-repeat;
+    background-color: $color-brand-2;
+    position: absolute;
+    bottom: 45px;
+    right: 20px;
+    height: 35px;
+    width: 35px;
+    border-radius: 50%;
+    &:hover {
+        background-color: $color-brand;
+    }
+}

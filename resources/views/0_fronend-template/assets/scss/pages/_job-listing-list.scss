@@ -1,0 +1,49 @@
+.job-list-list {
+    .list-recent-jobs {
+        margin-top: 0px;
+    }
+}
+.job-tags {
+    a {
+        background-color: $background-7;
+        color: $color-text-paragraph;
+        border-radius: 15px;
+        padding: 8px 20px;
+        display: inline-block;
+        & + a {
+            margin-left: 5px;
+        }
+    }
+}
+.display-list
+{
+    .flash
+    {
+        top: 32px;
+    }
+}
+.content-page 
+{
+    .display-list
+    {
+        .card-grid-2
+        {
+            .card-block-info
+            {
+                padding-top: 0px;
+                .card-text-price
+                {
+                    font-size: $font-md;
+                    line-height: 26px;
+                    padding-top: 8px;
+                    display: inline-block;
+                    span
+                    {
+                        font-size: $font-xs;
+                        line-height: 12px;
+                    }
+                }
+            }
+        } 
+    }
+}

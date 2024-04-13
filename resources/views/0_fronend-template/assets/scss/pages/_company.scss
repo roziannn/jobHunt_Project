@@ -1,0 +1,144 @@
+.box-list-character
+{
+    background: $background-white;
+    border: 1px solid $color-border-2;
+    border-radius: 8px;
+    padding: 10px;
+    display: table;
+    table-layout: fixed;
+    max-width: 90%;
+    margin: 30px auto auto auto;
+    width: 100%;
+    ul
+    {
+        display: flex;
+        padding: 0px;
+        list-style: none;
+        margin: 0px;
+        li
+        {
+            display: inline-block;
+            width: 100%;
+            text-align: center;
+            a
+            {
+                font-size: $font-md;
+                line-height: 28px;
+                color: $color-text-paragraph;
+                text-transform: uppercase;
+                display: inline-block;
+                width: 28px;
+                max-width: 28px;
+                height: 28px;
+                &:hover, &.active
+                {
+                    background-color: $color-border-2;
+                    border-radius: 50%;
+                    text-align: center;
+                    color: $color-brand-2;
+                }
+            }
+        }
+    }
+}
+.sidebar-border-bg
+{
+    border: 1px solid $color-border-2;
+    background: $background-7 url(../imgs/page/company/bg-hiring.svg) no-repeat bottom left;
+    padding: 30px 40px 260px 40px;
+    border-radius: 4px;
+    margin-bottom: 40px;
+    .text-grey
+    {
+        color: $color-border-1;
+        font-size: 24px;
+        line-height: 37px;
+        letter-spacing: 2px;
+        text-transform: uppercase;
+        display: block;
+    }
+    .text-hiring
+    {
+        color: $color-text-paragraph-2;
+        font-size: 36px;
+        font-weight: 800;
+        line-height: 57px;
+        letter-spacing: 2px;
+        text-transform: uppercase;
+        display: inline-block;
+        margin-top: -15px;
+    }
+}
+.bg-right
+{
+    background: $background-7 url(../imgs/page/company/bg-hiring-right.svg) no-repeat bottom right;
+}
+.box-company-profile
+{
+    max-width: 90%;
+    display: table;
+    table-layout: fixed;
+    margin: auto;
+    width: 100%;
+    padding: 20px 0px 0px 0px;
+    position: relative;
+}
+.image-compay
+{
+    position: absolute;
+    top: -80px;
+    left: 0px;
+    img
+    {
+        width: 100%;
+        border-radius: 16px;
+    }
+}
+.aboutus-icon
+{
+    background-image: url(../imgs/page/company/icon-about.svg);
+    background-position: 17px 14px;
+    background-repeat: no-repeat;
+    font-weight: 500;
+    padding-left: 45px;
+    border-color: $color-border-3;
+    &:hover, &.active
+    {
+        color: $color-brand;
+        background-image: url(../imgs/page/company/icon-about-hover.svg);
+        background-color: $background-white;
+        border-color: $color-border-1;
+    }
+}
+.recruitment-icon
+{
+    background-image: url(../imgs/page/company/icon-recruitment.svg);
+    background-position: 17px 14px;
+    background-repeat: no-repeat;
+    font-weight: 500;
+    padding-left: 45px;
+    border-color: $color-border-3;
+    &:hover, &.active
+    {
+        color: $color-brand;
+        background-image: url(../imgs/page/company/icon-recruitment-hover.svg);
+        background-color: $background-white;
+        border-color: $color-border-1;
+    }
+}
+.people-icon
+{
+    background-image: url(../imgs/page/company/icon-people.svg);
+    background-position: 17px 14px;
+    background-repeat: no-repeat;
+    font-weight: 500;
+    padding-left: 45px;
+    border-color: $color-border-3;
+    &:hover, &.active
+    {
+        color: $color-brand;
+        background-image: url(../imgs/page/company/icon-people-hover.svg);
+        background-color: $background-white;
+        border-color: $color-border-1;
+    }
+}

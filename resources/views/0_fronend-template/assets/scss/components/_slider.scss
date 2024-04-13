@@ -1,0 +1,143 @@
+.box-swiper {
+    position: relative;
+    .swiper-container {
+        position: relative;
+        .item-logo {
+            border: 1px solid $border-color-1;
+            padding: 22px 18px;
+            display: flex;
+            width: 100%;
+            text-align: left;
+            border-radius: 12px;
+            margin-bottom: 15px;
+            background-color: $background-white;
+            flex-wrap: wrap;
+            img {
+                max-width: 100%;
+            }
+            &:hover {
+                border: 1px solid $border-color-1-hover;
+                box-shadow: $box-shadow-2;
+            }
+            .image-left
+            {
+                min-width: 50px;
+                padding-right: 10px;
+            }
+            .text-info-right
+            {
+                h4
+                {
+                    font-size: $font-md;
+                    line-height: 26px;
+                    margin-bottom: 3px;
+                }
+            }
+            .text-info-bottom
+            {
+                position: relative;
+                width: 100%;
+            }
+        }
+    }
+    .swiper-button-next:after,
+    .swiper-button-prev:after {
+        content: "";
+    }
+    .swiper-button-next {
+        background: url(../imgs/slider/swiper/next.svg) no-repeat 0px 0px;
+        &:hover {
+            background: url(../imgs/slider/swiper/next-active.svg) no-repeat 0px 0px;
+        }
+    }
+    .swiper-button-prev {
+        background: url(../imgs/slider/swiper/prev.svg) no-repeat 0px 0px;
+        &:hover {
+            background: url(../imgs/slider/swiper/prev-active.svg) no-repeat 0px 0px;
+        }
+    }
+    .swiper-button-next,
+    .swiper-button-prev {
+        width: 40px;
+        margin-top: -55px;
+    }
+    .swiper-button-next {
+        left: auto;
+        right: -65px;
+    }
+    .swiper-button-prev {
+        left: -65px;
+    }
+    .swiper-button-next.swiper-button-disabled,
+    .swiper-button-prev.swiper-button-disabled {
+        opacity: 1;
+    }
+}
+.swiper-pagination {
+    text-align: center;
+    width: 100%;
+}
+.swiper-pagination-bullet {
+    margin: 10px;
+}
+/*Style of the location of the div that wraps the custom pager*/
+.swiper-pagination-custom {
+    bottom: -5px;
+}
+.swiper-pagination-customs {
+    // background: url(../imgs/slider/swiper/dot.svg) no-repeat 0px 0px;
+    background: $color-border-1;
+    border-radius: 50%;
+    display: inline-block;
+    background-repeat: no-repeat;
+    background-size: contain;
+    width: 10px;
+    height: 10px;
+    margin-left: 4px;
+    margin-right: 4px;
+}
+/*Customize the style representation when pager is activated*/
+.swiper-pagination-customs-active,
+.swiper-pagination-customs:hover {
+    background: $color-brand-2;
+    border-radius: 50%;
+    // url(../imgs/slider/swiper/dot-active.svg) no-repeat 0px 0px;
+    width: 12px;
+    height: 12px;
+    margin-bottom: -1px;
+    margin-left: 3px;
+    margin-right: 3px;
+}
+.style-nav-top
+{
+    .swiper-button-next
+    {
+        top: -30px;
+        right: -5px;
+        left: auto;
+    }
+    .swiper-button-prev
+    {
+        top: -30px;
+        right: 45px;
+        left: auto;
+    }
+}
+
+.swiper-pagination {
+    .swiper-pagination-bullet {
+        background-color: $color-brand-2;
+        width: 10px;
+        height: 10px;
+        margin: 0 4px;
+        opacity: 0.5;
+    }
+    .swiper-pagination-bullet-active, .swiper-pagination-bullet-active:hover
+    {
+        background-color: $color-brand-2;
+        width: 12px;
+        height: 12px;
+        margin: -1px 3px 0;
+        opacity: 1;
+    }
+}

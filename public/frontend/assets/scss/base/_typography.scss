@@ -1,0 +1,23 @@
+/*TYPOGRAPHY*/
+body {
+    color: $color-brand;
+    font-family: $font-heading;
+    font-size: 14px;
+    line-height: 24px;
+    font-style: normal;
+    font-weight: 400;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+.font-heading,
+.display-1,
+.display-2,
+.heading-lg,
+.heading-sm-1 {
+    color: $color-brand;
+}

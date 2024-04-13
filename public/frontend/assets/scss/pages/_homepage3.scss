@@ -1,0 +1,66 @@
+.swiper-group-5 {
+    .swiper-pagination {
+        margin-top: 15px;
+        position: relative;
+        .swiper-pagination-bullet {
+            background-color: $background-white;
+            width: 10px;
+            height: 10px;
+            margin: 0 4px;
+            opacity: 0.5;
+        }
+        .swiper-pagination-bullet-active, .swiper-pagination-bullet-active:hover
+        {
+            background-color: $background-white;
+            width: 12px;
+            height: 12px;
+            margin: -1px 3px 0;
+            opacity: 1;
+        }
+    }
+} 
+.img-rounded
+{
+    border-radius: 50%;
+    height: 35px;
+    width: 35px;
+    margin: 0px 10px 0px 0px;
+    vertical-align: middle;
+    display: inline-block;
+}
+.lh-14 {
+    line-height: 14px !important;
+}
+.text-lbl {
+    color: $background-green;
+    font-size: 12px;
+    line-height: 18px;
+    display: block;
+}
+.left-trust {
+    position: relative;
+}
+.right-logos {
+    .swiper-slide {
+        text-align: center;
+        line-height: 40px;
+        a img {
+            opacity: 1;
+            max-height: 20px;
+            width: 100%;
+        }
+    }
+}
+.box-trust {
+    border: 1px solid $color-border-2;
+    border-radius: 4px;
+    padding: 30px 30px 25px 30px;
+    position: relative;
+}
+.box-checkbox {
+    padding: 0px 0px 0px 30px;
+    background: url(../imgs/page/homepage3/check-box.svg) no-repeat 0px 4px;
+}
+.img-job-search {
+    max-width: 90%;
+}

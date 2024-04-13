@@ -1,0 +1,402 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <meta name="msapplication-TileColor" content="#0E0E0E">
+  <meta name="template-color" content="#0E0E0E">
+  <link rel="manifest" href="manifest.json" crossorigin>
+  <meta name="msapplication-config" content="browserconfig.xml">
+  <meta name="description" content="Index page">
+  <meta name="keywords" content="index, page">
+  <meta name="author" content="">
+  <link rel="shortcut icon" type="image/x-icon" href="">
+  <link href="assets/css/all.min.css" rel="stylesheet">
+  <link href="assets/css/style.css" rel="stylesheet">
+  <title>joblist - Job Portal HTML Template </title>
+</head>
+
+<body>
+
+  <div id="preloader-active">
+    <div class="preloader d-flex align-items-center justify-content-center">
+      <div class="preloader-inner position-relative">
+        <div class="text-center"><img src="assets/imgs/template/loading.gif" alt="joblist"></div>
+      </div>
+    </div>
+  </div>
+
+  <header class="header sticky-bar">
+    <div class="container">
+      <div class="main-header">
+        <div class="header-left">
+          <div class="header-logo"><a class="d-flex" href="index.html"><img alt="joblist"
+                src="assets/imgs/template/logo.png"></a></div>
+        </div>
+        <div class="header-nav">
+          <nav class="nav-main-menu">
+            <ul class="main-menu">
+              <li class="has-children"><a class="active" href="index.html">Home</a></li>
+              <li class="has-children"><a href="jobs-list.html">Find a Job</a></li>
+              <li class="has-children"><a href="companies-grid.html">Recruiters</a></li>
+              <li class="has-children"><a href="candidates-grid.html">Candidates</a></li>
+              <li class="has-children"><a href="blog-grid.html">Pages</a>
+                <ul class="sub-menu">
+                  <li><a href="page-about.html">About Us</a></li>
+                  <li><a href="page-pricing.html">Pricing Plan</a></li>
+                  <li><a href="page-contact.html">Contact Us</a></li>
+                  <li><a href="page-register.html">Register</a></li>
+                  <li><a href="page-signin.html">Signin</a></li>
+                  <li><a href="page-reset-password.html">Reset Password</a></li>
+                  <li><a href="blog-details.html">Blog Single</a></li>
+                </ul>
+              </li>
+              <li class="has-children"><a href="blog-grid.html">Blog</a></li>
+            </ul>
+          </nav>
+          <div class="burger-icon burger-icon-white"><span class="burger-icon-top"></span><span
+              class="burger-icon-mid"></span><span class="burger-icon-bottom"></span></div>
+        </div>
+        <div class="header-right">
+          <div class="block-signin">
+            <!-- <a class="text-link-bd-btom hover-up" href="page-register.html">Register</a> -->
+            <a class="btn btn-default btn-shadow ml-40 hover-up" href="page-signin.html">Sign in</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <div class="mobile-header-active mobile-header-wrapper-style perfect-scrollbar">
+    <div class="mobile-header-wrapper-inner">
+      <div class="mobile-header-content-area">
+        <div class="perfect-scroll">
+          <div class="mobile-search mobile-header-border mb-30">
+            <form action="#">
+              <input type="text" placeholder="Search…"><i class="fi-rr-search"></i>
+            </form>
+          </div>
+          <div class="mobile-menu-wrap mobile-header-border">
+            <!-- mobile menu start-->
+            <nav>
+              <ul class="mobile-menu font-heading">
+                <li class="has-children"><a class="active" href="index.html">Home</a>
+                  <ul class="sub-menu">
+                    <li><a href="index.html">Home 1</a></li>
+                    <li><a href="index-2.html">Home 2</a></li>
+                    <li><a href="index-3.html">Home 3</a></li>
+                    <li><a href="index-4.html">Home 4</a></li>
+                    <li><a href="index-5.html">Home 5</a></li>
+                    <li><a href="index-6.html">Home 6</a></li>
+                  </ul>
+                </li>
+                <li class="has-children"><a href="jobs-grid.html">Find a Job</a>
+                  <ul class="sub-menu">
+                    <li><a href="jobs-grid.html">Jobs Grid</a></li>
+                    <li><a href="jobs-list.html">Jobs List</a></li>
+                    <li><a href="job-details.html">Jobs Details </a></li>
+                    <li><a href="job-details-2.html">Jobs Details 2 </a></li>
+                  </ul>
+                </li>
+                <li class="has-children"><a href="companies-grid.html">Recruiters</a>
+                  <ul class="sub-menu">
+                    <li><a href="companies-grid.html">Recruiters</a></li>
+                    <li><a href="company-details.html">Company Details</a></li>
+                  </ul>
+                </li>
+                <li class="has-children"><a href="candidates-grid.html">Candidates</a>
+                  <ul class="sub-menu">
+                    <li><a href="candidates-grid.html">Candidates Grid</a></li>
+                    <li><a href="candidate-details.html">Candidate Details</a></li>
+                  </ul>
+                </li>
+                <li class="has-children"><a href="blog-grid.html">Pages</a>
+                  <ul class="sub-menu">
+                    <li><a href="page-about.html">About Us</a></li>
+                    <li><a href="page-pricing.html">Pricing Plan</a></li>
+                    <li><a href="page-contact.html">Contact Us</a></li>
+                    <li><a href="page-register.html">Register</a></li>
+                    <li><a href="page-signin.html">Signin</a></li>
+                    <li><a href="page-reset-password.html">Reset Password</a></li>
+                    <li><a href="page-content-protected.html">Content Protected</a></li>
+                  </ul>
+                </li>
+                <li class="has-children"><a href="blog-grid.html">Blog</a>
+                  <ul class="sub-menu">
+                    <li><a href="blog-grid.html">Blog Grid</a></li>
+                    <li><a href="blog-grid-2.html">Blog Grid 2</a></li>
+                    <li><a href="blog-details.html">Blog Single</a></li>
+                  </ul>
+                </li>
+                <li><a href="http://wp.alithemes.com/html/joblist/demos/dashboard" target="_blank">Dashboard</a></li>
+              </ul>
+            </nav>
+          </div>
+          <div class="mobile-account">
+            <h6 class="mb-10">Your Account</h6>
+            <ul class="mobile-menu font-heading">
+              <li><a href="#">Profile</a></li>
+              <li><a href="#">Work Preferences</a></li>
+              <li><a href="#">Account Settings</a></li>
+              <li><a href="#">Go Pro</a></li>
+              <li><a href="page-signin.html">Sign Out</a></li>
+            </ul>
+          </div>
+          <div class="site-copyright">Copyright 2022 &copy; joblist. <br>Designed by AliThemes.</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="mobile-header-active mobile-header-wrapper-style perfect-scrollbar">
+    <div class="mobile-header-wrapper-inner">
+      <div class="mobile-header-content-area">
+        <div class="perfect-scroll">
+          <div class="mobile-search mobile-header-border mb-30">
+            <form action="#">
+              <input type="text" placeholder="Search…"><i class="fi-rr-search"></i>
+            </form>
+          </div>
+          <div class="mobile-menu-wrap mobile-header-border">
+            <!-- mobile menu start-->
+            <nav>
+              <ul class="mobile-menu font-heading">
+                <li class="has-children"><a class="active" href="index.html">Home</a>
+                  <ul class="sub-menu">
+                    <li><a href="index.html">Home 1</a></li>
+                    <li><a href="index-2.html">Home 2</a></li>
+                    <li><a href="index-3.html">Home 3</a></li>
+                    <li><a href="index-4.html">Home 4</a></li>
+                    <li><a href="index-5.html">Home 5</a></li>
+                    <li><a href="index-6.html">Home 6</a></li>
+                  </ul>
+                </li>
+                <li class="has-children"><a href="jobs-grid.html">Find a Job</a>
+                  <ul class="sub-menu">
+                    <li><a href="jobs-grid.html">Jobs Grid</a></li>
+                    <li><a href="jobs-list.html">Jobs List</a></li>
+                    <li><a href="job-details.html">Jobs Details </a></li>
+                    <li><a href="job-details-2.html">Jobs Details 2 </a></li>
+                  </ul>
+                </li>
+                <li class="has-children"><a href="companies-grid.html">Recruiters</a>
+                  <ul class="sub-menu">
+                    <li><a href="companies-grid.html">Recruiters</a></li>
+                    <li><a href="company-details.html">Company Details</a></li>
+                  </ul>
+                </li>
+                <li class="has-children"><a href="candidates-grid.html">Candidates</a>
+                  <ul class="sub-menu">
+                    <li><a href="candidates-grid.html">Candidates Grid</a></li>
+                    <li><a href="candidate-details.html">Candidate Details</a></li>
+                  </ul>
+                </li>
+                <li class="has-children"><a href="blog-grid.html">Pages</a>
+                  <ul class="sub-menu">
+                    <li><a href="page-about.html">About Us</a></li>
+                    <li><a href="page-pricing.html">Pricing Plan</a></li>
+                    <li><a href="page-contact.html">Contact Us</a></li>
+                    <li><a href="page-register.html">Register</a></li>
+                    <li><a href="page-signin.html">Signin</a></li>
+                    <li><a href="page-reset-password.html">Reset Password</a></li>
+                    <li><a href="page-content-protected.html">Content Protected</a></li>
+                  </ul>
+                </li>
+                <li class="has-children"><a href="blog-grid.html">Blog</a>
+                  <ul class="sub-menu">
+                    <li><a href="blog-grid.html">Blog Grid</a></li>
+                    <li><a href="blog-grid-2.html">Blog Grid 2</a></li>
+                    <li><a href="blog-details.html">Blog Single</a></li>
+                  </ul>
+                </li>
+                <li><a href="http://wp.alithemes.com/html/joblist/demos/dashboard" target="_blank">Dashboard</a></li>
+              </ul>
+            </nav>
+          </div>
+          <div class="mobile-account">
+            <h6 class="mb-10">Your Account</h6>
+            <ul class="mobile-menu font-heading">
+              <li><a href="#">Profile</a></li>
+              <li><a href="#">Work Preferences</a></li>
+              <li><a href="#">Account Settings</a></li>
+              <li><a href="#">Go Pro</a></li>
+              <li><a href="page-signin.html">Sign Out</a></li>
+            </ul>
+          </div>
+          <div class="site-copyright">Copyright 2022 &copy; joblist. <br>Designed by AliThemes.</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <main class="main">
+
+    <section class="section-box mt-75">
+      <div class="breacrumb-cover">
+        <div class="container">
+          <div class="row align-items-center">
+            <div class="col-lg-12">
+              <h2 class="mb-20">Blog</h2>
+              <ul class="breadcrumbs">
+                <li><a class="home-icon" href="index.html">Home</a></li>
+                <li>Blog</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="pt-120 login-register">
+      <div class="container">
+        <div class="row">
+          <div class="col-lg-5 col-md-6 col-sm-12 mx-auto">
+            <div class="login-register-cover">
+              <div class="text-center">
+                <h2 class="mb-5 text-brand-1">Login</h2>
+                <p class="font-sm text-muted mb-30">Lorem ipsum dolor sit amet consectetur.</p>
+              </div>
+              <form class="login-register text-start mt-20" action="#">
+
+                <div class="row">
+                  <div class="col-xl-12">
+                    <div class="form-group">
+                      <label class="form-label" for="input-3">Username *</label>
+                      <input class="form-control" id="input-3" type="text" required="" name="username"
+                        placeholder="stevenjob">
+                    </div>
+                  </div>
+                  <div class="col-xl-12">
+                    <div class="form-group">
+                      <label class="form-label" for="input-4">Password *</label>
+                      <input class="form-control" id="input-4" type="password" required="" name="password"
+                        placeholder="************">
+                    </div>
+                  </div>
+                </div>
+                <div class="form-group">
+                  <button class="btn btn-default hover-up w-100" type="submit" name="login">Login</button>
+                </div>
+                <div class="text-muted text-center">Don't have an account?
+                  <a href="page-register.html">Registration</a>
+                </div>
+              </form>
+              <div class="text-center mt-20">
+                <div class="divider-text-center"><span>Or continue with</span></div>
+                <button class="btn social-login hover-up mt-20"><img src="assets/imgs/template/icons/icon-google.svg"
+                    alt="joblist"><strong>Sign up with Google</strong></button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <section class="section-box subscription_box mt-120">
+    <div class="container">
+      <div class="box-newsletter">
+        <div class="newsletter_textarea">
+          <div class="row">
+            <div class="col-lg-6">
+              <h2 class="text-md-newsletter">Subscribe our newsletter</h2>
+            </div>
+            <div class="col-lg-6">
+              <div class="box-form-newsletter">
+                <form class="form-newsletter">
+                  <input class="input-newsletter" type="text" value="" placeholder="Enter your email here">
+                  <button class="btn btn-default font-heading">Subscribe</button>
+                </form>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <footer class="footer pt-165">
+    <div class="container">
+      <div class="row justify-content-between">
+        <div class="footer-col-1 col-md-3 col-sm-12">
+          <a class="footer_logo" href="index.html">
+            <img alt="joblist" src="assets/imgs/template/logo_2.png">
+          </a>
+          <div class="mt-20 mb-20 font-xs color-text-paragraph-2">joblist is the heart of the design community and the
+            best resource to discover and connect with designers and jobs worldwide.</div>
+          <div class="footer-social">
+            <a class="icon-socials icon-facebook" href="#"><i class="fab fa-facebook-f"></i></a>
+            <a class="icon-socials icon-twitter" href="#"><i class="fab fa-twitter"></i></a>
+            <a class="icon-socials icon-linkedin" href="#"><i class="fab fa-linkedin-in"></i></a>
+          </div>
+        </div>
+        <div class="footer-col-2 col-md-2 col-xs-6">
+          <h6 class="mb-20">Resources</h6>
+          <ul class="menu-footer">
+            <li><a href="#">About us</a></li>
+            <li><a href="#">Our Team</a></li>
+            <li><a href="#">Products</a></li>
+            <li><a href="#">Contact</a></li>
+          </ul>
+        </div>
+        <div class="footer-col-3 col-md-2 col-xs-6">
+          <h6 class="mb-20">Community</h6>
+          <ul class="menu-footer">
+            <li><a href="#">Feature</a></li>
+            <li><a href="#">Pricing</a></li>
+            <li><a href="#">Credit</a></li>
+            <li><a href="#">FAQ</a></li>
+          </ul>
+        </div>
+        <div class="footer-col-4 col-md-2 col-xs-6">
+          <h6 class="mb-20">Quick links</h6>
+          <ul class="menu-footer">
+            <li><a href="#">iOS</a></li>
+            <li><a href="#">Android</a></li>
+            <li><a href="#">Microsoft</a></li>
+            <li><a href="#">Desktop</a></li>
+          </ul>
+        </div>
+        <div class="footer-col-5 col-md-2 col-xs-6">
+          <h6 class="mb-20">More</h6>
+          <ul class="menu-footer">
+            <li><a href="#">Privacy</a></li>
+            <li><a href="#">Help</a></li>
+            <li><a href="#">Terms</a></li>
+            <li><a href="#">FAQ</a></li>
+          </ul>
+        </div>
+      </div>
+      <div class="footer-bottom mt-50">
+        <div class="row">
+          <div class="col-md-6"><span class="font-xs color-text-paragraph">Copyright &copy; 2023. JOBLIST all right
+              reserved</span></div>
+          <div class="col-md-6 text-md-end text-start">
+            <div class="footer-social"><a class="font-xs color-text-paragraph" href="#">Privacy Policy</a><a
+                class="font-xs color-text-paragraph mr-30 ml-30" href="#">Terms &amp; Conditions</a><a
+                class="font-xs color-text-paragraph" href="#">Security</a></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <script src="assets/js/vendor/modernizr-3.6.0.min.js"></script>
+  <script src="assets/js/vendor/jquery-3.6.0.min.js"></script>
+  <script src="assets/js/vendor/jquery-migrate-3.3.0.min.js"></script>
+  <script src="assets/js/vendor/bootstrap.bundle.min.js"></script>
+  <script src="assets/js/plugins/waypoints.js"></script>
+  <script src="assets/js/plugins/wow.js"></script>
+  <script src="assets/js/plugins/magnific-popup.js"></script>
+  <script src="assets/js/plugins/perfect-scrollbar.min.js"></script>
+  <script src="assets/js/plugins/select2.min.js"></script>
+  <script src="assets/js/plugins/isotope.js"></script>
+  <script src="assets/js/plugins/scrollup.js"></script>
+  <script src="assets/js/plugins/swiper-bundle.min.js"></script>
+  <script src="assets/js/main.js?v=4.1"></script>
+</body>
+
+</html>

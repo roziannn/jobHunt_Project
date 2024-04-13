@@ -1,0 +1,9 @@
+.box-improve {
+    border: 1px solid $color-border-2;
+    border-radius: 16px;
+    overflow: hidden;
+    box-shadow: $box-shadow-2;
+    img {
+        height: 100%;
+    }
+}

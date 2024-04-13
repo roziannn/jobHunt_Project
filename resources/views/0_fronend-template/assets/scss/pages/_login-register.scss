@@ -1,0 +1,39 @@
+.login-register-cover{
+    border-bottom: 1px solid $border-color;
+    position: relative;
+    width: 100%;
+    .img-1 {
+        position: absolute;
+        right: 10%;
+        top: 20%;
+        width: unset;        
+    }
+}
+.divider-text-center {
+    position: relative;
+    text-align: center;
+    &::after {
+        content: "";
+        height: 1px;
+        width: 100%;
+        position: absolute;
+        background-color: $border-color;
+        top: 50%;
+        left: 0;
+        z-index: 1;
+    }
+    span {
+        display: inline-block;
+        background-color: #fff;
+        padding: 0 15px;
+        z-index: 2;
+        position: relative;
+    }
+}
+.login-register {    
+    input {
+        height: 53px;
+        line-height: 53px;
+        font-size: $font-sm;
+    }
+}

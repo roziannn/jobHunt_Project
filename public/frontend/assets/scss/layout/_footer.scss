@@ -1,0 +1,114 @@
+.footer {
+    .footer-col-1
+    {
+        flex: 0 0 auto;
+        width: 24%;
+    }
+    .footer-col-2
+    {
+        flex: 0 0 auto;
+        width: 14%;
+    }
+    .footer-col-3
+    {
+        flex: 0 0 auto;
+        width: 14%;
+    }
+    .footer-col-4
+    {
+        flex: 0 0 auto;
+        width: 14%;
+    }
+    .footer-col-5
+    {
+        flex: 0 0 auto;
+        width: 14%;
+    }
+    .footer-col-6
+    {
+        flex: 0 0 auto;
+        width: 20%;
+    }
+    .menu-footer {
+        display: inline-block;
+        li {
+            list-style: none;
+            margin-bottom: 4px;
+            a {
+                color: $color-text-paragraph;
+                font-size: $font-sm;
+                text-decoration: none;
+                transition-duration: 0.2s;
+                &:hover {
+                    color: $color-brand;
+                    transition-duration: 0.2s;
+                    padding-left: 3px;
+                }
+            }
+        }
+    }
+    .icon-socials {
+        display: inline-block;
+        margin-right: 10px;
+        height: 30px;
+        width: 30px;
+        transition-duration: 0.2s;
+        &:hover {
+            transform: translateY(-3px);
+            transition-duration: 0.2s;
+        }
+        &.icon-facebook {
+            background: url(../imgs/template/icons/facebook.svg) no-repeat 0px 0px;
+            transition-duration: 0.2s;           
+        }
+        &.icon-twitter {
+            background: url(../imgs/template/icons/twitter.svg) no-repeat 0px 0px;
+            transition-duration: 0.2s;           
+        }
+        &.icon-linkedin {
+            background: url(../imgs/template/icons/linkedin.svg) no-repeat 0px 0px;
+            transition-duration: 0.2s;           
+        }
+    }
+    .footer-bottom {
+        border-top: 1px solid $color-border-2;
+        padding: 30px 0px;
+        color: $color-text-paragraph;
+        font-size: $font-sm;
+        strong {
+            color: $color-brand;
+            font-weight: bold;
+        }
+        a {
+            text-decoration: none;
+        }
+    }
+}
+#scrollUp {
+	width: 48px;
+    height: 48px;
+    color: $color-white;
+    right: 30px;
+    bottom: 30px;
+    border-radius: 30px;
+    text-align: center;
+    overflow: hidden;
+    z-index: 999 !important;
+    border: 0;
+    background-color: #fff;
+    transition-duration: 0.2s;
+    background-color: $color-brand-2;
+    background-image: url(../imgs/template/icons/go-top.svg);
+    background-repeat: no-repeat;
+    background-position: center;
+    i {
+        display: none;
+        line-height: 42px !important;
+        font-size: 20px;
+        color: #fff;
+    }
+    &:hover {
+        transform: translateY(-3px);
+        transition-duration: 0.2s;
+    }
+}

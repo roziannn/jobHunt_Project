@@ -1,0 +1,92 @@
+//1.FONT
+@import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap');
+$font-heading: 'Plus Jakarta Sans', sans-serif;
+$font-text: 'Plus Jakarta Sans', sans-serif;
+$font-3xs: 10px;
+$font-xxs: 10px;
+$font-xs: 12px;
+$font-sm: 14px;
+$font-md: 16px;
+$font-md-2: 15px;
+$font-lg: 18px;
+$font-xl: 20px;
+$font-2xl: 22px;
+$font-3xl: 56px;
+
+//2.COLOR
+$color-brand: #05264E;
+$color-brand-2: #3C65F5; 
+$color-white: #ffffff;
+$color-green: #85FF83;
+$color-text-paragraph: #4F5E64;
+$color-text-paragraph-2: #66789C;
+$color-text-mutted: #A0ABB8;
+$color-border-1: #B4C0E0;
+$color-border-2: #E0E6F7;
+$color-border-3: #EFF2FB;
+$color-black-1: #253D4E;
+$color-red: #E45959;
+// End JB
+
+//3.Boxshadow
+$box-shadow-1: 0px 18px 40px rgba(25, 15, 9, 0.1);
+
+// JB
+$box-shadow-2: 0px 10px 20px -5px rgba(10, 42, 105, 0.06);
+$box-shadow-3: 0px 37px 60px -15px rgba(50, 59, 79, 0.1);
+// JB
+$drop-shadow: 0px 2px 4px -5px rgba(10, 42, 105, 1);
+
+//4. Border
+$border-color: #E0E6F6;
+$border-color-1-hover: #B4C0E0;
+$border-color-1: rgba(6, 18, 36, 0.1);
+$border-color-3: rgba(26, 15, 9, 0.1);
+$border-color-4: rgba(26, 15, 9, 0.1);
+$border-color-5: rgba(165, 165, 165, 1);
+//5. Background
+$background-1: #f2f3f4;
+$background-2: #f4f6fa;
+$background-3: #def9ec;
+$background-4: #72e0bf;
+// jobBox
+$background-5: #F8FAFF;
+$background-6: #EFF3FC;
+$background-7: #F2F6FD;
+$background-8: rgba(81, 146, 255, 0.12);;
+$background-white: #ffffff;
+$background-green: #3AAB67;
+$background-orange: #F58A3C;
+$background-pink: #D159E4;
+$background-urgent: #FFF6F1;
+$background-9: #EFF7FF;
+// End JB
+$background-10: #bee2ae;
+$background-11: #9fdbe9;
+$background-12: #9FB5FF;
+$background-13: #5aa6ff;
+$background-14: #D8F1FF;
+$background-15: #F4F7FF;
+$background-16: rgba(81, 146, 255, 0.12);
+
+$background-brand: #9777fa;
+
+$background-head-single: #FFF9F3;
+$background-blue-light-2: #E9F7FF;
+$background-primary-trans: rgba(81, 146, 255, 0.3);
+$background-primary: rgba(81, 146, 255, 1);
+$background-grey: rgba(186, 186, 186, 0.3);
+$background-success: #00c070;
+// 6. text-shadow
+$text-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+// 7. breakpoints
+$grid-breakpoints: (
+    xs: 0,
+    xxs: 375px,
+    xsm: 485px,
+    sm: 576px,
+    md: 768px,
+    lg: 992px,
+    xl: 1200px,
+    xxl: 1400px
+);

@@ -1,0 +1,30 @@
+.banner-hero {
+    .block-banner {
+        &.form-none-shadow {
+            .form-find {
+                box-shadow: none;
+                border: 1px solid $color-border-2;
+            }
+        }
+    }
+}
+.list-tags-banner-2 {
+    color: $color-text-paragraph-2;
+    font-size: $font-sm;
+    line-height: 26px;
+    a {
+        text-decoration: underline;
+        color: $color-text-paragraph-2;
+    }
+}
+.block-banner-1, .block-banner-2, .block-banner-3 {
+    padding: 0px 10px;
+    img {
+        margin-bottom: 20px;
+        border-radius: 5px;
+        width: 100%;
+    }
+}
+.banner-homepage6 {
+    background-color: $background-white !important;
+}

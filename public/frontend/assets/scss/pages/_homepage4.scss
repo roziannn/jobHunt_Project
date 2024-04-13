@@ -1,0 +1,60 @@
+.bg-homepage4 {
+    background-image: url(../imgs/page/homepage4/bg-banner.png);
+    background-repeat: no-repeat;
+    background-position: center bottom;
+    background-size: cover;
+    min-height: 750px;
+    position: absolute;
+    z-index: -1;
+    width: 100%;
+    top: 0;
+    right: 0;
+}
+
+.banner-homepage4 {
+    .banner-inner {
+        .block-banner {
+            padding: 50px 0px 80px 192px;
+        }
+        .banner-imgs {
+            .block-1 {
+                left: 0px;
+            }
+        }
+    }
+}
+
+.bg-cat {
+    background-image: url(../imgs/page/homepage4/bg-cat.svg);
+    background-repeat: no-repeat;
+    background-position: top center;
+    background-size: cover;
+    padding: 70px 0px 150px 0px;
+}
+
+.layout-brand-1 {
+    .card-grid-5 {
+        .box-cover-img {
+            background: url(../imgs/page/homepage4/bg-brand-1.png) repeat-x center bottom;
+        }
+    }
+}
+
+.swiper-pagination-style-border {
+    bottom: 10px !important;
+    .swiper-pagination-customs {
+        background-color: $background-white !important;
+        border: 1px solid $color-brand;
+    }
+    .swiper-pagination-customs-active,
+    .swiper-pagination-customs:hover {
+        background-color: $color-brand !important;
+    }
+}
+
+.box-newsletter-2 {
+    background: url(../imgs/page/homepage4/bg-newsletter.png) no-repeat top center;
+    background-size: cover;
+    padding: 100px 0px 90px 0px;
+    border-radius: 0px;
+}
