@@ -15,8 +15,8 @@ class CompanyInfoUpdateRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'logo' => ['required', 'image', 'max:1500'],
-            'banner' => ['required', 'image', 'max:1500'],
+            'logo' => ['image', 'max:1500'],
+            'banner' => ['image', 'max:1500'],
             'name' => ['required', 'string', 'max:100'],
             'bio' => ['required'],
             'vision' => ['required'],

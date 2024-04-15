@@ -49,6 +49,71 @@ namespace App\Models{
  * 
  *
  * @property int $id
+ * @property int $user_id
+ * @property string|null $name
+ * @property string|null $slug
+ * @property int|null $industry_type_id
+ * @property int|null $organization_type_id
+ * @property int|null $team_size_id
+ * @property string|null $logo
+ * @property string|null $banner
+ * @property string|null $establishment_date
+ * @property string|null $website
+ * @property string|null $phone
+ * @property string|null $email
+ * @property string|null $bio
+ * @property string|null $vision
+ * @property int $total_views
+ * @property string|null $address
+ * @property string|null $city
+ * @property string|null $state
+ * @property string|null $country
+ * @property string|null $map_link
+ * @property int $is_profile_verified
+ * @property string|null $document_verified_at
+ * @property int $profile_completion
+ * @property int $visibility
+ * @property \Illuminate\Support\Carbon|null $created_at
+ * @property \Illuminate\Support\Carbon|null $updated_at
+ * @method static \Illuminate\Database\Eloquent\Builder|Company newModelQuery()
+ * @method static \Illuminate\Database\Eloquent\Builder|Company newQuery()
+ * @method static \Illuminate\Database\Eloquent\Builder|Company query()
+ * @method static \Illuminate\Database\Eloquent\Builder|Company whereAddress($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Company whereBanner($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Company whereBio($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Company whereCity($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Company whereCountry($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Company whereCreatedAt($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Company whereDocumentVerifiedAt($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Company whereEmail($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Company whereEstablishmentDate($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Company whereId($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Company whereIndustryTypeId($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Company whereIsProfileVerified($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Company whereLogo($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Company whereMapLink($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Company whereName($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Company whereOrganizationTypeId($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Company wherePhone($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Company whereProfileCompletion($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Company whereSlug($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Company whereState($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Company whereTeamSizeId($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Company whereTotalViews($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Company whereUpdatedAt($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Company whereUserId($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Company whereVisibility($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Company whereVision($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Company whereWebsite($value)
+ */
+	class Company extends \Eloquent {}
+}
+
+namespace App\Models{
+/**
+ * 
+ *
+ * @property int $id
  * @property string $name
  * @property string $image
  * @property string $email
