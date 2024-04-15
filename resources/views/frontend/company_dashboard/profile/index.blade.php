@@ -174,7 +174,6 @@
                                             <input class="form-control" type="text" name="" id="">
                                         </div>
                                     </div>
-
                                     <div class="col-md-12">
                                         <div class="form-group">
                                             <label class="font-sm color-text-mutted mb-10">Map Link</label>
@@ -189,9 +188,45 @@
                         </div>
                         <div class="tab-pane fade" id="pills-contact" role="tabpanel"
                             aria-labelledby="pills-contact-tab">
-                            ...</div>
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        <label class="font-sm color-text-mutted mb-10">User Name *</label>
+                                        <input class="form-control" type="text" name="" id="">
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        <label class="font-sm color-text-mutted mb-10">Email *</label>
+                                        <input class="form-control" type="text" name="" id="">
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        <button class="btn btn-default btn-shadow">Save</button>
+                                    </div>
+                                </div>
+                                <br>
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        <label class="font-sm color-text-mutted mb-10">Password *</label>
+                                        <input class="form-control" type="password" name="" id="">
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        <label class="font-sm color-text-mutted mb-10">Confirm Password *</label>
+                                        <input class="form-control" type="password" name="" id="">
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        <button class="btn btn-default btn-shadow">Save</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
                     </div>
-
                 </div>
             </div>
         </div>
