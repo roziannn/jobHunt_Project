@@ -53,5 +53,6 @@ Route::group(
 
         /*company profile*/
         Route::get('/profile', [CompanyProfileController::class, 'index'])->name('profile');
+        Route::post('/profile/company-info', [CompanyProfileController::class, 'updateCompanyInfo'])->name('profile.company-info');
     }
 );
