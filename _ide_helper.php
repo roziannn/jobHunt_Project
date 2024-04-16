@@ -17180,6 +17180,131 @@ namespace Illuminate\Support\Facades {
             }
     }
 
+namespace Mckenziearts\Notify\Facades {
+            /**
+     * 
+     *
+     */        class LaravelNotify {
+                    /**
+         * 
+         *
+         * @static 
+         */        public static function info($message, $title = null)
+        {
+                        /** @var \Mckenziearts\Notify\LaravelNotify $instance */
+                        return $instance->info($message, $title);
+        }
+                    /**
+         * 
+         *
+         * @static 
+         */        public static function success($message, $title = null)
+        {
+                        /** @var \Mckenziearts\Notify\LaravelNotify $instance */
+                        return $instance->success($message, $title);
+        }
+                    /**
+         * 
+         *
+         * @static 
+         */        public static function error($message, $title = null)
+        {
+                        /** @var \Mckenziearts\Notify\LaravelNotify $instance */
+                        return $instance->error($message, $title);
+        }
+                    /**
+         * 
+         *
+         * @static 
+         */        public static function warning($message, $title = null)
+        {
+                        /** @var \Mckenziearts\Notify\LaravelNotify $instance */
+                        return $instance->warning($message, $title);
+        }
+                    /**
+         * 
+         *
+         * @static 
+         */        public static function connect($type, $title, $message)
+        {
+                        /** @var \Mckenziearts\Notify\LaravelNotify $instance */
+                        return $instance->connect($type, $title, $message);
+        }
+                    /**
+         * 
+         *
+         * @static 
+         */        public static function smiley($type, $message)
+        {
+                        /** @var \Mckenziearts\Notify\LaravelNotify $instance */
+                        return $instance->smiley($type, $message);
+        }
+                    /**
+         * 
+         *
+         * @static 
+         */        public static function emotify($type, $message)
+        {
+                        /** @var \Mckenziearts\Notify\LaravelNotify $instance */
+                        return $instance->emotify($type, $message);
+        }
+                    /**
+         * 
+         *
+         * @static 
+         */        public static function drake($type)
+        {
+                        /** @var \Mckenziearts\Notify\LaravelNotify $instance */
+                        return $instance->drake($type);
+        }
+                    /**
+         * Return a preset message that is defined in the config
+         * file. If you need to override any of the values, you
+         * can pass an array with the key-value pairs of what
+         * you want to override.
+         * 
+         * Example: To override the 'message' variable, the array
+         *          could have the following structure:
+         * 
+         *          ['message' => 'Your new message here!']
+         *
+         * @throws Exception
+         * @static 
+         */        public static function preset($presetName, $overrideValues = [])
+        {
+                        /** @var \Mckenziearts\Notify\LaravelNotify $instance */
+                        return $instance->preset($presetName, $overrideValues);
+        }
+                    /**
+         * 
+         *
+         * @static 
+         */        public static function flash($message, $type = null, $icon = null, $model = null, $title = null)
+        {
+                        /** @var \Mckenziearts\Notify\LaravelNotify $instance */
+                        return $instance->flash($message, $type, $icon, $model, $title);
+        }
+                    /**
+         * 
+         *
+         * @static 
+         */        public static function message()
+        {
+                        /** @var \Mckenziearts\Notify\LaravelNotify $instance */
+                        return $instance->message();
+        }
+                    /**
+         * 
+         *
+         * @static 
+         */        public static function type()
+        {
+                        /** @var \Mckenziearts\Notify\LaravelNotify $instance */
+                        return $instance->type();
+        }
+            }
+    }
+
 namespace Spatie\LaravelIgnition\Facades {
             /**
      * 
@@ -21106,6 +21231,7 @@ namespace  {
             class Validator extends \Illuminate\Support\Facades\Validator {}
             class View extends \Illuminate\Support\Facades\View {}
             class Vite extends \Illuminate\Support\Facades\Vite {}
+            class Notify extends \Mckenziearts\Notify\Facades\LaravelNotify {}
             class Flare extends \Spatie\LaravelIgnition\Facades\Flare {}
     }
 

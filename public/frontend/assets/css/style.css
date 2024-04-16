@@ -9945,3 +9945,7 @@ footer .color-text-paragraph {
     border-radius: 0px;
     color: var(--colorBlack);
 }
+
+.notify {
+    z-index: 9999;
+}

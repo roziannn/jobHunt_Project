@@ -46,13 +46,7 @@
                                 @csrf
                                 <div class="row">
                                     <div class="col-md-6">
-                                        <x-image-preview :height="200" :width="300" :source="$companyInfo->logo" />
-                                    </div>
-                                    <div class="col-md-6">
-                                        <x-image-preview :height="200" :width="300" :source="$companyInfo->banner" />
-
-                                    </div>
-                                    <div class="col-md-6">
+                                        <x-image-preview :height="200" :width="200" :source="$companyInfo?->logo" />
                                         <div class="form-group">
                                             <label class="font-sm color-text-mutted mb-10">Logo *</label>
                                             <input class="form-control {{ $errors->has('logo') ? 'is-invalid' : '' }}"
@@ -61,6 +55,8 @@
                                         </div>
                                     </div>
                                     <div class="col-md-6">
+                                        <x-image-preview :height="200" :width="500" :source="$companyInfo?->banner" />
+
                                         <div class="form-group">
                                             <label class="font-sm color-text-mutted mb-10">Banner *</label>
                                             <input class="form-control {{ $errors->has('banner') ? 'is-invalid' : '' }}"
