@@ -15,7 +15,8 @@ class CompanyProfileController extends Controller
 
     function index(): View
     {
-        return view('frontend.company_dashboard.profile.index');
+        $companyInfo = Company::where('user_id', auth()->user()->id)->first();
+        return view('frontend.company_dashboard.profile.index', compact('companyInfo'));
     }
 
     function updateCompanyInfo(CompanyInfoUpdateRequest $request)

@@ -46,6 +46,13 @@
                                 @csrf
                                 <div class="row">
                                     <div class="col-md-6">
+                                        <x-image-preview :height="200" :width="300" :source="$companyInfo->logo" />
+                                    </div>
+                                    <div class="col-md-6">
+                                        <x-image-preview :height="200" :width="300" :source="$companyInfo->banner" />
+
+                                    </div>
+                                    <div class="col-md-6">
                                         <div class="form-group">
                                             <label class="font-sm color-text-mutted mb-10">Logo *</label>
                                             <input class="form-control {{ $errors->has('logo') ? 'is-invalid' : '' }}"
@@ -66,7 +73,7 @@
                                         <div class="form-group">
                                             <label class="font-sm color-text-mutted mb-10">Company Name *</label>
                                             <input class="form-control {{ $errors->has('name') ? 'is-invalid' : '' }}"
-                                                type="text" name="name" value="">
+                                                type="text" name="name" value="{{ $companyInfo?->name }}">
                                             <x-input-error :messages="$errors->get('name')" class="mt-2" />
 
                                         </div>
@@ -74,7 +81,7 @@
                                     <div class="col-md-12">
                                         <div class="form-group">
                                             <label class="font-sm color-text-mutted mb-10">Company Bio *</label>
-                                            <textarea name="bio" class=" {{ $errors->has('bio') ? 'is-invalid' : '' }}"></textarea>
+                                            <textarea name="bio" class=" {{ $errors->has('bio') ? 'is-invalid' : '' }}">{{ $companyInfo?->bio }}</textarea>
                                             <x-input-error :messages="$errors->get('bio')" class="mt-2" />
 
                                         </div>
@@ -82,7 +89,7 @@
                                     <div class="col-md-12">
                                         <div class="form-group">
                                             <label class="font-sm color-text-mutted mb-10">Company Vision *</label>
-                                            <textarea name="vision" class="{{ $errors->has('vision') ? 'is-invalid' : '' }}"></textarea>
+                                            <textarea name="vision" class="{{ $errors->has('vision') ? 'is-invalid' : '' }}">{{ $companyInfo?->vision }}</textarea>
                                             <x-input-error :messages="$errors->get('vision')" class="mt-2" />
                                         </div>
                                     </div>
