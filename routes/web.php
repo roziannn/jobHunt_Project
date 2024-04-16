@@ -40,7 +40,7 @@ Route::group(
     }
 );
 
-/** Company Dashboard Routes */
+/** Company Routes */
 Route::group(
     [
         'middleware' => ['auth', 'verified', 'user.role:company'],
@@ -51,8 +51,11 @@ Route::group(
         /*dashboard*/
         Route::get('/dashboard', [CompanyDashboardController::class, 'index'])->name('dashboard');
 
-        /*company profile*/
+        /*company profile routes*/
         Route::get('/profile', [CompanyProfileController::class, 'index'])->name('profile');
         Route::post('/profile/company-info', [CompanyProfileController::class, 'updateCompanyInfo'])->name('profile.company-info');
+        Route::post('/profile/founding-info', [CompanyProfileController::class, 'updateFoundingInfo'])->name('profile.founding-info');
+        Route::post('/profile/account-info', [CompanyProfileController::class, 'updateAccountInfo'])->name('profile.account-info');
+        Route::post('/profile/password-update', [CompanyProfileController::class, 'updatePassword'])->name('profile.password-update');
     }
 );

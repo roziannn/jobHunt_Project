@@ -91,7 +91,9 @@
     <script src="{{ asset('frontend/assets/js/main.js?v=4.1') }}"></script>
 
     <script>
-        $('.datepicker').datepicker();
+        $('.datepicker').datepicker({
+            format: 'yyyy-m-d',
+        });
     </script>
 </body>
 
