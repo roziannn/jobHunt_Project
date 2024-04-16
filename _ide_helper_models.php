@@ -75,6 +75,7 @@ namespace App\Models{
  * @property int $visibility
  * @property \Illuminate\Support\Carbon|null $created_at
  * @property \Illuminate\Support\Carbon|null $updated_at
+ * @method static \Illuminate\Database\Eloquent\Builder|Company findSimilarSlugs(string $attribute, array $config, string $slug)
  * @method static \Illuminate\Database\Eloquent\Builder|Company newModelQuery()
  * @method static \Illuminate\Database\Eloquent\Builder|Company newQuery()
  * @method static \Illuminate\Database\Eloquent\Builder|Company query()
@@ -105,6 +106,7 @@ namespace App\Models{
  * @method static \Illuminate\Database\Eloquent\Builder|Company whereVisibility($value)
  * @method static \Illuminate\Database\Eloquent\Builder|Company whereVision($value)
  * @method static \Illuminate\Database\Eloquent\Builder|Company whereWebsite($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Company withUniqueSlugConstraints(\Illuminate\Database\Eloquent\Model $model, string $attribute, array $config, string $slug)
  */
 	class Company extends \Eloquent {}
 }
