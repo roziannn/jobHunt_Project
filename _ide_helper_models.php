@@ -117,6 +117,29 @@ namespace App\Models{
  *
  * @property int $id
  * @property string $name
+ * @property string|null $slug
+ * @property \Illuminate\Support\Carbon|null $created_at
+ * @property \Illuminate\Support\Carbon|null $updated_at
+ * @method static \Illuminate\Database\Eloquent\Builder|IndustryType findSimilarSlugs(string $attribute, array $config, string $slug)
+ * @method static \Illuminate\Database\Eloquent\Builder|IndustryType newModelQuery()
+ * @method static \Illuminate\Database\Eloquent\Builder|IndustryType newQuery()
+ * @method static \Illuminate\Database\Eloquent\Builder|IndustryType query()
+ * @method static \Illuminate\Database\Eloquent\Builder|IndustryType whereCreatedAt($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|IndustryType whereId($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|IndustryType whereName($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|IndustryType whereSlug($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|IndustryType whereUpdatedAt($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|IndustryType withUniqueSlugConstraints(\Illuminate\Database\Eloquent\Model $model, string $attribute, array $config, string $slug)
+ */
+	class IndustryType extends \Eloquent {}
+}
+
+namespace App\Models{
+/**
+ * 
+ *
+ * @property int $id
+ * @property string $name
  * @property string $image
  * @property string $email
  * @property \Illuminate\Support\Carbon|null $email_verified_at

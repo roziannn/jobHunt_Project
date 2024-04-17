@@ -5,7 +5,7 @@
 
 /**
  * A helper file for Laravel, to provide autocomplete information to your IDE
- * Generated for Laravel 10.48.4.
+ * Generated for Laravel 10.48.8.
  *
  * This file should not be included in your code, only analyzed by your IDE!
  *
@@ -8872,6 +8872,17 @@ namespace Illuminate\Support\Facades {
         {
                         /** @var \Illuminate\Support\Testing\Fakes\NotificationFake $instance */
                         return $instance->hasSent($notifiable, $notification);
+        }
+                    /**
+         * Specify if notification should be serialized and restored when being "pushed" to the queue.
+         *
+         * @param bool $serializeAndRestore
+         * @return \Illuminate\Support\Testing\Fakes\NotificationFake 
+         * @static 
+         */        public static function serializeAndRestore($serializeAndRestore = true)
+        {
+                        /** @var \Illuminate\Support\Testing\Fakes\NotificationFake $instance */
+                        return $instance->serializeAndRestore($serializeAndRestore);
         }
                     /**
          * Get the notifications that have been sent.

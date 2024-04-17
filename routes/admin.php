@@ -5,11 +5,9 @@ use App\Http\Controllers\Admin\Auth\ConfirmablePasswordController;
 use App\Http\Controllers\Admin\Auth\EmailVerificationNotificationController;
 use App\Http\Controllers\Admin\Auth\EmailVerificationPromptController;
 use App\Http\Controllers\Admin\Auth\NewPasswordController;
-use App\Http\Controllers\Admin\Auth\PasswordController;
 use App\Http\Controllers\Admin\Auth\PasswordResetLinkController;
-use App\Http\Controllers\Admin\Auth\RegisteredUserController;
-use App\Http\Controllers\Admin\Auth\VerifyEmailController;
 use App\Http\Controllers\Admin\DashboardController;
+use App\Http\Controllers\Admin\IndustryTypeController;
 use App\Models\Admin;
 use Illuminate\Support\Facades\Route;
 
@@ -33,27 +31,17 @@ Route::group(['middleware' => ['guest:admin'], 'prefix' => 'admin', 'as' => 'adm
 });
 
 Route::group(['middleware' => ['auth:admin'], 'prefix' => 'admin', 'as' => 'admin.'], function () {
+    Route::post('logout', [AuthenticatedSessionController::class, 'destroy'])
+        ->name('logout');
+
     /** Dashboard Route*/
     Route::get('dashboard', [DashboardController::class, 'index'])->name('dashboard');
 
-    Route::get('verify-email', EmailVerificationPromptController::class)
-        ->name('verification.notice');
-
-    Route::get('verify-email/{id}/{hash}', VerifyEmailController::class)
-        ->middleware(['signed', 'throttle:6,1'])
-        ->name('verification.verify');
-
-    Route::post('email/verification-notification', [EmailVerificationNotificationController::class, 'store'])
-        ->middleware('throttle:6,1')
-        ->name('verification.send');
-
-    Route::get('confirm-password', [ConfirmablePasswordController::class, 'show'])
-        ->name('password.confirm');
-
-    Route::post('confirm-password', [ConfirmablePasswordController::class, 'store']);
-
-    Route::put('password', [PasswordController::class, 'update'])->name('password.update');
-
-    Route::post('logout', [AuthenticatedSessionController::class, 'destroy'])
-        ->name('logout');
+    /** Industry Type Route*/
+    Route::resource('industry-types', IndustryTypeController::class);
 });
+
+
+/** Industry Type Route
+ * To check all routes list: ctrl+p then >Route List
+ */
