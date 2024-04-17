@@ -16,7 +16,8 @@ class IndustryTypeController extends Controller
      */
     public function index(): View
     {
-        return view('admin.industry-type.index');
+        $industryTypes = IndustryType::paginate(20);
+        return view('admin.industry-type.index', compact('industryTypes'));
     }
 
     /**
@@ -46,19 +47,12 @@ class IndustryTypeController extends Controller
     }
 
     /**
-     * Display the specified resource.
-     */
-    public function show(string $id)
-    {
-        //
-    }
-
-    /**
      * Show the form for editing the specified resource.
      */
     public function edit(string $id)
     {
-        //
+        $industryType = IndustryType::findOrFail($id);
+        return view('admin.industry-type.edit', compact('industryType'));
     }
 
     /**
@@ -66,7 +60,19 @@ class IndustryTypeController extends Controller
      */
     public function update(Request $request, string $id)
     {
-        //
+        $request->validate([
+            'name' => ['required', 'max:255', 'unique:industry_types,name,' . $id] //ignore the id while checking unique
+        ]);
+
+        $type = IndustryType::findOrFail($id);
+        $type->name = $request->name;
+        $type->save();
+
+        /* The first generate(created) slug will not update.*/
+
+        Notify::updatedNotification(); //static method for notify
+
+        return to_route('admin.industry-types.index');
     }
 
     /**

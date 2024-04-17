@@ -48,15 +48,38 @@
 
     <!-- JS Libraies -->
     <script src="{{ asset('admin/assets/modules/summernote/summernote-bs4.js') }}"></script>
-
-    <!-- Template JS File -->
-    <script src="{{ asset('admin/assets/js/scripts.js') }}"></script>
-    <script src="{{ asset('admin/assets/js/custom.js') }}"></script>
+    <script src="{{ asset('admin/assets/modules/sweetalert/sweetalert.min.js') }}"></script>
 
     <!-- laravel notify start-->
     <x-notify::notify />
     <!-- laravel notify end-->
     @notifyJs
+
+    <!-- Template JS File -->
+    <script src="{{ asset('admin/assets/js/scripts.js') }}"></script>
+    <script src="{{ asset('admin/assets/js/custom.js') }}"></script>
+
+    <script>
+        $(".delete-item").on('click', function(e) {
+            e.preventDefault();
+            swal({
+                    title: 'Are you sure?',
+                    text: 'Once deleted, you will not be able to recover this data!',
+                    icon: 'warning',
+                    buttons: true,
+                    dangerMode: true,
+                })
+                .then((willDelete) => {
+                    if (willDelete) {
+                        swal('Poof! Your data file has been deleted!', {
+                            icon: 'success',
+                        });
+                    } else {
+                        swal('Your data file is safe!');
+                    }
+                });
+        });
+    </script>
 </body>
 
 </html>

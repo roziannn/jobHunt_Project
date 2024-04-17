@@ -29,12 +29,32 @@
                     <div class="table-responsive">
                         <table class="table table-striped">
                             <tr>
-
+                                <th>Name</th>
+                                <th>Slug</th>
+                                <th style="width: 10%">Action</th>
                             </tr>
-                            <tr>
-
+                            <tbody>
+                                @foreach ($industryTypes as $item)
+                                    <tr>
+                                        <td>{{ $item->name }} </td>
+                                        <td>{{ $item->slug }} </td>
+                                        <td><a href="{{ route('admin.industry-types.edit', $item->id) }}"
+                                                class="btn-sm btn-primary"><i class="fas fa-edit"></i></a>
+                                            <a href="" class="btn-sm btn-danger delete-item"><i
+                                                    class="fas fa-trash"></i></a>
+                                        </td>
+                                    </tr>
+                                @endforeach
+                            </tbody>
                         </table>
                     </div>
+                </div>
+                <div class="card-footer text-right">
+                    <nav class="d-inline-block">
+                        @if ($industryTypes->hasPages())
+                            {{ $industryTypes->links() }}
+                        @endif
+                    </nav>
                 </div>
             </div>
         </div>
