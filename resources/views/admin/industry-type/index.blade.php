@@ -40,8 +40,8 @@
                                         <td>{{ $item->slug }} </td>
                                         <td><a href="{{ route('admin.industry-types.edit', $item->id) }}"
                                                 class="btn-sm btn-primary"><i class="fas fa-edit"></i></a>
-                                            <a href="" class="btn-sm btn-danger delete-item"><i
-                                                    class="fas fa-trash"></i></a>
+                                            <a href="{{ route('admin.industry-types.destroy', $item->id) }}"
+                                                class="btn-sm btn-danger delete-item"><i class="fas fa-trash"></i></a>
                                         </td>
                                     </tr>
                                 @endforeach

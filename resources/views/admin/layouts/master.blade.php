@@ -71,6 +71,21 @@
                 })
                 .then((willDelete) => {
                     if (willDelete) {
+                        let url = $(this).attr('href')
+
+                        $.ajax({
+                            method: 'DELETE',
+                            url: url,
+                            data: {
+                                _token: "{{ csrf_token() }}"
+                            },
+                            success: function(response) {
+                                window.location.reload();
+                            },
+                            error: function(xhr, status, error) {
+                                console.log(error)
+                            }
+                        })
                         swal('Poof! Your data file has been deleted!', {
                             icon: 'success',
                         });

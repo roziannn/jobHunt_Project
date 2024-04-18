@@ -80,6 +80,13 @@ class IndustryTypeController extends Controller
      */
     public function destroy(string $id)
     {
-        //
+        try {
+            IndustryType::findOrFail($id)->delete();
+            Notify::deletedNotification();
+            return response(['message' => 'success'], 200);
+        } catch (\Exception $e) {
+            logger($e);
+            return response(['message' => 'error'], 500);
+        }
     }
 }
