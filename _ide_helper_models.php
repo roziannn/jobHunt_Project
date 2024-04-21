@@ -140,6 +140,29 @@ namespace App\Models{
  *
  * @property int $id
  * @property string $name
+ * @property string|null $slug
+ * @property \Illuminate\Support\Carbon|null $created_at
+ * @property \Illuminate\Support\Carbon|null $updated_at
+ * @method static \Illuminate\Database\Eloquent\Builder|OrganizationType findSimilarSlugs(string $attribute, array $config, string $slug)
+ * @method static \Illuminate\Database\Eloquent\Builder|OrganizationType newModelQuery()
+ * @method static \Illuminate\Database\Eloquent\Builder|OrganizationType newQuery()
+ * @method static \Illuminate\Database\Eloquent\Builder|OrganizationType query()
+ * @method static \Illuminate\Database\Eloquent\Builder|OrganizationType whereCreatedAt($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|OrganizationType whereId($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|OrganizationType whereName($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|OrganizationType whereSlug($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|OrganizationType whereUpdatedAt($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|OrganizationType withUniqueSlugConstraints(\Illuminate\Database\Eloquent\Model $model, string $attribute, array $config, string $slug)
+ */
+	class OrganizationType extends \Eloquent {}
+}
+
+namespace App\Models{
+/**
+ * 
+ *
+ * @property int $id
+ * @property string $name
  * @property string $image
  * @property string $email
  * @property \Illuminate\Support\Carbon|null $email_verified_at

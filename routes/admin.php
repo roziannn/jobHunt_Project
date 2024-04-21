@@ -8,6 +8,7 @@ use App\Http\Controllers\Admin\Auth\NewPasswordController;
 use App\Http\Controllers\Admin\Auth\PasswordResetLinkController;
 use App\Http\Controllers\Admin\DashboardController;
 use App\Http\Controllers\Admin\IndustryTypeController;
+use App\Http\Controllers\Admin\OrganizationTypeController;
 use App\Models\Admin;
 use Illuminate\Support\Facades\Route;
 
@@ -39,6 +40,9 @@ Route::group(['middleware' => ['auth:admin'], 'prefix' => 'admin', 'as' => 'admi
 
     /** Industry Type Route*/
     Route::resource('industry-types', IndustryTypeController::class);
+
+    /** Organization Type Route*/
+    Route::resource('organization-types', OrganizationTypeController::class);
 });
 
 

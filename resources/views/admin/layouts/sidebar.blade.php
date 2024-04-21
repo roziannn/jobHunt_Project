@@ -18,6 +18,8 @@
                     <span>Attributes</span></a>
                 <ul class="dropdown-menu">
                     <li><a class="nav-link" href="{{ route('admin.industry-types.index') }}">Industry Type</a></li>
+                    <li><a class="nav-link" href="{{ route('admin.organization-types.index') }}">Organization Type</a>
+                    </li>
                     <li><a class="nav-link" href="layout-transparent.html">Transparent Sidebar</a></li>
                     <li><a class="nav-link" href="layout-top-navigation.html">Top Navigation</a></li>
                 </ul>
