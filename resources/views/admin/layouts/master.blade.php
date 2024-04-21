@@ -83,12 +83,12 @@
                                 window.location.reload();
                             },
                             error: function(xhr, status, error) {
-                                console.log(error)
+                                console.log(xhr)
+                                swal(xhr.responseJSON.message, {
+                                    icon: 'error',
+                                });
                             }
                         })
-                        swal('Poof! Your data file has been deleted!', {
-                            icon: 'success',
-                        });
                     } else {
                         swal('Your data file is safe!');
                     }

@@ -7,16 +7,20 @@ use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Models\IndustryType;
 use App\Services\Notify;
+use App\Traits\Searchable;
 use Illuminate\Http\RedirectResponse;
 
 class IndustryTypeController extends Controller
 {
+    use Searchable;
     /**
      * Display a listing of the resource.
      */
-    public function index(): View
+    public function index(Request $request): View
     {
-        $industryTypes = IndustryType::paginate(20);
+        $query = IndustryType::query();
+        $this->seacrh($query, ['name']);
+        $industryTypes = $query->paginate(20);
         return view('admin.industry-type.index', compact('industryTypes'));
     }
 
@@ -86,7 +90,7 @@ class IndustryTypeController extends Controller
             return response(['message' => 'success'], 200);
         } catch (\Exception $e) {
             logger($e);
-            return response(['message' => 'error'], 500);
+            return response(['message' => 'Something Went Wrong. Please Try Again!'], 500);
         }
     }
 }
