@@ -163,6 +163,27 @@ namespace App\Models{
  *
  * @property int $id
  * @property string $name
+ * @property string|null $slug
+ * @property \Illuminate\Support\Carbon|null $created_at
+ * @property \Illuminate\Support\Carbon|null $updated_at
+ * @method static \Illuminate\Database\Eloquent\Builder|TeamSize newModelQuery()
+ * @method static \Illuminate\Database\Eloquent\Builder|TeamSize newQuery()
+ * @method static \Illuminate\Database\Eloquent\Builder|TeamSize query()
+ * @method static \Illuminate\Database\Eloquent\Builder|TeamSize whereCreatedAt($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|TeamSize whereId($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|TeamSize whereName($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|TeamSize whereSlug($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|TeamSize whereUpdatedAt($value)
+ */
+	class TeamSize extends \Eloquent {}
+}
+
+namespace App\Models{
+/**
+ * 
+ *
+ * @property int $id
+ * @property string $name
  * @property string $image
  * @property string $email
  * @property \Illuminate\Support\Carbon|null $email_verified_at
