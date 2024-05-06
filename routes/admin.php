@@ -10,6 +10,7 @@ use App\Http\Controllers\Admin\CountryController;
 use App\Http\Controllers\Admin\DashboardController;
 use App\Http\Controllers\Admin\IndustryTypeController;
 use App\Http\Controllers\Admin\OrganizationTypeController;
+use App\Http\Controllers\Admin\StateController;
 use App\Models\Admin;
 use Illuminate\Support\Facades\Route;
 
@@ -47,6 +48,9 @@ Route::group(['middleware' => ['auth:admin'], 'prefix' => 'admin', 'as' => 'admi
 
     /** Countries Route*/
     Route::resource('countries', CountryController::class);
+
+    /** States Route*/
+    Route::resource('states', StateController::class);
 });
 
 
