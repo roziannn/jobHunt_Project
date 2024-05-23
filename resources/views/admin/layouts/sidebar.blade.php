@@ -26,6 +26,9 @@
                     <li class="{{ setSidebarActive(['admin.languages.*']) }}"><a class="nav-link"
                             href="{{ route('admin.languages.index') }}">Languages</a>
                     </li>
+                    <li class="{{ setSidebarActive(['admin.professions.*']) }}"><a class="nav-link"
+                            href="{{ route('admin.professions.index') }}">Professions</a>
+                    </li>
                 </ul>
             </li>
 

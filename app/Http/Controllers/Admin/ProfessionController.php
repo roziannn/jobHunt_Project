@@ -2,29 +2,29 @@
 
 namespace App\Http\Controllers\Admin;
 
-use App\Models\Language;
+use Redirect;
 use App\Services\Notify;
 use Illuminate\View\View;
+use App\Models\Profession;
 use App\Traits\Searchable;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\RedirectResponse;
-use Illuminate\Http\Response;
 
-class LanguageController extends Controller
+class ProfessionController extends Controller
 {
-
     use Searchable;
+
     /**
      * Display a listing of the resource.
      */
     public function index(): View
     {
-        $query = Language::query();
+        $query = Profession::query();
         $this->seacrh($query, ['name']);
-        $languages = $query->paginate(20);
+        $professions = $query->paginate(20);
 
-        return view('admin.language.index', compact('languages'));
+        return view('admin.profession.index', compact('professions'));
     }
 
     /**
@@ -32,7 +32,8 @@ class LanguageController extends Controller
      */
     public function create(): View
     {
-        return view('admin.language.create');
+
+        return view('admin.profession.create');
     }
 
     /**
@@ -41,16 +42,16 @@ class LanguageController extends Controller
     public function store(Request $request): RedirectResponse
     {
         $request->validate([
-            'name' => ['required', 'max:255', 'unique:languages,name']
+            'name' => ['required', 'max:255', 'unique:professions,name']
         ]);
 
-        $language = new Language();
-        $language->name = $request->name;
-        $language->save();
+        $profession = new Profession();
+        $profession->name = $request->name;
+        $profession->save();
 
         Notify::createdNotification(); //static method for notify
 
-        return to_route('admin.languages.index');
+        return to_route('admin.professions.index');
     }
 
     /**
@@ -58,35 +59,37 @@ class LanguageController extends Controller
      */
     public function edit(string $id): View
     {
-        $language = Language::findOrFail($id);
-        return view('admin.language.edit', compact('language'));
+        $profession = Profession::findOrFail($id);
+
+        return view('admin.profession.edit', compact('profession'));
     }
 
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, string $id)
+    public function update(Request $request, string $id): RedirectResponse
     {
+
         $request->validate([
-            'name' => ['required', 'max:255', 'unique:languages,name,' . $id]
+            'name' => ['required', 'max:255', 'unique:professions,name,' . $id]
         ]);
 
-        $language = Language::findOrFail($id);
-        $language->name = $request->name;
-        $language->save();
+        $profession = Profession::findOrFail($id);
+        $profession->name = $request->name;
+        $profession->save();
 
         Notify::updatedNotification(); //static method for notify
 
-        return to_route('admin.languages.index');
+        return to_route('admin.professions.index');
     }
 
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(string $id): Response
+    public function destroy(string $id)
     {
         try {
-            Language::findOrFail($id)->delete();
+            Profession::findOrFail($id)->delete();
             Notify::deletedNotification();
             return response(['message' => 'success'], 200);
         } catch (\Exception $e) {

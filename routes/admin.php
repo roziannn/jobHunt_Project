@@ -13,8 +13,10 @@ use App\Http\Controllers\Admin\IndustryTypeController;
 use App\Http\Controllers\Admin\LanguageController;
 use App\Http\Controllers\Admin\LocationController;
 use App\Http\Controllers\Admin\OrganizationTypeController;
+use App\Http\Controllers\Admin\ProfessionController;
 use App\Http\Controllers\Admin\StateController;
 use App\Models\Admin;
+use App\Models\Profession;
 use Illuminate\Support\Facades\Route;
 
 Route::group(['middleware' => ['guest:admin'], 'prefix' => 'admin', 'as' => 'admin.'], function () {
@@ -61,6 +63,9 @@ Route::group(['middleware' => ['auth:admin'], 'prefix' => 'admin', 'as' => 'admi
 
     /** Language Route*/
     Route::resource('languages', LanguageController::class);
+
+    /** Profession Route*/
+    Route::resource('professions', ProfessionController::class);
 });
 
 
