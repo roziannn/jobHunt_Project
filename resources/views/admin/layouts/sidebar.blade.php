@@ -29,6 +29,9 @@
                     <li class="{{ setSidebarActive(['admin.professions.*']) }}"><a class="nav-link"
                             href="{{ route('admin.professions.index') }}">Professions</a>
                     </li>
+                    <li class="{{ setSidebarActive(['admin.skills.*']) }}"><a class="nav-link"
+                            href="{{ route('admin.skills.index') }}">Skills</a>
+                    </li>
                 </ul>
             </li>
 
