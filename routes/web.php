@@ -4,6 +4,7 @@ use App\Http\Controllers\Frontend\CandidateDashboardController;
 use App\Http\Controllers\Frontend\CompanyDashboardController;
 use App\Http\Controllers\Frontend\CompanyProfileController;
 use App\Http\Controllers\Frontend\HomeController;
+use App\Http\Controllers\Frontend\LocationController;
 use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
 
@@ -27,6 +28,9 @@ Route::middleware('auth')->group(function () {
 });
 
 require __DIR__ . '/auth.php';
+
+Route::get('get-state/{country_id}', [LocationController::class, 'getStates'])->name('get-states');
+Route::get('get-cities/{state_id}', [LocationController::class, 'getCities'])->name('get-cities');
 
 /** Candidate Dashboard Routes */
 Route::group(

@@ -31,9 +31,11 @@ return new class extends Migration
             $table->text('vision')->nullable();
             $table->integer('total_views')->default(0);
             $table->string('address')->nullable();
-            $table->string('city')->nullable();
-            $table->string('state')->nullable();
-            $table->string('country')->nullable();
+
+            $table->foreignId('city')->nullable();
+            $table->foreignId('state')->nullable();
+            $table->foreignId('country')->nullable();
+
             $table->text('map_link')->nullable();
             $table->boolean('is_profile_verified')->default('0');
             $table->timestamp('document_verified_at')->nullable();
