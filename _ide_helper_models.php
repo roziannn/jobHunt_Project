@@ -90,9 +90,9 @@ namespace App\Models{
  * @property string|null $vision
  * @property int $total_views
  * @property string|null $address
- * @property string|null $city
- * @property string|null $state
- * @property string|null $country
+ * @property int|null $city
+ * @property int|null $state
+ * @property int|null $country
  * @property string|null $map_link
  * @property int $is_profile_verified
  * @property string|null $document_verified_at
@@ -176,6 +176,19 @@ namespace App\Models{
  * @method static \Illuminate\Database\Eloquent\Builder|IndustryType withUniqueSlugConstraints(\Illuminate\Database\Eloquent\Model $model, string $attribute, array $config, string $slug)
  */
 	class IndustryType extends \Eloquent {}
+}
+
+namespace App\Models{
+/**
+ * 
+ *
+ * @method static \Illuminate\Database\Eloquent\Builder|Language findSimilarSlugs(string $attribute, array $config, string $slug)
+ * @method static \Illuminate\Database\Eloquent\Builder|Language newModelQuery()
+ * @method static \Illuminate\Database\Eloquent\Builder|Language newQuery()
+ * @method static \Illuminate\Database\Eloquent\Builder|Language query()
+ * @method static \Illuminate\Database\Eloquent\Builder|Language withUniqueSlugConstraints(\Illuminate\Database\Eloquent\Model $model, string $attribute, array $config, string $slug)
+ */
+	class Language extends \Eloquent {}
 }
 
 namespace App\Models{
