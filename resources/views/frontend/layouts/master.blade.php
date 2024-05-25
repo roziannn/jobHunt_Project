@@ -82,6 +82,8 @@
     <script src="{{ asset('frontend/assets/js/plugins/Font-Awesome.js') }}"></script>
     <script src="{{ asset('frontend/assets/js/plugins/counterup.js') }}"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap-datepicker@1.10.0/dist/js/bootstrap-datepicker.min.js"></script>
+    <script src="https://cdn.ckeditor.com/ckeditor5/41.4.2/classic/ckeditor.js"></script>
+
 
     <!-- laravel notify start-->
     <x-notify::notify />
@@ -96,6 +98,12 @@
         $('.datepicker').datepicker({
             format: 'yyyy-m-d',
         });
+
+        ClassicEditor
+            .create(document.querySelector('#editor'))
+            .catch(error => {
+                console.error(error);
+            });
     </script>
 </body>
 

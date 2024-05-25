@@ -9949,3 +9949,33 @@ footer .color-text-paragraph {
 .notify {
     z-index: 9999;
 }
+
+.select2-selection--multiple.select2-selection.select2-selection__rendered {
+    margin-top: -10px !important;
+}
+.select2-selection--multiple.select2-selection.select2-selection--multiple {
+    border: 0px !important;
+    height: 0px;
+}
+
+.select2-selection--multiple .select2-search {
+    margin-top: -15px !important;
+}
+
+.select2-selection__choice {
+    padding: -1px !important;
+    background: var(--colorPrimary) !important;
+    border: 0px !important;
+    padding: 2px 14px !important;
+    color: white;
+    margin: 0px;
+}
+
+.select2-selection__choice__remove {
+    color: black !important;
+    margin-right: 7px !important;
+}
+
+.ck-editor__editable {
+    min-height: 200px;
+}

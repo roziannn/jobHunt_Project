@@ -12,7 +12,8 @@
                 </div>
                 {{-- <x-image-preview :height="200" :width="200" :source="" /> --}}
                 <div class="form-group">
-                    <label class="font-sm color-text-mutted mb-10">CV</label>
+                    <label class="font-sm color-text-mutted mb-10">CV
+                        <span class="text-success"> {{ $candidate?->cv ? 'Have attached CV.' : '' }} </span></label>
                     <input class="form-control {{ $errors->has('cv') ? 'is-invalid' : '' }}" type="file"
                         name="cv" value="">
                     <x-input-error :messages="$errors->get('cv')" class="mt-2" />
