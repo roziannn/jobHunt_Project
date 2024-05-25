@@ -47,7 +47,7 @@
                                 form-icons select-active">
                                 <option value="">Select One</option>
                                 @foreach ($experiences as $item)
-                                    <option @selected($item->id === $candidate->experience_id) value="{{ $item->id }}">
+                                    <option @selected($item->id === $candidate?->experience_id) value="{{ $item->id }}">
                                         {{ $item->name }}</option>
                                 @endforeach
                             </select>

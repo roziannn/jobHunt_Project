@@ -34,8 +34,8 @@
                         </li>
                         <li class="nav-item" role="presentation">
                             <button class="nav-link" id="pills-profile-tab" data-bs-toggle="pill"
-                                data-bs-target="#pills-profile" type="button" role="tab" aria-controls="pills-profile"
-                                aria-selected="false">Experience & Education</button>
+                                data-bs-target="#pills-experience" type="button" role="tab"
+                                aria-controls="pills-experience" aria-selected="false">Experience & Education</button>
                         </li>
                         <li class="nav-item" role="presentation">
                             <button class="nav-link" id="pills-contact-tab" data-bs-toggle="pill"
@@ -46,126 +46,101 @@
                     <div class="tab-content" id="pills-tabContent">
                         @include('frontend.candidate_dashboard.profile.sections.basic-section')
                         @include('frontend.candidate_dashboard.profile.sections.profile-section')
-
-                        {{-- <div class="tab-pane fade" id="pills-contact" role="tabpanel"
-                            aria-labelledby="pills-contact-tab">
-                            <div class="row">
-                                <form action="{{ route('company.profile.account-info') }}" method="POST">
-                                    @csrf
-                                    <div class="row">
-                                        <div class="col-md-6">
-                                            <div class="form-group">
-                                                <label class="font-sm color-text-mutted mb-10">User Name *</label>
-                                                <input class="form-control {{ $errors->has('name') ? 'is-invalid' : '' }}"
-                                                    type="text" name="name" value="{{ auth()->user()->name }}">
-                                                <x-input-error :messages="$errors->get('name')" class="mt-2" />
-
-                                            </div>
-                                        </div>
-                                        <div class="col-md-6">
-                                            <div class="form-group">
-                                                <label class="font-sm color-text-mutted mb-10">Email *</label>
-                                                <input
-                                                    class="form-control {{ $errors->has('email') ? 'is-invalid' : '' }}"
-                                                    type="text" name="email" value="{{ auth()->user()->email }}">
-                                                <x-input-error :messages="$errors->get('email')" class="mt-2" />
-
-                                            </div>
-                                        </div>
-                                        <div class="col-md-6">
-                                            <div class="form-group">
-                                                <button class="btn btn-default btn-shadow">Save</button>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </form>
-                                <br>
-                                <form action="{{ route('company.profile.password-update') }}" method="POST">
-                                    @csrf
-                                    <div class="row">
-                                        <div class="col-md-6">
-                                            <div class="form-group">
-                                                <label class="font-sm color-text-mutted mb-10">Password *</label>
-                                                <input
-                                                    class="form-control {{ $errors->has('password') ? 'is-invalid' : '' }}"
-                                                    type="password" name="password" id="">
-                                                <x-input-error :messages="$errors->get('password')" class="mt-2" />
-
-                                            </div>
-                                        </div>
-                                        <div class="col-md-6">
-                                            <div class="form-group">
-                                                <label class="font-sm color-text-mutted mb-10">Confirm Password *</label>
-                                                <input
-                                                    class="form-control {{ $errors->has('password_confirmation') ? 'is-invalid' : '' }}"
-                                                    type="password" name="password_confirmation"
-                                                    id="password_confirmation">
-                                                <x-input-error :messages="$errors->get('password_confirmation')" class="mt-2" />
-
-                                            </div>
-                                        </div>
-                                        <div class="col-md-6">
-                                            <div class="form-group">
-                                                <button class="btn btn-default btn-shadow">Save</button>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </form>
-                            </div>
-                        </div> --}}
+                        @include('frontend.candidate_dashboard.profile.sections.experience-section')
                     </div>
                 </div>
             </div>
         </div>
     </section>
+
+    <div class="modal fade" id="experienceModal" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
+        aria-labelledby="staticBackdropLabel" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable modal-lg">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="staticBackdropLabel">Modal title</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <form id="ExperienceForm">
+                        @csrf
+                        <div class="row">
+                            <div class="col-md-12">
+                                <div class="form-group">
+                                    <label for="">Company</label>
+                                    <input type="text" class="form-control" name="company" id="">
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label for="">Department</label>
+                                    <input type="text" class="form-control" name="department" id="">
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label for="">Designation</label>
+                                    <input type="text" class="form-control" name="designation" id="">
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label for="">Start Date</label>
+                                    <input type="text" class="form-control datepicker" name="start" id="">
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label for="">End Date</label>
+                                    <input type="text" class="form-control datepicker" name="end" id="">
+                                </div>
+                            </div>
+                            <div class="col-md-12">
+                                <div class="form-check form-group form-check-inline">
+                                    <input class="form-check-input" style="margin-right: 10px" type="checkbox"
+                                        name="currently_working" id="">
+                                    <label class="form-check-label" for="typeCandidate">I am currently working
+                                        here.</label>
+                                </div>
+                            </div>
+                            <div class="col-md-12">
+                                <div class="form-group">
+                                    <label for="">Responsibilities</label>
+                                    <textarea name="responsibilities" class="form-control" id="" cols="30" rows="10"></textarea>
+                                </div>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                    <button type="button" class="btn btn-primary" onclick="$('#ExperienceForm').submit()">Add
+                        Experience</button>
+                </div>
+            </div>
+        </div>
+    </div>
 @endsection
 
 @push('scripts')
     <script>
         $(document).ready(function() {
-            $('.country').on('change', function() {
-
-                let country_id = $(this).val();
-
-                $('.city').html("");
+            $('#ExperienceForm').on('submit', function(event) {
+                event.preventDefault();
+                const formData = $(this).serialize(); //from id: #ExperienceForm
 
                 $.ajax({
-                    method: 'GET',
-                    url: '{{ route('get-states', ':id') }}'.replace(":id", country_id),
-                    data: {},
+                    method: 'POST',
+                    url: "{{ route('candidate.profile.experience.store') }}",
+                    data: formData,
                     success: function(response) {
-                        let html = '';
-                        //looping the response -> which the State from country_id
-                        $.each(response, function(index, value) {
-                            html += `<option value="${value.id}">${value.name}</option>`
-                        });
 
-                        $('.state').html(html);
                     },
-                    error: function(xhr, status, error) {}
+                    error: function(xhr, status, error) {
+
+                    }
                 })
-            })
-
-            $('.state').on('change', function() {
-
-                let state_id = $(this).val();
-
-                $.ajax({
-                    method: 'GET',
-                    url: '{{ route('get-cities', ':id') }}'.replace(":id", state_id),
-                    data: {},
-                    success: function(response) {
-                        let html = '';
-                        //looping the response -> which the State from country_id
-                        $.each(response, function(index, value) {
-                            html += `<option value="${value.id}">${value.name}</option>`
-                        });
-
-                        $('.city').html(html);
-                    },
-                    error: function(xhr, status, error) {}
-                })
-            })
+            });
         })
     </script>
 @endpush

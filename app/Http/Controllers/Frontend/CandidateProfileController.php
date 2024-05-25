@@ -89,6 +89,7 @@ class CandidateProfileController extends Controller
 
         $candidate = Candidate::where('user_id', auth()->user()->id)->first();
 
+        CandidateLanguage::where('candidate_id', $candidate->id)?->delete();
         foreach ($request->language_you_know as $language) {
             $candidateLang = new CandidateLanguage();
             $candidateLang->candidate_id = $candidate->id;
@@ -96,6 +97,7 @@ class CandidateProfileController extends Controller
             $candidateLang->save();
         }
 
+        CandidateSkill::where('candidate_id', $candidate->id)?->delete();
         foreach ($request->skill_you_have as $skill) {
             $candidateSkill = new CandidateSkill();
             $candidateSkill->candidate_id = $candidate->id;
