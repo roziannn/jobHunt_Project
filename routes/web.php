@@ -43,6 +43,7 @@ Route::group(
     function () {
         Route::get('/dashboard', [CandidateDashboardController::class, 'index'])->name('dashboard');
         Route::get('/profile', [CandidateProfileController::class, 'index'])->name('profile.index');
+        Route::post('/profile/basic-info-update', [CandidateProfileController::class, 'basicInfoUpdate'])->name('profile.basic-info.update');
     }
 );
 

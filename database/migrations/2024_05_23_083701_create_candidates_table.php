@@ -14,10 +14,11 @@ return new class extends Migration
         Schema::create('candidates', function (Blueprint $table) {
             $table->id();
             $table->foreignId('user_id')->constrained('users');
-            $table->foreignId('experience_id');
+            $table->foreignId('experience_id')->nullable();
             $table->foreignId('profession_id')->nullable();
 
             $table->string('title')->nullable();
+            $table->string('image')->nullable();
             $table->string('full_name')->nullable();
             $table->string('slug')->nullable();
             $table->enum('gender', ['male', 'female'])->nullable();
