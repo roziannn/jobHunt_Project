@@ -26,7 +26,11 @@
 </head>
 
 <body>
-
+    <div class="preloader_demo d-none">
+        <div class="img">
+            <img src="{{ asset('frontend/assets/imgs/template/loading.gif') }}" alt="joblist">
+        </div>
+    </div>
     {{-- <div id="preloader-active">
         <div class="preloader d-flex align-items-center justify-content-center">
             <div class="preloader-inner position-relative">
@@ -93,21 +97,7 @@
 
     @stack('scripts')
 
-    <script>
-        // START Create an instance of Notyf
-        var notyf = new Notyf();
-        // END an instance of Notyf
-
-        $('.datepicker').datepicker({
-            format: 'yyyy-m-d',
-        });
-
-        ClassicEditor
-            .create(document.querySelector('#editor'))
-            .catch(error => {
-                console.error(error);
-            });
-    </script>
+    @include('frontend.layouts.scripts');
 </body>
 
 </html>

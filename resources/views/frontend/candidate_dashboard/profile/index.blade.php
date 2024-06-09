@@ -58,7 +58,7 @@
         <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable modal-lg">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h5 class="modal-title" id="staticBackdropLabel">Modal title</h5>
+                    <h5 class="modal-title" id="staticBackdropLabel">Add Experience</h5>
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
                 <div class="modal-body">
@@ -115,7 +115,7 @@
                         </div>
                         <div class="modal-footer">
                             <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                            <button type="submit" class="btn btn-primary">Add
+                            <button type="submit" class="btn btn-primary">Save
                                 Experience</button>
                         </div>
                     </form>
@@ -159,34 +159,48 @@
                         url: "{{ route('candidate.experience.update', ':id') }}".replace(':id',
                             editId),
                         data: formData,
+                        beforeSend: function() {
+                            showLoader();
+                        },
                         success: function(response) {
                             fetchExperience();
                             $('#ExperienceForm').trigger("reset");
                             $('#experienceModal').modal("hide");
                             editId = '';
                             editMode = false;
-                            fetchExperience();
+
+                            hideLoader();
                             notyf.success(response.message);
                         },
                         error: function(xhr, status, error) {
-
-                        }
+                            hideLoader();
+                            console.log(error);
+                        },
+                        // complete: function() {
+                        //     hideLoader();
+                        // }
                     })
                 } else {
                     $.ajax({
                         method: 'POST',
                         url: "{{ route('candidate.experience.store') }}",
                         data: formData,
+                        beforeSend: function() {
+                            showLoader();
+                        },
                         success: function(response) {
+                            fetchExperience();
                             $('#ExperienceForm').trigger("reset");
                             $('#experienceModal').modal("hide");
                             editId = '';
                             editMode = false;
-                            fetchExperience();
+
+                            hideLoader();
                             notyf.success(response.message);
                         },
                         error: function(xhr, status, error) {
-
+                            hideLoader();
+                            console.log(error);
                         }
                     })
                 }
@@ -195,12 +209,14 @@
             $('body').on('click', '.edit-experience', function() {
                 $('#ExperienceForm').trigger("reset");
                 let url = $(this).attr('href');
-                // console.log(url);
 
                 $.ajax({
                     method: 'GET',
                     url: url,
                     data: {},
+                    beforeSend: function() {
+                        showLoader();
+                    },
                     success: function(response) {
                         editId = response.id
                         editMode = true;
@@ -216,6 +232,7 @@
                                 $(`textarea[name="${index}"]`).val(value);
                             }
                         })
+                        hideLoader();
                     },
                     error: function(xhr, status, error) {
                         console.log(error);
@@ -244,9 +261,13 @@
                             data: {
                                 _token: "{{ csrf_token() }}"
                             },
+                            beforeSend: function() {
+                                showLoader();
+                            },
                             success: function(response) {
                                 //window.location.reload();
                                 fetchExperience();
+                                hideLoader();
                                 notyf.success(response.message);
                             },
                             error: function(xhr, status, error) {
@@ -254,6 +275,7 @@
                                 swal(xhr.responseJSON.message, {
                                     icon: 'error',
                                 });
+                                hideLoader();
                             }
                         })
                     }
