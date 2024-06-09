@@ -62,43 +62,45 @@
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
                 <div class="modal-body">
-                    <form id="ExperienceForm">
+                    <form action="" id="ExperienceForm">
                         @csrf
                         <div class="row">
                             <div class="col-md-12">
                                 <div class="form-group">
-                                    <label for="">Company</label>
-                                    <input type="text" class="form-control" name="company" id="">
+                                    <label for="">Company *</label>
+                                    <input type="text" class="form-control" required name="company" id="">
                                 </div>
                             </div>
                             <div class="col-md-6">
                                 <div class="form-group">
-                                    <label for="">Department</label>
-                                    <input type="text" class="form-control" name="department" id="">
+                                    <label for="">Department *</label>
+                                    <input type="text" class="form-control" required name="department" id="">
                                 </div>
                             </div>
                             <div class="col-md-6">
                                 <div class="form-group">
-                                    <label for="">Designation</label>
-                                    <input type="text" class="form-control" name="designation" id="">
+                                    <label for="">Designation *</label>
+                                    <input type="text" class="form-control" required name="designation" id="">
                                 </div>
                             </div>
                             <div class="col-md-6">
                                 <div class="form-group">
-                                    <label for="">Start Date</label>
-                                    <input type="text" class="form-control datepicker" name="start" id="">
+                                    <label for="">Start Date *</label>
+                                    <input type="text" class="form-control datepicker" required name="start"
+                                        id="">
                                 </div>
                             </div>
                             <div class="col-md-6">
                                 <div class="form-group">
-                                    <label for="">End Date</label>
-                                    <input type="text" class="form-control datepicker" name="end" id="">
+                                    <label for="">End Date *</label>
+                                    <input type="text" class="form-control datepicker" required name="end"
+                                        id="">
                                 </div>
                             </div>
                             <div class="col-md-12">
                                 <div class="form-check form-group form-check-inline">
                                     <input class="form-check-input" style="margin-right: 10px" type="checkbox"
-                                        name="currently_working" id="">
+                                        name="currently_working" value="1" id="">
                                     <label class="form-check-label" for="typeCandidate">I am currently working
                                         here.</label>
                                 </div>
@@ -106,17 +108,19 @@
                             <div class="col-md-12">
                                 <div class="form-group">
                                     <label for="">Responsibilities</label>
-                                    <textarea name="responsibilities" class="form-control" id="" cols="30" rows="10"></textarea>
+                                    <textarea name="responsibilities" maxlength="500" class="form-control" id="" cols="30"
+                                        rows="10"></textarea>
                                 </div>
                             </div>
                         </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                            <button type="submit" class="btn btn-primary">Add
+                                Experience</button>
+                        </div>
                     </form>
                 </div>
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                    <button type="button" class="btn btn-primary" onclick="$('#ExperienceForm').submit()">Add
-                        Experience</button>
-                </div>
+
             </div>
         </div>
     </div>
@@ -131,10 +135,12 @@
 
                 $.ajax({
                     method: 'POST',
-                    url: "{{ route('candidate.profile.experience.store') }}",
+                    url: "{{ route('candidate.experience.store') }}",
                     data: formData,
                     success: function(response) {
-
+                        $('#ExperienceForm').trigger("reset");
+                        $('#experienceModal').modal("hide");
+                        notyf.success(response.message);
                     },
                     error: function(xhr, status, error) {
 

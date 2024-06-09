@@ -49,6 +49,7 @@ Route::group(
         Route::post('/profile/profile-info-update', [CandidateProfileController::class, 'profileInfoUpdate'])->name('profile.profile-info.update');
 
         Route::resource('experience', CandidateExperienceController::class);
+        // Route::post('/profile/add-experience', [CandidateExperienceController::class, 'store'])->name('profile.experience.store');
     }
 );
 

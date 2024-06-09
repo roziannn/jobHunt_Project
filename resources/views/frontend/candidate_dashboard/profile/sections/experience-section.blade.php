@@ -15,17 +15,20 @@
             </tr>
         </thead>
         <tbody>
-            <tr>
-                <td>test</td>
-                <td>test</td>
-                <td>test</td>
-                <td>test</td>
-                <td>
-                    <a href="" class="btn-sm btn btn-primary" data-bs-toggle="modal"
-                        data-bs-target="#staticBackdrop"><i class="fas fa-edit"></i></a>
-                    <a href="" class="btn-sm btn btn-danger delete-item"><i class="fas fa-trash"></i></a>
-                </td>
-            </tr>
+            @foreach ($candidateExperiences as $item)
+                <tr>
+                    <td>{{ $item->company }}</td>
+                    <td>{{ $item->department }}</td>
+                    <td>{{ $item->designation }}</td>
+                    <td>{{ $item->start }} - {{ $item->currently_working === 1 ? 'Current' : $item->end }}</td>
+                    <td>
+                        <a href="{{ route('candidate.experience.edit', $item->id) }}" class="btn-sm btn btn-primary"
+                            data-bs-toggle="modal" data-bs-target="#experienceModal"><i class="fas fa-edit"></i></a>
+                        <a href="{{ route('candidate.experience.destroy', $item->id) }}"
+                            class="btn-sm btn btn-danger delete-item"><i class="fas fa-trash"></i></a>
+                    </td>
+                </tr>
+            @endforeach
         </tbody>
     </table>
 </div>

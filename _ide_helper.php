@@ -5,7 +5,7 @@
 
 /**
  * A helper file for Laravel, to provide autocomplete information to your IDE
- * Generated for Laravel 10.48.8.
+ * Generated for Laravel 10.48.12.
  *
  * This file should not be included in your code, only analyzed by your IDE!
  *
@@ -17191,127 +17191,137 @@ namespace Illuminate\Support\Facades {
             }
     }
 
-namespace Mckenziearts\Notify\Facades {
+namespace Flasher\Laravel\Facade {
             /**
      * 
      *
-     */        class LaravelNotify {
+     * @method static NotificationBuilder addSuccess(string $message, array $options = array())
+     * @method static NotificationBuilder addError(string $message, array $options = array())
+     * @method static NotificationBuilder addWarning(string $message, array $options = array())
+     * @method static NotificationBuilder addInfo(string $message, array $options = array())
+     * @method static NotificationBuilder addFlash(NotificationInterface|string $type, string $message = null, array $options = array())
+     * @method static NotificationBuilder flash(StampInterface[] $stamps = array())
+     * @method static NotificationBuilder type(string $type, string $message = null, array $options = array())
+     * @method static NotificationBuilder message(string $message)
+     * @method static NotificationBuilder options(array $options, bool $merge = true)
+     * @method static NotificationBuilder option(string $name, $value)
+     * @method static NotificationBuilder success(string $message = null, array $options = array())
+     * @method static NotificationBuilder error(string $message = null, array $options = array())
+     * @method static NotificationBuilder info(string $message = null, array $options = array())
+     * @method static NotificationBuilder warning(string $message = null, array $options = array())
+     * @method static NotificationBuilder priority(int $priority)
+     * @method static NotificationBuilder hops(int $amount)
+     * @method static NotificationBuilder keep()
+     * @method static NotificationBuilder delay(int $delay)
+     * @method static NotificationBuilder now()
+     * @method static NotificationBuilder with(StampInterface[] $stamps = array())
+     * @method static NotificationBuilder withStamp(StampInterface $stamp)
+     * @method static NotificationBuilder handler(string $handler)
+     * @method static Envelope            getEnvelope()
+     */        class Flasher {
                     /**
-         * 
+         * Get a driver instance.
          *
+         * @param string|null $alias
+         * @return \Flasher\Prime\Factory\NotificationFactoryInterface 
+         * @throws \InvalidArgumentException
          * @static 
-         */        public static function info($message, $title = null)
+         */        public static function create($alias = null)
         {
-                        /** @var \Mckenziearts\Notify\LaravelNotify $instance */
-                        return $instance->info($message, $title);
+                        /** @var \Flasher\Prime\Flasher $instance */
+                        return $instance->create($alias);
+        }
+                    /**
+         * Get a driver instance.
+         *
+         * @param string|null $alias
+         * @return \Flasher\Prime\Factory\NotificationFactoryInterface 
+         * @throws \InvalidArgumentException
+         * @static 
+         */        public static function using($alias)
+        {
+                        /** @var \Flasher\Prime\Flasher $instance */
+                        return $instance->using($alias);
         }
                     /**
          * 
          *
+         * @param array<string, mixed> $criteria
+         * @param string $presenter
+         * @param array<string, mixed> $context
+         * @return mixed 
+         * @phpstan-return ($presenter is 'html' ? string : mixed)
          * @static 
-         */        public static function success($message, $title = null)
+         */        public static function render($criteria = [], $presenter = 'html', $context = [])
         {
-                        /** @var \Mckenziearts\Notify\LaravelNotify $instance */
-                        return $instance->success($message, $title);
+                        /** @var \Flasher\Prime\Flasher $instance */
+                        return $instance->render($criteria, $presenter, $context);
         }
+                    /**
+         * Register a custom driver creator.
+         *
+         * @param string $alias
+         * @param callable|\Flasher\Prime\Factory\NotificationFactoryInterface $factory
+         * @return static 
+         * @static 
+         */        public static function addFactory($alias, $factory)
+        {
+                        /** @var \Flasher\Prime\Flasher $instance */
+                        return $instance->addFactory($alias, $factory);
+        }
+            }
+    }
+
+namespace Flasher\Notyf\Laravel\Facade {
+            /**
+     * 
+     *
+     * @method static NotyfBuilder addSuccess(string $message, array $options = array())
+     * @method static NotyfBuilder addError(string $message, array $options = array())
+     * @method static NotyfBuilder addWarning(string $message, array $options = array())
+     * @method static NotyfBuilder addInfo(string $message, array $options = array())
+     * @method static NotyfBuilder addFlash(NotificationInterface|string $type, string $message = null, array $options = array())
+     * @method static NotyfBuilder flash(StampInterface[] $stamps = array())
+     * @method static NotyfBuilder type(string $type, string $message = null, array $options = array())
+     * @method static NotyfBuilder message(string $message)
+     * @method static NotyfBuilder options(array $options, bool $merge = true)
+     * @method static NotyfBuilder option(string $name, string $value)
+     * @method static NotyfBuilder success(string $message = null, array $options = array())
+     * @method static NotyfBuilder error(string $message = null, array $options = array())
+     * @method static NotyfBuilder info(string $message = null, array $options = array())
+     * @method static NotyfBuilder warning(string $message = null, array $options = array())
+     * @method static NotyfBuilder priority(int $priority)
+     * @method static NotyfBuilder hops(int $amount)
+     * @method static NotyfBuilder keep()
+     * @method static NotyfBuilder delay(int $delay)
+     * @method static NotyfBuilder now()
+     * @method static NotyfBuilder with(StampInterface[] $stamps = array())
+     * @method static NotyfBuilder withStamp(StampInterface $stamp)
+     * @method static NotyfBuilder handler(string $handler)
+     * @method static Envelope     getEnvelope()
+     * @method static NotyfBuilder duration(int $duration)
+     * @method static NotyfBuilder ripple(bool $ripple)
+     * @method static NotyfBuilder position(string $position, string $value)
+     * @method static NotyfBuilder dismissible(bool $dismissible)
+     */        class Notyf {
                     /**
          * 
          *
          * @static 
-         */        public static function error($message, $title = null)
+         */        public static function createNotificationBuilder()
         {
-                        /** @var \Mckenziearts\Notify\LaravelNotify $instance */
-                        return $instance->error($message, $title);
+                        /** @var \Flasher\Notyf\Prime\NotyfFactory $instance */
+                        return $instance->createNotificationBuilder();
         }
                     /**
          * 
          *
+         * @return \Flasher\Prime\Factory\StorageManagerInterface 
          * @static 
-         */        public static function warning($message, $title = null)
-        {
-                        /** @var \Mckenziearts\Notify\LaravelNotify $instance */
-                        return $instance->warning($message, $title);
-        }
-                    /**
-         * 
-         *
-         * @static 
-         */        public static function connect($type, $title, $message)
-        {
-                        /** @var \Mckenziearts\Notify\LaravelNotify $instance */
-                        return $instance->connect($type, $title, $message);
-        }
-                    /**
-         * 
-         *
-         * @static 
-         */        public static function smiley($type, $message)
-        {
-                        /** @var \Mckenziearts\Notify\LaravelNotify $instance */
-                        return $instance->smiley($type, $message);
-        }
-                    /**
-         * 
-         *
-         * @static 
-         */        public static function emotify($type, $message)
-        {
-                        /** @var \Mckenziearts\Notify\LaravelNotify $instance */
-                        return $instance->emotify($type, $message);
-        }
-                    /**
-         * 
-         *
-         * @static 
-         */        public static function drake($type)
-        {
-                        /** @var \Mckenziearts\Notify\LaravelNotify $instance */
-                        return $instance->drake($type);
-        }
-                    /**
-         * Return a preset message that is defined in the config
-         * file. If you need to override any of the values, you
-         * can pass an array with the key-value pairs of what
-         * you want to override.
-         * 
-         * Example: To override the 'message' variable, the array
-         *          could have the following structure:
-         * 
-         *          ['message' => 'Your new message here!']
-         *
-         * @throws Exception
-         * @static 
-         */        public static function preset($presetName, $overrideValues = [])
-        {
-                        /** @var \Mckenziearts\Notify\LaravelNotify $instance */
-                        return $instance->preset($presetName, $overrideValues);
-        }
-                    /**
-         * 
-         *
-         * @static 
-         */        public static function flash($message, $type = null, $icon = null, $model = null, $title = null)
-        {
-                        /** @var \Mckenziearts\Notify\LaravelNotify $instance */
-                        return $instance->flash($message, $type, $icon, $model, $title);
-        }
-                    /**
-         * 
-         *
-         * @static 
-         */        public static function message()
-        {
-                        /** @var \Mckenziearts\Notify\LaravelNotify $instance */
-                        return $instance->message();
-        }
-                    /**
-         * 
-         *
-         * @static 
-         */        public static function type()
-        {
-                        /** @var \Mckenziearts\Notify\LaravelNotify $instance */
-                        return $instance->type();
+         */        public static function getStorageManager()
+        {            //Method inherited from \Flasher\Prime\Factory\NotificationFactory         
+                        /** @var \Flasher\Notyf\Prime\NotyfFactory $instance */
+                        return $instance->getStorageManager();
         }
             }
     }
@@ -17489,10 +17499,10 @@ namespace Spatie\LaravelIgnition\Facades {
          * 
          *
          * @static 
-         */        public static function registerErrorHandler()
+         */        public static function registerErrorHandler($errorLevels = null)
         {
                         /** @var \Spatie\FlareClient\Flare $instance */
-                        return $instance->registerErrorHandler();
+                        return $instance->registerErrorHandler($errorLevels);
         }
                     /**
          * 
@@ -17560,10 +17570,19 @@ namespace Spatie\LaravelIgnition\Facades {
          * 
          *
          * @static 
-         */        public static function report($throwable, $callback = null, $report = null)
+         */        public static function report($throwable, $callback = null, $report = null, $handled = null)
         {
                         /** @var \Spatie\FlareClient\Flare $instance */
-                        return $instance->report($throwable, $callback, $report);
+                        return $instance->report($throwable, $callback, $report, $handled);
+        }
+                    /**
+         * 
+         *
+         * @static 
+         */        public static function reportHandled($throwable)
+        {
+                        /** @var \Spatie\FlareClient\Flare $instance */
+                        return $instance->reportHandled($throwable);
         }
                     /**
          * 
@@ -21242,7 +21261,8 @@ namespace  {
             class Validator extends \Illuminate\Support\Facades\Validator {}
             class View extends \Illuminate\Support\Facades\View {}
             class Vite extends \Illuminate\Support\Facades\Vite {}
-            class Notify extends \Mckenziearts\Notify\Facades\LaravelNotify {}
+            class Flasher extends \Flasher\Laravel\Facade\Flasher {}
+            class Notyf extends \Flasher\Notyf\Laravel\Facade\Notyf {}
             class Flare extends \Spatie\LaravelIgnition\Facades\Flare {}
     }
 
