@@ -16,7 +16,7 @@
                 <th style="width:15%;">Action</th>
             </tr>
         </thead>
-        <tbody>
+        <tbody class="experience-tbody">
             @foreach ($candidateExperiences as $item)
                 <tr>
                     <td>{{ $item->company }}</td>
@@ -28,7 +28,7 @@
                             class="btn-sm btn btn-primary edit-experience" data-bs-toggle="modal"
                             data-bs-target="#experienceModal"><i class="fas fa-edit"></i></a>
                         <a href="{{ route('candidate.experience.destroy', $item->id) }}"
-                            class="btn-sm btn btn-danger delete-item"><i class="fas fa-trash"></i></a>
+                            class="btn-sm btn btn-danger delete-experience"><i class="fas fa-trash"></i></a>
                     </td>
                 </tr>
             @endforeach

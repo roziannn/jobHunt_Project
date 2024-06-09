@@ -132,6 +132,21 @@
             var editId = "";
             var editMode = false;
 
+            // fetch experience
+            function fetchExperience() {
+                $.ajax({
+                    method: 'GET',
+                    url: "{{ route('candidate.experience.index') }}",
+                    data: {},
+                    success: function(response) {
+                        $('.experience-tbody').html(response);
+                    },
+                    error: function(xhr, status, error) {
+
+                    }
+                })
+            }
+
             // Save experience data
             $('#ExperienceForm').on('submit', function(event) {
                 event.preventDefault();
@@ -145,8 +160,12 @@
                             editId),
                         data: formData,
                         success: function(response) {
+                            fetchExperience();
                             $('#ExperienceForm').trigger("reset");
                             $('#experienceModal').modal("hide");
+                            editId = '';
+                            editMode = false;
+                            fetchExperience();
                             notyf.success(response.message);
                         },
                         error: function(xhr, status, error) {
@@ -163,6 +182,7 @@
                             $('#experienceModal').modal("hide");
                             editId = '';
                             editMode = false;
+                            fetchExperience();
                             notyf.success(response.message);
                         },
                         error: function(xhr, status, error) {
@@ -172,7 +192,7 @@
                 }
             });
 
-            $('.edit-experience').on('click', function() {
+            $('body').on('click', '.edit-experience', function() {
                 $('#ExperienceForm').trigger("reset");
                 let url = $(this).attr('href');
                 // console.log(url);
@@ -202,6 +222,43 @@
                     }
                 })
             })
+
+            // Delete item
+            $('body').on('click', '.delete-experience', function(e) {
+                e.preventDefault();
+                let url = $(this).attr('href');
+
+                Swal.fire({
+                    title: "Are you sure?",
+                    text: "You won't be able to revert this!",
+                    icon: "warning",
+                    showCancelButton: true,
+                    confirmButtonColor: "#3085d6",
+                    cancelButtonColor: "#d33",
+                    confirmButtonText: "Yes, delete it!"
+                }).then((result) => {
+                    if (result.isConfirmed) {
+                        $.ajax({
+                            method: 'DELETE',
+                            url: url,
+                            data: {
+                                _token: "{{ csrf_token() }}"
+                            },
+                            success: function(response) {
+                                //window.location.reload();
+                                fetchExperience();
+                                notyf.success(response.message);
+                            },
+                            error: function(xhr, status, error) {
+                                console.log(xhr)
+                                swal(xhr.responseJSON.message, {
+                                    icon: 'error',
+                                });
+                            }
+                        })
+                    }
+                });
+            });
         })
     </script>
 @endpush

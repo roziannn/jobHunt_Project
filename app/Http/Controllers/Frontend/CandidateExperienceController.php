@@ -8,6 +8,7 @@ use App\Models\Candidate;
 use App\Models\CandidateExperience;
 use Illuminate\Http\Request;
 use Illuminate\Http\Response;
+use App\Services\Notify;
 
 class CandidateExperienceController extends Controller
 {
@@ -16,7 +17,13 @@ class CandidateExperienceController extends Controller
      */
     public function index()
     {
-        //
+        $candidateExperiences = CandidateExperience::where('candidate_id', auth()->user()->candidateProfile->id)
+            ->orderBy('id', 'DESC')->get();
+
+        return view(
+            'frontend.candidate_dashboard.profile.ajax-experience-table',
+            compact('candidateExperiences')
+        )->render();
     }
 
     /**
@@ -94,6 +101,12 @@ class CandidateExperienceController extends Controller
      */
     public function destroy(string $id)
     {
-        //
+        try {
+            CandidateExperience::findOrFail($id)->delete();
+            return response(['message' => 'Deleted Successfully!'], 200);
+        } catch (\Exception $e) {
+            logger($e);
+            return response(['message' => 'Something Went Wrong. Please Try Again!'], 500);
+        }
     }
 }
