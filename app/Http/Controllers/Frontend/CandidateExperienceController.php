@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Frontend;
 
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Frontend\CandidateExperienceStoreRequest;
+use App\Models\Candidate;
 use App\Models\CandidateExperience;
 use Illuminate\Http\Request;
 use Illuminate\Http\Response;
@@ -58,17 +59,34 @@ class CandidateExperienceController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(string $id)
+    public function edit(string $id): Response
     {
-        //
+        $experience = CandidateExperience::findOrFail($id);
+
+        return response($experience);
     }
 
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, string $id)
+    public function update(CandidateExperienceStoreRequest $request, string $id)
     {
-        //
+        $experience = CandidateExperience::findOrFail($id);
+
+        if (auth()->user()->candidateProfile->id !== $experience->candidate_id) {
+            abort(404);
+        }
+
+        $experience->company = $request->company;
+        $experience->department = $request->department;
+        $experience->designation = $request->designation;
+        $experience->start = $request->start;
+        $experience->end = $request->end;
+        $experience->currently_working = $request->filled('currently_working') ? 1 : 0;
+        $experience->responsibilities = $request->responsibilities;
+        $experience->save();
+
+        return response(['message' => 'Updated Successfully'], 200);
     }
 
     /**

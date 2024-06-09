@@ -129,24 +129,79 @@
 @push('scripts')
     <script>
         $(document).ready(function() {
+            var editId = "";
+            var editMode = false;
+
+            // Save experience data
             $('#ExperienceForm').on('submit', function(event) {
                 event.preventDefault();
                 const formData = $(this).serialize(); //from id: #ExperienceForm
 
+                if (editMode) {
+                    // console.log(editId);
+                    $.ajax({
+                        method: 'PUT',
+                        url: "{{ route('candidate.experience.update', ':id') }}".replace(':id',
+                            editId),
+                        data: formData,
+                        success: function(response) {
+                            $('#ExperienceForm').trigger("reset");
+                            $('#experienceModal').modal("hide");
+                            notyf.success(response.message);
+                        },
+                        error: function(xhr, status, error) {
+
+                        }
+                    })
+                } else {
+                    $.ajax({
+                        method: 'POST',
+                        url: "{{ route('candidate.experience.store') }}",
+                        data: formData,
+                        success: function(response) {
+                            $('#ExperienceForm').trigger("reset");
+                            $('#experienceModal').modal("hide");
+                            editId = '';
+                            editMode = false;
+                            notyf.success(response.message);
+                        },
+                        error: function(xhr, status, error) {
+
+                        }
+                    })
+                }
+            });
+
+            $('.edit-experience').on('click', function() {
+                $('#ExperienceForm').trigger("reset");
+                let url = $(this).attr('href');
+                // console.log(url);
+
                 $.ajax({
-                    method: 'POST',
-                    url: "{{ route('candidate.experience.store') }}",
-                    data: formData,
+                    method: 'GET',
+                    url: url,
+                    data: {},
                     success: function(response) {
-                        $('#ExperienceForm').trigger("reset");
-                        $('#experienceModal').modal("hide");
-                        notyf.success(response.message);
+                        editId = response.id
+                        editMode = true;
+
+                        $.each(response, function(index, value) {
+                            // console.log(value);
+                            $(`input[name="${index}"]:text`).val(value);
+                            if (index === 'currently_working' && value == 1) {
+                                $(`input[name="${index}"]:checkbox`).prop('checked',
+                                    true);
+                            }
+                            if (index === 'responsibilities') {
+                                $(`textarea[name="${index}"]`).val(value);
+                            }
+                        })
                     },
                     error: function(xhr, status, error) {
-
+                        console.log(error);
                     }
                 })
-            });
+            })
         })
     </script>
 @endpush
