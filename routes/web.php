@@ -1,15 +1,16 @@
 <?php
 
-use App\Http\Controllers\Frontend\CandidateDashboardController;
-use App\Http\Controllers\Frontend\CandidateExperienceController;
-use App\Http\Controllers\Frontend\CandidateProfileController;
-use App\Http\Controllers\Frontend\CompanyDashboardController;
-use App\Http\Controllers\Frontend\CompanyProfileController;
-use App\Http\Controllers\Frontend\HomeController;
-use App\Http\Controllers\Frontend\LocationController;
-use App\Http\Controllers\ProfileController;
 use App\Models\CandidateExperience;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\ProfileController;
+use App\Http\Controllers\Frontend\HomeController;
+use App\Http\Controllers\Frontend\LocationController;
+use App\Http\Controllers\Frontend\CompanyProfileController;
+use App\Http\Controllers\Frontend\CandidateProfileController;
+use App\Http\Controllers\Frontend\CompanyDashboardController;
+use App\Http\Controllers\Frontend\CandidateDashboardController;
+use App\Http\Controllers\Frontend\CandidateEducationController;
+use App\Http\Controllers\Frontend\CandidateExperienceController;
 
 /*
 |--------------------------------------------------------------------------
@@ -49,7 +50,7 @@ Route::group(
         Route::post('/profile/profile-info-update', [CandidateProfileController::class, 'profileInfoUpdate'])->name('profile.profile-info.update');
 
         Route::resource('experience', CandidateExperienceController::class);
-        // Route::post('/profile/add-experience', [CandidateExperienceController::class, 'store'])->name('profile.experience.store');
+        Route::resource('education', CandidateEducationController::class);
     }
 );
 

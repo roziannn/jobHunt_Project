@@ -19,6 +19,7 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Http\RedirectResponse;
 use App\Http\Requests\Frontend\CandidateProfileInfoUpdateRequest;
 use App\Http\Requests\Frontend\CandidateBasicProfileUpdateRequest;
+use App\Models\CandidateEducation;
 use App\Models\CandidateExperience;
 
 class CandidateProfileController extends Controller
@@ -29,6 +30,9 @@ class CandidateProfileController extends Controller
     {
         $candidate = Candidate::with(['skills'])->where('user_id', auth()->user()->id)->first();
         $candidateExperiences = CandidateExperience::where('candidate_id', $candidate->id)->orderBy('id', 'DESC')
+            ->get();
+
+        $candidateEducation = CandidateEducation::where('candidate_id', $candidate->id)->orderBy('id', 'DESC')
             ->get();
 
         $experiences = Experience::all();
@@ -44,7 +48,8 @@ class CandidateProfileController extends Controller
             'professions',
             'skills',
             'languages',
-            'candidateExperiences'
+            'candidateExperiences',
+            'candidateEducation'
         ));
     }
 
