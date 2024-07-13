@@ -22,7 +22,9 @@ use App\Http\Requests\Frontend\CandidateProfileInfoUpdateRequest;
 use App\Http\Requests\Frontend\CandidateBasicProfileUpdateRequest;
 use App\Models\CandidateEducation;
 use App\Models\CandidateExperience;
+use App\Models\City;
 use App\Models\Country;
+use App\Models\State;
 
 class CandidateProfileController extends Controller
 {
@@ -40,10 +42,13 @@ class CandidateProfileController extends Controller
         $experiences = Experience::all();
         $professions = Profession::all();
 
-
         $skills = Skill::all();
         $languages = Language::all();
+
         $countries = Country::all();
+        $states = State::where('country_id', $candidate->country)->get();
+        $cities = City::where('state_id', $candidate->state)->get();
+
         return view('frontend.candidate_dashboard.profile.index', compact(
             'candidate',
             'experiences',
@@ -52,7 +57,9 @@ class CandidateProfileController extends Controller
             'languages',
             'candidateExperiences',
             'candidateEducation',
-            'countries'
+            'countries',
+            'states',
+            'cities',
         ));
     }
 

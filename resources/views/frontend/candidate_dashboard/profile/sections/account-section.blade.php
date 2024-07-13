@@ -12,7 +12,7 @@
                                 class="form-control form-icons select-active {{ hasError($errors, 'country') }} country">
                                 <option value="">Select One</option>
                                 @foreach ($countries as $item)
-                                    <option value="{{ $item->id }}">
+                                    <option @selected($item->id === $candidate->country) value="{{ $item->id }}">
                                         {{ $item->name }}</option>
                                 @endforeach
                             </select>
@@ -26,6 +26,10 @@
                             <select name="state"
                                 class="form-control form-icons select-active {{ hasError($errors, 'state') }} state">
                                 <option value="">Select One</option>
+                                @foreach ($states as $item)
+                                    <option @selected($item->id === $candidate->state) value="{{ $item->id }}">
+                                        {{ $item->name }}</option>
+                                @endforeach
                             </select>
                             <x-input-error :messages="$errors->get('state')" class="mt-2" />
                         </div>
@@ -37,6 +41,10 @@
                             <select name="city"
                                 class="form-control form-icons select-active {{ hasError($errors, 'city') }} city">
                                 <option value="">Select One</option>
+                                @foreach ($cities as $item)
+                                    <option @selected($item->id === $candidate->city) value="{{ $item->id }}">
+                                        {{ $item->name }}</option>
+                                @endforeach
                             </select>
                             <x-input-error :messages="$errors->get('city')" class="mt-2" />
                         </div>
@@ -45,8 +53,8 @@
                     <div class="col-md-12">
                         <div class="form-group">
                             <label class="font-sm color-text-mutted mb-10">Address</label>
-                            <input class="form-control {{ $errors->has('address') ? 'is-invalid' : '' }}" type="text"
-                                name="address" value="">
+                            <input class="form-control {{ $errors->has('address') ? 'is-invalid' : '' }}"
+                                type="text" name="address" value="{{ $candidate?->address }}">
                             <x-input-error :messages="$errors->get('address')" class="mt-2" />
                         </div>
                     </div>
@@ -60,7 +68,7 @@
                         <div class="form-group">
                             <label class="font-sm color-text-mutted mb-10">Phone</label>
                             <input class="form-control {{ $errors->has('phone') ? 'is-invalid' : '' }}" type="text"
-                                name="phone" value="">
+                                name="phone" value="{{ $candidate?->phone_one }}">
                             <x-input-error :messages="$errors->get('phone')" class="mt-2" />
                         </div>
                     </div>
@@ -68,7 +76,7 @@
                         <div class="form-group">
                             <label class="font-sm color-text-mutted mb-10">Secondary Phone</label>
                             <input class="form-control {{ $errors->has('secondary_phone') ? 'is-invalid' : '' }}"
-                                type="text" name="secondary_phone" value="">
+                                type="text" name="secondary_phone" value="{{ $candidate?->phone_two }}">
                             <x-input-error :messages="$errors->get('secondary_phone')" class="mt-2" />
                         </div>
                     </div>
@@ -77,7 +85,7 @@
                         <div class="form-group">
                             <label class="font-sm color-text-mutted mb-10">Email</label>
                             <input class="form-control {{ $errors->has('email') ? 'is-invalid' : '' }}" type="text"
-                                name="email" value="">
+                                name="email" value="{{ $candidate?->email }}">
                             <x-input-error :messages="$errors->get('email')" class="mt-2" />
                         </div>
                     </div>
