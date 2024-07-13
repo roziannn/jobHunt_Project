@@ -51,6 +51,11 @@ Route::group(
 
         Route::resource('experience', CandidateExperienceController::class);
         Route::resource('education', CandidateEducationController::class);
+
+        Route::post('/profile/account-info-update', [
+            CandidateProfileController::class,
+            'accountInfoUpdate'
+        ])->name('profile.account-info.update');
     }
 );
 

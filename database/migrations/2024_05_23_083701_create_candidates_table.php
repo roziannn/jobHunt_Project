@@ -25,6 +25,7 @@ return new class extends Migration
             $table->text('website')->nullable();
             $table->string('phone_one')->nullable();
             $table->string('phone_two')->nullable();
+            $table->string('email')->nullable();
             $table->text('cv')->nullable();
             $table->text('bio')->nullable();
             $table->enum('marital_status', ['married', 'single'])->nullable();

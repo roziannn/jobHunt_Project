@@ -13,7 +13,7 @@ class Candidate extends Model
     protected $fillable = [
         'user_id', 'image', 'cv', 'full_name', 'title',
         'experience_id', 'website', 'birth_date', 'gender', 'marital_status', 'profession_id',
-        'status', 'bio'
+        'status', 'bio', 'country', 'state', 'city', 'address', 'phone_one', 'phone_two', 'email'
     ];
 
     function skills(): HasMany

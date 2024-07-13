@@ -15,12 +15,14 @@ use App\Models\CandidateSkill;
 use App\Traits\FileUploadTrait;
 use App\Models\CandidateLanguage;
 use App\Http\Controllers\Controller;
+use App\Http\Requests\Frontend\CandidateAccountInfoUpdateRequest;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Http\RedirectResponse;
 use App\Http\Requests\Frontend\CandidateProfileInfoUpdateRequest;
 use App\Http\Requests\Frontend\CandidateBasicProfileUpdateRequest;
 use App\Models\CandidateEducation;
 use App\Models\CandidateExperience;
+use App\Models\Country;
 
 class CandidateProfileController extends Controller
 {
@@ -41,7 +43,7 @@ class CandidateProfileController extends Controller
 
         $skills = Skill::all();
         $languages = Language::all();
-
+        $countries = Country::all();
         return view('frontend.candidate_dashboard.profile.index', compact(
             'candidate',
             'experiences',
@@ -49,7 +51,8 @@ class CandidateProfileController extends Controller
             'skills',
             'languages',
             'candidateExperiences',
-            'candidateEducation'
+            'candidateEducation',
+            'countries'
         ));
     }
 
@@ -114,6 +117,27 @@ class CandidateProfileController extends Controller
             $candidateSkill->skill_id = $skill;
             $candidateSkill->save();
         }
+
+        Notify::updatedNotification();
+
+        return redirect()->back();
+    }
+
+    // Account info update
+    function accountInfoUpdate(CandidateAccountInfoUpdateRequest $request): RedirectResponse
+    {
+        Candidate::updateOrCreate(
+            ['user_id' => auth()->user()->id],
+            [
+                'country' => $request->country,
+                'state' => $request->state,
+                'city' => $request->city,
+                'address' => $request->address,
+                'phone_one' => $request->phone,
+                'phone_two' => $request->secondary_phone,
+                'email' => $request->email,
+            ]
+        );
 
         Notify::updatedNotification();
 

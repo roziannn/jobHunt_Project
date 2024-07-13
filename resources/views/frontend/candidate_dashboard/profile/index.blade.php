@@ -38,8 +38,8 @@
                                 aria-controls="pills-experience" aria-selected="false">Experience & Education</button>
                         </li>
                         <li class="nav-item" role="presentation">
-                            <button class="nav-link" id="pills-contact-tab" data-bs-toggle="pill"
-                                data-bs-target="#pills-contact" type="button" role="tab" aria-controls="pills-contact"
+                            <button class="nav-link" id="pills-account-tab" data-bs-toggle="pill"
+                                data-bs-target="#pills-account" type="button" role="tab" aria-controls="pills-account"
                                 aria-selected="false">Account Settings</button>
                         </li>
                     </ul>
@@ -47,6 +47,8 @@
                         @include('frontend.candidate_dashboard.profile.sections.basic-section')
                         @include('frontend.candidate_dashboard.profile.sections.profile-section')
                         @include('frontend.candidate_dashboard.profile.sections.experience-section')
+                        @include('frontend.candidate_dashboard.profile.sections.account-section')
+
                     </div>
                 </div>
             </div>

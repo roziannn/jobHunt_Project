@@ -115,6 +115,33 @@ namespace App\Models{
  *
  * @property int $id
  * @property int $candidate_id
+ * @property string $level
+ * @property string $degree
+ * @property string $year
+ * @property string|null $note
+ * @property \Illuminate\Support\Carbon|null $created_at
+ * @property \Illuminate\Support\Carbon|null $updated_at
+ * @method static \Illuminate\Database\Eloquent\Builder|CandidateEducation newModelQuery()
+ * @method static \Illuminate\Database\Eloquent\Builder|CandidateEducation newQuery()
+ * @method static \Illuminate\Database\Eloquent\Builder|CandidateEducation query()
+ * @method static \Illuminate\Database\Eloquent\Builder|CandidateEducation whereCandidateId($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|CandidateEducation whereCreatedAt($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|CandidateEducation whereDegree($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|CandidateEducation whereId($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|CandidateEducation whereLevel($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|CandidateEducation whereNote($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|CandidateEducation whereUpdatedAt($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|CandidateEducation whereYear($value)
+ */
+	class CandidateEducation extends \Eloquent {}
+}
+
+namespace App\Models{
+/**
+ * 
+ *
+ * @property int $id
+ * @property int $candidate_id
  * @property string $company
  * @property string $department
  * @property string $designation
