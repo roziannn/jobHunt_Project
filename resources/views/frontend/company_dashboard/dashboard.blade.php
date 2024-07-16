@@ -5,10 +5,10 @@
             <div class="container">
                 <div class="row align-items-center">
                     <div class="col-lg-12">
-                        <h2 class="mb-20">Dashboard</h2>
+                        <h2 class="mb-20">Company Dashboard</h2>
                         <ul class="breadcrumbs">
                             <li><a class="home-icon" href="{{ url('./') }}">Home</a></li>
-                            <li>Dashboard</li>
+                            <li>Company Dashboard</li>
                         </ul>
                     </div>
                 </div>

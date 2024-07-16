@@ -34,8 +34,8 @@ class CompanyProfileController extends Controller
         $teamSizes = TeamSize::all();
 
         $countries = Country::all();
-        $states = State::select(['id', 'name', 'country_id'])->where('country_id', $companyInfo->country)->get();
-        $cities = City::select(['id', 'name', 'state_id', 'country_id'])->where('state_id', $companyInfo->state)->get();
+        $states = State::select(['id', 'name', 'country_id'])->where('country_id', $companyInfo?->country)->get();
+        $cities = City::select(['id', 'name', 'state_id', 'country_id'])->where('state_id', $companyInfo?->state)->get();
 
         return view('frontend.company_dashboard.profile.index', compact(
             'companyInfo',

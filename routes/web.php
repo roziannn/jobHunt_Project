@@ -11,6 +11,7 @@ use App\Http\Controllers\Frontend\CompanyDashboardController;
 use App\Http\Controllers\Frontend\CandidateDashboardController;
 use App\Http\Controllers\Frontend\CandidateEducationController;
 use App\Http\Controllers\Frontend\CandidateExperienceController;
+use App\Http\Controllers\Frontend\FrontendCompanyPageController;
 
 /*
 |--------------------------------------------------------------------------
@@ -35,6 +36,8 @@ require __DIR__ . '/auth.php';
 
 Route::get('get-state/{country_id}', [LocationController::class, 'getStates'])->name('get-states');
 Route::get('get-cities/{state_id}', [LocationController::class, 'getCities'])->name('get-cities');
+Route::get('companies', [FrontendCompanyPageController::class, 'index'])->name('companies.index');
+Route::get('companies/{slug}', [FrontendCompanyPageController::class, 'show'])->name('companies.show');
 
 /** Candidate Dashboard Routes */
 Route::group(
