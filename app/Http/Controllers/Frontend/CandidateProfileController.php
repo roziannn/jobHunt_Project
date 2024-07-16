@@ -17,6 +17,7 @@ use App\Models\CandidateLanguage;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Frontend\CandidateAccountInfoUpdateRequest;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Validation\Rules;
 use Illuminate\Http\RedirectResponse;
 use App\Http\Requests\Frontend\CandidateProfileInfoUpdateRequest;
 use App\Http\Requests\Frontend\CandidateBasicProfileUpdateRequest;
@@ -33,10 +34,10 @@ class CandidateProfileController extends Controller
     function index(): View
     {
         $candidate = Candidate::with(['skills'])->where('user_id', auth()->user()->id)->first();
-        $candidateExperiences = CandidateExperience::where('candidate_id', $candidate->id)->orderBy('id', 'DESC')
+        $candidateExperiences = CandidateExperience::where('candidate_id', $candidate?->id)->orderBy('id', 'DESC')
             ->get();
 
-        $candidateEducation = CandidateEducation::where('candidate_id', $candidate->id)->orderBy('id', 'DESC')
+        $candidateEducation = CandidateEducation::where('candidate_id', $candidate?->id)->orderBy('id', 'DESC')
             ->get();
 
         $experiences = Experience::all();
@@ -46,8 +47,8 @@ class CandidateProfileController extends Controller
         $languages = Language::all();
 
         $countries = Country::all();
-        $states = State::where('country_id', $candidate->country)->get();
-        $cities = City::where('state_id', $candidate->state)->get();
+        $states = State::where('country_id', $candidate?->country)->get();
+        $cities = City::where('state_id', $candidate?->state)->get();
 
         return view('frontend.candidate_dashboard.profile.index', compact(
             'candidate',
@@ -85,6 +86,8 @@ class CandidateProfileController extends Controller
             $data
         );
 
+        $this->updateProfileStatus();
+
         Notify::updatedNotification();
 
         return redirect()->back();
@@ -99,13 +102,13 @@ class CandidateProfileController extends Controller
         $data['status'] = $request->availability;
         $data['bio'] = $request->biography;
 
-
         //update data
         Candidate::updateOrCreate(
             ['user_id' => auth()->user()->id],
             $data
         );
 
+        $this->updateProfileStatus();
 
         $candidate = Candidate::where('user_id', auth()->user()->id)->first();
 
@@ -146,8 +149,49 @@ class CandidateProfileController extends Controller
             ]
         );
 
+        $this->updateProfileStatus();
+
         Notify::updatedNotification();
 
         return redirect()->back();
+    }
+
+    // Account Email Update
+    function accountEmailUpdate(Request $request): RedirectResponse
+    {
+        $request->validate([
+            'account_email' => ['required', 'email']
+        ]);
+
+        Auth::user()->update(['email' => $request->account_email]);
+
+        Notify::updatedNotification();
+
+        return redirect()->back();
+    }
+
+    // Accoount Password Update
+    function accountPasswordUpdate(Request $request): RedirectResponse
+    {
+        $request->validate([
+            'password' => ['required', 'confirmed', Rules\Password::defaults()],
+        ]);
+
+        Auth::user()->update(['password' => bcrypt($request->password)]);
+
+        Notify::updatedNotification();
+
+        return redirect()->back();
+    }
+
+    // Update profile complete status
+    function updateProfileStatus(): void
+    {
+        if (isCandidateProfileComplete()) {
+            $candidate =  Candidate::where('user_id', auth()->user()->id)->first();
+            $candidate->profile_complete = 1;
+            $candidate->visibility = 1;
+            $candidate->save();
+        }
     }
 }

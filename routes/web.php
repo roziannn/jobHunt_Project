@@ -56,6 +56,16 @@ Route::group(
             CandidateProfileController::class,
             'accountInfoUpdate'
         ])->name('profile.account-info.update');
+
+        Route::post('/profile/account-email-update', [
+            CandidateProfileController::class,
+            'accountEmailUpdate'
+        ])->name('profile.account-email.update');
+
+        Route::post('/profile/account-password-update', [
+            CandidateProfileController::class,
+            'accountPasswordUpdate'
+        ])->name('profile.account-password.update');
     }
 );
 
