@@ -74,6 +74,9 @@ namespace App\Models{
  * @property int $visibility
  * @property \Illuminate\Support\Carbon|null $created_at
  * @property \Illuminate\Support\Carbon|null $updated_at
+ * @property-read \App\Models\City|null $candidateCity
+ * @property-read \App\Models\Country|null $candidateCountry
+ * @property-read \App\Models\State|null $candidateState
  * @property-read \Illuminate\Database\Eloquent\Collection<int, \App\Models\CandidateLanguage> $languages
  * @property-read int|null $languages_count
  * @property-read \Illuminate\Database\Eloquent\Collection<int, \App\Models\CandidateSkill> $skills
@@ -203,6 +206,7 @@ namespace App\Models{
  * @property int $skill_id
  * @property \Illuminate\Support\Carbon|null $created_at
  * @property \Illuminate\Support\Carbon|null $updated_at
+ * @property-read \App\Models\Skill|null $skill
  * @method static \Illuminate\Database\Eloquent\Builder|CandidateSkill newModelQuery()
  * @method static \Illuminate\Database\Eloquent\Builder|CandidateSkill newQuery()
  * @method static \Illuminate\Database\Eloquent\Builder|CandidateSkill query()

@@ -2,10 +2,11 @@
 
 namespace App\Models;
 
-use Cviebrock\EloquentSluggable\Sluggable;
-use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Cviebrock\EloquentSluggable\Sluggable;
 use Illuminate\Database\Eloquent\Relations\HasMany;
+use Illuminate\Database\Eloquent\Relations\BelongsTo;
+use Illuminate\Database\Eloquent\Factories\HasFactory;
 
 class Candidate extends Model
 {
@@ -34,5 +35,20 @@ class Candidate extends Model
     function languages(): HasMany
     {
         return $this->hasMany(CandidateLanguage::class, 'candidate_id', 'id');
+    }
+
+    function candidateCountry(): BelongsTo
+    {
+        return $this->belongsTo(Country::class, 'country', 'id');
+    }
+
+    function candidateState(): BelongsTo
+    {
+        return $this->belongsTo(State::class, 'state', 'id');
+    }
+
+    function candidateCity(): BelongsTo
+    {
+        return $this->belongsTo(City::class, 'city', 'id');
     }
 }
