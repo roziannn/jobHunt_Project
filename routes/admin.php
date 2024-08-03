@@ -13,6 +13,7 @@ use App\Http\Controllers\Admin\IndustryTypeController;
 use App\Http\Controllers\Admin\LanguageController;
 use App\Http\Controllers\Admin\LocationController;
 use App\Http\Controllers\Admin\OrganizationTypeController;
+use App\Http\Controllers\Admin\PaymentSettingController;
 use App\Http\Controllers\Admin\PlanController;
 use App\Http\Controllers\Admin\ProfessionController;
 use App\Http\Controllers\Admin\SkillController;
@@ -74,6 +75,9 @@ Route::group(['middleware' => ['auth:admin'], 'prefix' => 'admin', 'as' => 'admi
 
     /** Plans Route*/
     Route::resource('plans', PlanController::class);
+
+    /** Payment Settings Route*/
+    Route::get('payment-settings', [PaymentSettingController::class, 'index'])->name('payment-settings.index');
 });
 
 

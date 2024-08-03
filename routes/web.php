@@ -11,6 +11,7 @@ use App\Http\Controllers\Frontend\CompanyDashboardController;
 use App\Http\Controllers\Frontend\CandidateDashboardController;
 use App\Http\Controllers\Frontend\CandidateEducationController;
 use App\Http\Controllers\Frontend\CandidateExperienceController;
+use App\Http\Controllers\Frontend\CheckoutPageController;
 use App\Http\Controllers\Frontend\FrontendCandidatePageController;
 use App\Http\Controllers\Frontend\FrontendCompanyPageController;
 use App\Http\Controllers\Frontend\PricingPageController;
@@ -46,6 +47,7 @@ Route::get('candidates', [FrontendCandidatePageController::class, 'index'])->nam
 Route::get('candidates/{slug}', [FrontendCandidatePageController::class, 'show'])->name('candidates.show');
 
 Route::get('pricing', PricingPageController::class)->name('pricing.index');
+Route::get('checkout/{plan_id}', CheckoutPageController::class)->name('checkout.index');
 
 
 /** Candidate Dashboard Routes */
