@@ -436,6 +436,39 @@ namespace App\Models{
  * 
  *
  * @property int $id
+ * @property string $label
+ * @property float $price
+ * @property int $job_limit
+ * @property int $featured_job_limit
+ * @property int $highlight_job_limit
+ * @property int $profile_verified
+ * @property int $recommended
+ * @property int $frontend_show
+ * @property \Illuminate\Support\Carbon|null $created_at
+ * @property \Illuminate\Support\Carbon|null $updated_at
+ * @method static \Illuminate\Database\Eloquent\Builder|Plan newModelQuery()
+ * @method static \Illuminate\Database\Eloquent\Builder|Plan newQuery()
+ * @method static \Illuminate\Database\Eloquent\Builder|Plan query()
+ * @method static \Illuminate\Database\Eloquent\Builder|Plan whereCreatedAt($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Plan whereFeaturedJobLimit($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Plan whereFrontendShow($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Plan whereHighlightJobLimit($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Plan whereId($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Plan whereJobLimit($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Plan whereLabel($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Plan wherePrice($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Plan whereProfileVerified($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Plan whereRecommended($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Plan whereUpdatedAt($value)
+ */
+	class Plan extends \Eloquent {}
+}
+
+namespace App\Models{
+/**
+ * 
+ *
+ * @property int $id
  * @property string $name
  * @property string|null $slug
  * @property \Illuminate\Support\Carbon|null $created_at

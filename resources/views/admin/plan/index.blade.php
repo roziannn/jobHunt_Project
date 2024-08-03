@@ -5,8 +5,7 @@
             <h1>Price Plans</h1>
         </div>
         <div class="text-right">
-            <a href="{{ route('admin.organization-types.create') }}" class="btn btn-primary mb-4"><i
-                    class="fas fa-plus-circle"></i>
+            <a href="{{ route('admin.plans.create') }}" class="btn btn-primary mb-4"><i class="fas fa-plus-circle"></i>
                 Create New</a>
         </div>
         <div class="section-body">
