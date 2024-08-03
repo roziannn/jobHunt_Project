@@ -13,6 +13,7 @@ use App\Http\Controllers\Frontend\CandidateEducationController;
 use App\Http\Controllers\Frontend\CandidateExperienceController;
 use App\Http\Controllers\Frontend\FrontendCandidatePageController;
 use App\Http\Controllers\Frontend\FrontendCompanyPageController;
+use App\Http\Controllers\Frontend\PricingPageController;
 
 /*
 |--------------------------------------------------------------------------
@@ -43,6 +44,8 @@ Route::get('companies/{slug}', [FrontendCompanyPageController::class, 'show'])->
 
 Route::get('candidates', [FrontendCandidatePageController::class, 'index'])->name('candidates.index');
 Route::get('candidates/{slug}', [FrontendCandidatePageController::class, 'show'])->name('candidates.show');
+
+Route::get('pricing', PricingPageController::class)->name('pricing.index');
 
 
 /** Candidate Dashboard Routes */

@@ -18,7 +18,6 @@
                                     Recommended
                                 </div>
                             @endif
-
                             <div class="pricing-padding">
                                 <div>
                                     <h4> {{ $item->label }}</h4>
@@ -55,6 +54,14 @@
                                         <div class="pricing-item-label">Verify company</div>
                                     </div>
                                 </div>
+                            </div>
+                            <div class="mb-3">
+                                @if ($item->frontend_show)
+                                    <span class="badge bg-primary text-light">Show at Frontend </span>
+                                @endif
+                                @if ($item->homepage_show)
+                                    <span class="badge bg-success text-dark">Show at Homepage </span>
+                                @endif
                             </div>
                             <div class="pricing-cta" style="display: flex; justify-content: space-between; width: 100%;">
                                 <a href="{{ route('admin.plans.edit', $item->id) }}"

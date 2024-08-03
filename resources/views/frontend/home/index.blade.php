@@ -18,7 +18,7 @@
 
     {{-- @include('frontend.home.sections.top-recruiters-section') --}}
 
-    {{-- @include('frontend.home.sections.pricing-plan-section') --}}
+    @include('frontend.home.sections.pricing-plan-section')
 
     {{-- @include('frontend.home.sections.job-by-location-section') --}}
 

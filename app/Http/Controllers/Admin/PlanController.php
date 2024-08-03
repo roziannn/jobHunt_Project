@@ -43,6 +43,7 @@ class PlanController extends Controller
         $plan->profile_verified = $request->profile_verified;
         $plan->recommended = $request->recommended;
         $plan->frontend_show = $request->frontend_show;
+        $plan->homepage_show = $request->homepage_show;
         $plan->save();
 
         Notify::createdNotification();
@@ -75,6 +76,7 @@ class PlanController extends Controller
         $plan->profile_verified = $request->profile_verified;
         $plan->recommended = $request->recommended;
         $plan->frontend_show = $request->frontend_show;
+        $plan->homepage_show = $request->homepage_show;
         $plan->update();
 
         Notify::createdNotification();

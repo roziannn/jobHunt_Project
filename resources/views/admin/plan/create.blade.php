@@ -90,6 +90,17 @@
                                     <x-input-error :messages="$errors->get('frontend_show')" class="mt-2" />
                                 </div>
                             </div>
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label for="">Show this package in homepage</label>
+                                    <select name="homepage_show" id=""
+                                        class="form-control {{ hasError($errors, 'homepage_show') }}">
+                                        <option value="0">No</option>
+                                        <option value="1">Yes</option>
+                                    </select>
+                                    <x-input-error :messages="$errors->get('homepage_show')" class="mt-2" />
+                                </div>
+                            </div>
                         </div>
                         <div class="form-group">
                             <button type="submit" class="btn btn-primary">Create</button>

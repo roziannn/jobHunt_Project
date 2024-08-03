@@ -23,6 +23,7 @@ class PlanCreateRequest extends FormRequest
             'profile_verified' => ['required', 'boolean'],
             'recommended' => ['required', 'boolean'],
             'frontend_show' => ['required', 'boolean'],
+            'homepage_show' => ['required', 'boolean'],
         ];
     }
 }
