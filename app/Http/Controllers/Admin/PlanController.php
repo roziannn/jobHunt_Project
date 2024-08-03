@@ -17,7 +17,8 @@ class PlanController extends Controller
      */
     public function index(): View
     {
-        return view('admin.plan.index');
+        $plans = Plan::all();
+        return view('admin.plan.index', compact('plans'));
     }
 
     /**
@@ -49,28 +50,36 @@ class PlanController extends Controller
         return to_route('admin.plans.index');
     }
 
-    /**
-     * Display the specified resource.
-     */
-    public function show(string $id)
-    {
-        //
-    }
 
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(string $id)
+    public function edit(string $id): View
     {
-        //
+        $plan = Plan::findOrFail($id);
+
+        return view('admin.plan.edit', compact('plan'));
     }
 
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, string $id)
+    public function update(PlanCreateRequest $request, string $id)
     {
-        //
+        $plan = Plan::findOrFail($id);
+        $plan->label = $request->label;
+        $plan->price = $request->price;
+        $plan->job_limit = $request->job_limit;
+        $plan->featured_job_limit = $request->featured_job_limit;
+        $plan->highlight_job_limit = $request->highlight_job_limit;
+        $plan->profile_verified = $request->profile_verified;
+        $plan->recommended = $request->recommended;
+        $plan->frontend_show = $request->frontend_show;
+        $plan->update();
+
+        Notify::createdNotification();
+
+        return to_route('admin.plans.index');
     }
 
     /**
@@ -78,6 +87,13 @@ class PlanController extends Controller
      */
     public function destroy(string $id)
     {
-        //
+        try {
+            Plan::findOrFail($id)->delete();
+            Notify::deletedNotification();
+            return response(['message' => 'success'], 200);
+        } catch (\Exception $e) {
+            logger($e);
+            return response(['message' => 'Something Went Wrong. Please Try Again!'], 500);
+        }
     }
 }

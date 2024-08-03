@@ -10,122 +10,62 @@
         </div>
         <div class="section-body">
             <div class="row">
-                <div class="col-12 col-md-4 col-lg-4">
-                    <div class="pricing">
-                        <div class="pricing-title">
-                            Developer
-                        </div>
-                        <div class="pricing-padding">
-                            <div class="pricing-price">
-                                <div>$19</div>
-                                <div>per month</div>
+                @foreach ($plans as $item)
+                    <div class="col-12 col-md-4 col-lg-4">
+                        <div class="pricing">
+                            @if ($item->recommended)
+                                <div class="pricing-title">
+                                    Recommended
+                                </div>
+                            @endif
+
+                            <div class="pricing-padding">
+                                <div>
+                                    <h4> {{ $item->label }}</h4>
+                                </div>
+                                <div class="pricing-price">
+                                    <div>${{ $item->price }}</div>
+                                    <div>per month</div>
+                                </div>
+                                <div class="pricing-details">
+                                    <div class="pricing-item">
+                                        <div class="pricing-item-icon"><i class="fas fa-check"></i></div>
+                                        <div class="pricing-item-label">{{ $item->job_limit }} job post limit</div>
+                                    </div>
+                                    <div class="pricing-item">
+                                        <div class="pricing-item-icon"><i class="fas fa-check"></i></div>
+                                        <div class="pricing-item-label">{{ $item->featured_job_limit }} features job post
+                                            limit</div>
+                                    </div>
+                                    <div class="pricing-item">
+                                        <div class="pricing-item-icon"><i class="fas fa-check"></i></div>
+                                        <div class="pricing-item-label">{{ $item->highlight_job_limit }} highlight job post
+                                        </div>
+                                    </div>
+                                    <div class="pricing-item">
+                                        <div class="pricing-item-icon">
+                                            @if ($item->profile_verified)
+                                                <i class="fas fa-check"></i>
+                                            @else
+                                                <div class="pricing-item-icon bg-danger text-white"><i
+                                                        class="fas fa-times"></i>
+                                                </div>
+                                            @endif
+                                        </div>
+                                        <div class="pricing-item-label">Verify company</div>
+                                    </div>
+                                </div>
                             </div>
-                            <div class="pricing-details">
-                                <div class="pricing-item">
-                                    <div class="pricing-item-icon"><i class="fas fa-check"></i></div>
-                                    <div class="pricing-item-label">1 user agent</div>
-                                </div>
-                                <div class="pricing-item">
-                                    <div class="pricing-item-icon"><i class="fas fa-check"></i></div>
-                                    <div class="pricing-item-label">Core features</div>
-                                </div>
-                                <div class="pricing-item">
-                                    <div class="pricing-item-icon"><i class="fas fa-check"></i></div>
-                                    <div class="pricing-item-label">1GB storage</div>
-                                </div>
-                                <div class="pricing-item">
-                                    <div class="pricing-item-icon"><i class="fas fa-check"></i></div>
-                                    <div class="pricing-item-label">2 Custom domain</div>
-                                </div>
-                                <div class="pricing-item">
-                                    <div class="pricing-item-icon bg-danger text-white"><i class="fas fa-times"></i></div>
-                                    <div class="pricing-item-label">Live Support</div>
-                                </div>
+                            <div class="pricing-cta" style="display: flex; justify-content: space-between; width: 100%;">
+                                <a href="{{ route('admin.plans.edit', $item->id) }}"
+                                    class="w-100 bg-primary text-light">Edit <i class="fas fa-arrow-right"></i></a>
+                                <a href="{{ route('admin.plans.destroy', $item->id) }}"
+                                    class="w-100 bg-danger text-light delete-item">Delete <i class="fas fa-times"></i></a>
                             </div>
-                        </div>
-                        <div class="pricing-cta">
-                            <a href="#">Subscribe <i class="fas fa-arrow-right"></i></a>
                         </div>
                     </div>
-                </div>
-                <div class="col-12 col-md-4 col-lg-4">
-                    <div class="pricing pricing-highlight">
-                        <div class="pricing-title">
-                            Small Team
-                        </div>
-                        <div class="pricing-padding">
-                            <div class="pricing-price">
-                                <div>$60</div>
-                                <div>per month</div>
-                            </div>
-                            <div class="pricing-details">
-                                <div class="pricing-item">
-                                    <div class="pricing-item-icon"><i class="fas fa-check"></i></div>
-                                    <div class="pricing-item-label">5 user agent</div>
-                                </div>
-                                <div class="pricing-item">
-                                    <div class="pricing-item-icon"><i class="fas fa-check"></i></div>
-                                    <div class="pricing-item-label">Core features</div>
-                                </div>
-                                <div class="pricing-item">
-                                    <div class="pricing-item-icon"><i class="fas fa-check"></i></div>
-                                    <div class="pricing-item-label">10GB storage</div>
-                                </div>
-                                <div class="pricing-item">
-                                    <div class="pricing-item-icon"><i class="fas fa-check"></i></div>
-                                    <div class="pricing-item-label">10 Custom domain</div>
-                                </div>
-                                <div class="pricing-item">
-                                    <div class="pricing-item-icon"><i class="fas fa-check"></i></div>
-                                    <div class="pricing-item-label">24/7 Support</div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="pricing-cta">
-                            <a href="#">Subscribe <i class="fas fa-arrow-right"></i></a>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-12 col-md-4 col-lg-4">
-                    <div class="pricing">
-                        <div class="pricing-title">
-                            Enterprise
-                        </div>
-                        <div class="pricing-padding">
-                            <div class="pricing-price">
-                                <div>$499</div>
-                                <div>per month</div>
-                            </div>
-                            <div class="pricing-details">
-                                <div class="pricing-item">
-                                    <div class="pricing-item-icon"><i class="fas fa-check"></i></div>
-                                    <div class="pricing-item-label">Unlimited user agent</div>
-                                </div>
-                                <div class="pricing-item">
-                                    <div class="pricing-item-icon"><i class="fas fa-check"></i></div>
-                                    <div class="pricing-item-label">Core features</div>
-                                </div>
-                                <div class="pricing-item">
-                                    <div class="pricing-item-icon"><i class="fas fa-check"></i></div>
-                                    <div class="pricing-item-label">8TB storage</div>
-                                </div>
-                                <div class="pricing-item">
-                                    <div class="pricing-item-icon"><i class="fas fa-check"></i></div>
-                                    <div class="pricing-item-label">Unlimited custom domain</div>
-                                </div>
-                                <div class="pricing-item">
-                                    <div class="pricing-item-icon"><i class="fas fa-check"></i></div>
-                                    <div class="pricing-item-label">Lifetime Support</div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="pricing-cta">
-                            <a href="#">Subscribe <i class="fas fa-arrow-right"></i></a>
-                        </div>
-                    </div>
-                </div>
+                @endforeach
             </div>
         </div>
-
     </section>
 @endsection
