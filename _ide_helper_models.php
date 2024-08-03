@@ -77,8 +77,14 @@ namespace App\Models{
  * @property-read \App\Models\City|null $candidateCity
  * @property-read \App\Models\Country|null $candidateCountry
  * @property-read \App\Models\State|null $candidateState
+ * @property-read \Illuminate\Database\Eloquent\Collection<int, \App\Models\CandidateEducation> $educations
+ * @property-read int|null $educations_count
+ * @property-read \App\Models\Experience|null $experience
+ * @property-read \Illuminate\Database\Eloquent\Collection<int, \App\Models\CandidateExperience> $experiences
+ * @property-read int|null $experiences_count
  * @property-read \Illuminate\Database\Eloquent\Collection<int, \App\Models\CandidateLanguage> $languages
  * @property-read int|null $languages_count
+ * @property-read \App\Models\Profession|null $profession
  * @property-read \Illuminate\Database\Eloquent\Collection<int, \App\Models\CandidateSkill> $skills
  * @property-read int|null $skills_count
  * @method static \Illuminate\Database\Eloquent\Builder|Candidate findSimilarSlugs(string $attribute, array $config, string $slug)
@@ -185,6 +191,7 @@ namespace App\Models{
  * @property int $language_id
  * @property \Illuminate\Support\Carbon|null $created_at
  * @property \Illuminate\Support\Carbon|null $updated_at
+ * @property-read \App\Models\Language|null $language
  * @method static \Illuminate\Database\Eloquent\Builder|CandidateLanguage newModelQuery()
  * @method static \Illuminate\Database\Eloquent\Builder|CandidateLanguage newQuery()
  * @method static \Illuminate\Database\Eloquent\Builder|CandidateLanguage query()
