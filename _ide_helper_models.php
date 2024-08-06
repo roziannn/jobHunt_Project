@@ -515,6 +515,27 @@ namespace App\Models{
  * 
  *
  * @property int $id
+ * @property string $key
+ * @property string|null $value
+ * @property \Illuminate\Support\Carbon|null $created_at
+ * @property \Illuminate\Support\Carbon|null $updated_at
+ * @method static \Illuminate\Database\Eloquent\Builder|SiteSetting newModelQuery()
+ * @method static \Illuminate\Database\Eloquent\Builder|SiteSetting newQuery()
+ * @method static \Illuminate\Database\Eloquent\Builder|SiteSetting query()
+ * @method static \Illuminate\Database\Eloquent\Builder|SiteSetting whereCreatedAt($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|SiteSetting whereId($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|SiteSetting whereKey($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|SiteSetting whereUpdatedAt($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|SiteSetting whereValue($value)
+ */
+	class SiteSetting extends \Eloquent {}
+}
+
+namespace App\Models{
+/**
+ * 
+ *
+ * @property int $id
  * @property string $name
  * @property string|null $slug
  * @property \Illuminate\Support\Carbon|null $created_at

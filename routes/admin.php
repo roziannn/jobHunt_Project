@@ -16,6 +16,7 @@ use App\Http\Controllers\Admin\OrganizationTypeController;
 use App\Http\Controllers\Admin\PaymentSettingController;
 use App\Http\Controllers\Admin\PlanController;
 use App\Http\Controllers\Admin\ProfessionController;
+use App\Http\Controllers\Admin\SiteSettingController;
 use App\Http\Controllers\Admin\SkillController;
 use App\Http\Controllers\Admin\StateController;
 use App\Models\Admin;
@@ -79,6 +80,10 @@ Route::group(['middleware' => ['auth:admin'], 'prefix' => 'admin', 'as' => 'admi
     /** Payment Settings Route*/
     Route::get('payment-settings', [PaymentSettingController::class, 'index'])->name('payment-settings.index');
     Route::post('paypal-settings', [PaymentSettingController::class, 'updatePaypal'])->name('paypal-settings.update');
+
+    /** Site Settings Route*/
+    Route::get('site-settings', [SiteSettingController::class, 'index'])->name('site-settings.index');
+    Route::post('general-settings', [SiteSettingController::class, 'updateGeneralSetting'])->name('general-settings.update');
 });
 
 

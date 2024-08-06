@@ -19,7 +19,7 @@ class PaymentGatewaySettingService
     function setGlobalSettings()
     {
         $settings = $this->getSettings();
-        config()->set('gatewaySettings', $settings);
+        config()->set('gatewaySettings', $settings); //config.
     }
 
     function clearCachedSettings()
