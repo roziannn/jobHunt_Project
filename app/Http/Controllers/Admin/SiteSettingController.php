@@ -9,6 +9,7 @@ use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\RedirectResponse;
 use App\Http\Requests\Admin\GeneralSettingUpdateRequest;
+use App\Services\SiteSettingService;
 
 class SiteSettingController extends Controller
 {
@@ -27,6 +28,9 @@ class SiteSettingController extends Controller
                 ['value' => $value]
             );
         }
+
+        $settingService = app(SiteSettingService::class);
+        $settingService->clearCachedSettings(); //clear/delete from cache memory gatewaySettings item previous data
 
         Notify::updatedNotification();
         return redirect()->back();

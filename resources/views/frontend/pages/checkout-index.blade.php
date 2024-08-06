@@ -26,16 +26,16 @@
                             <h5 class="">Choose Your Payment Method</h5>
                             <div class="row pt-40">
                                 <div class="col-md-3">
-                                    <a href=""><img class=""
-                                            style="width: 200px;border-radius: 5px;border: 3px solid #1ca774;"
-                                            src="https://placehold.co/600x400" alt=""></a>
+                                    <a href="{{ route('company.paypal.payment') }}"><img class=""
+                                            style="width: 200px;border-radius: 5px;border: 3px solid #1ca774;
+                                            height: 114px; object-fit: contain; padding:10px;"
+                                            src="{{ asset('default_uploads/paypal.jpg') }}" alt=""></a>
                                 </div>
                                 <div class="col-md-3">
                                     <a href=""><img class=""
                                             style="width: 200px;border-radius: 5px;border: 3px solid #1ca774;"
                                             src="https://placehold.co/600x400" alt=""></a>
                                 </div>
-
                             </div>
                         </div>
 

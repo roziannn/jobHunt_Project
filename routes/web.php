@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\Admin\PaymentController;
 use App\Models\CandidateExperience;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\ProfileController;
@@ -100,5 +101,10 @@ Route::group(
         Route::post('/profile/founding-info', [CompanyProfileController::class, 'updateFoundingInfo'])->name('profile.founding-info');
         Route::post('/profile/account-info', [CompanyProfileController::class, 'updateAccountInfo'])->name('profile.account-info');
         Route::post('/profile/password-update', [CompanyProfileController::class, 'updatePassword'])->name('profile.password-update');
+
+        /*Payment Routes */
+        Route::get('/paypal/payment', [PaymentController::class, 'payWithPaypal'])->name('paypal.payment');
+        Route::get('/paypal/success', [PaymentController::class, 'paypalSuccess'])->name('paypal.success');
+        Route::get('/paypal/cancel', [PaymentController::class, 'paypalCancel'])->name('paypal.cancel');
     }
 );

@@ -17703,6 +17703,34 @@ namespace Spatie\LaravelIgnition\Facades {
             }
     }
 
+namespace Srmklive\PayPal\Facades {
+            /**
+     * 
+     *
+     */        class PayPal {
+                    /**
+         * Get specific PayPal API provider object to use.
+         *
+         * @throws Exception
+         * @return \Srmklive\PayPal\Services\PayPal 
+         * @static 
+         */        public static function getProvider()
+        {
+                        return \Srmklive\PayPal\PayPalFacadeAccessor::getProvider();
+        }
+                    /**
+         * Set PayPal API Client to use.
+         *
+         * @throws \Exception
+         * @return \Srmklive\PayPal\Services\PayPal 
+         * @static 
+         */        public static function setProvider()
+        {
+                        return \Srmklive\PayPal\PayPalFacadeAccessor::setProvider();
+        }
+            }
+    }
+
 namespace Illuminate\Http {
             /**
      * 
@@ -21264,6 +21292,7 @@ namespace  {
             class Flasher extends \Flasher\Laravel\Facade\Flasher {}
             class Notyf extends \Flasher\Notyf\Laravel\Facade\Notyf {}
             class Flare extends \Spatie\LaravelIgnition\Facades\Flare {}
+            class PayPal extends \Srmklive\PayPal\Facades\PayPal {}
     }
 
 
