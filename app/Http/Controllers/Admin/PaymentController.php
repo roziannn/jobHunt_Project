@@ -2,13 +2,17 @@
 
 namespace App\Http\Controllers\Admin;
 
-use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
+use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\Session;
+use Srmklive\PayPal\Services\PayPal as PayPalClient;
+
 
 class PaymentController extends Controller
 {
     function setPaypalConfig(): array
     {
+        // laravel-paypal package.
         return [
             'mode'    => config('gatewaySettings.paypal_account_mode'), // Can only be 'sandbox' Or 'live'. If empty or invalid, 'live' will be used.
             //depends on mode it will select sandbox or live.
@@ -35,10 +39,52 @@ class PaymentController extends Controller
     function payWithPaypal()
     {
         // handling payment redirect
+        $config = $this->setPaypalConfig();
+
+        $provider = new PayPalClient($config);
+        $provider->getAccessToken();
+
+        // calculate paypal amount
+        $payableAmount = round(Session::get('selected_plan')['price'] * config('gatewaySettings.paypal_currency_rate'));
+        //dd($paypalAmount);
+
+        $response = $provider->createOrder([
+            'intent' => 'CAPTURE',
+            'application_context' => [
+                'return_url' => route('company.paypal.success'),
+                'cancel_url' => route('company.paypal.cancel')
+            ],
+            'purchase_units' => [
+                [
+                    'amount' => [
+                        'currency_code' => config('gatewaySettings.paypal_currency_name'),
+                        'value' => $payableAmount
+                    ]
+                ]
+            ]
+        ]);
+
+        //dd($response);
+
+        if (isset($response['id']) && $response['id'] !== NULL) {
+            foreach ($response['links'] as $link) {
+                if ($link['rel'] === 'approve') {
+                    return redirect()->away($link['href']);
+                }
+            }
+        }
     }
 
-    function paypalSuccess()
+    function paypalSuccess(Request $request)
     {
+        $config = $this->setPaypalConfig();
+
+        $provider = new PayPalClient($config);
+        $provider->getAccessToken();
+
+        // capture the payment.
+        $response = $provider->capturePaymentOrder($request->token);
+        dd($response);
     }
 
     function paypalCancel()
