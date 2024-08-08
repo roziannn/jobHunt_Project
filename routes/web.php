@@ -106,5 +106,8 @@ Route::group(
         Route::get('/paypal/payment', [PaymentController::class, 'payWithPaypal'])->name('paypal.payment');
         Route::get('/paypal/success', [PaymentController::class, 'paypalSuccess'])->name('paypal.success');
         Route::get('/paypal/cancel', [PaymentController::class, 'paypalCancel'])->name('paypal.cancel');
+
+        Route::get('/payment/success', [PaymentController::class, 'paymentSuccess'])->name('payment.success');
+        Route::get('/payment/error', [PaymentController::class, 'paymentError'])->name('payment.error');
     }
 );

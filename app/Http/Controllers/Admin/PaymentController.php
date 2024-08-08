@@ -2,15 +2,25 @@
 
 namespace App\Http\Controllers\Admin;
 
+use Illuminate\View\View;
 use Illuminate\Http\Request;
 use App\Services\OrderService;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Session;
 use Srmklive\PayPal\Services\PayPal as PayPalClient;
 
-
 class PaymentController extends Controller
 {
+    function paymentSuccess(): View
+    {
+        return view('frontend.pages.payment-success');
+    }
+
+    function paymentError(): View
+    {
+        return view('frontend.pages.payment-error');
+    }
+
     function setPaypalConfig(): array
     {
         // laravel-paypal package.
@@ -98,18 +108,19 @@ class PaymentController extends Controller
                     $capture['amount']['currency_code'],
                     'paid'
                 );
+                OrderService::setUserPlan();
+
+                Session::forget('selected_plan'); // cleaning session
+                return redirect()->route('company.payment.success');
             } catch (\Exception $e) {
-                throw $e;
+                logger('Payment ERROR >> ' . $e);
             }
-
-
-            Session::forget('selected_plan'); // cleaning session
-
-            return redirect()->route('home');
         }
+        return redirect()->route('company.payment.error')->withErrors(['error' => $response['error']['message']]);
     }
 
     function paypalCancel()
     {
+        return redirect()->route('company.payment.error')->withErrors(['error' => 'Something went wrong please try again.']);
     }
 }
