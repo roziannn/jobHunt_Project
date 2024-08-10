@@ -8,6 +8,9 @@ use App\Services\OrderService;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Session;
 use Srmklive\PayPal\Services\PayPal as PayPalClient;
+use Stripe\Stripe;
+use Stripe\Checkout\Session as StripeSession;
+
 
 class PaymentController extends Controller
 {
@@ -122,5 +125,41 @@ class PaymentController extends Controller
     function paypalCancel()
     {
         return redirect()->route('company.payment.error')->withErrors(['error' => 'Something went wrong please try again.']);
+    }
+
+    // Pay with Stripe
+    function payWithStripe()
+    {
+        Stripe::setApiKey(config('gatewaySettings.stripe_secret_key'));
+
+        // calculate paypal amount
+        // convert into cents
+        $payableAmount = round(Session::get('selected_plan')['price'] * config('gatewaySettings.stripe_currency_rate')) * 100;
+        //dd($payableAmount);
+
+        $response = StripeSession::create([
+            'line_items' => [
+                [
+                    'price_data' => [
+                        'currency' => config('gatewaySettings.stripe_currency_name'),
+                        'product_data' => [
+                            'name' => Session::get('selected_plan')['label'] . ' Package'
+                        ],
+                        'unit_amount' => $payableAmount
+                    ],
+                    'quantity' => 1
+                ],
+            ],
+            'mode' => 'payment',
+            'success_url' => route('company.stripe.success') . '?session_id={CHECKOUT_SESSION_ID}', //ask ip is the order complete or not by session_id (or token)
+            'cancel_url' => route('company.stripe.cancel')
+        ]);
+
+        return redirect()->away($response->url);
+    }
+
+    function stripeSuccess()
+    {
+        //   Stripe::setApiKey();
     }
 }

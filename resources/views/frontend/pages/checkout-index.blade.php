@@ -32,9 +32,13 @@
                                             src="{{ asset('default_uploads/paypal.jpg') }}" alt=""></a>
                                 </div>
                                 <div class="col-md-3">
-                                    <a href=""><img class=""
+                                    {{-- <a href=""><img class=""
                                             style="width: 200px;border-radius: 5px;border: 3px solid #1ca774;"
-                                            src="https://placehold.co/600x400" alt=""></a>
+                                            src="https://placehold.co/600x400" alt=""></a> --}}
+                                    <a href="{{ route('company.stripe.payment') }}"><img class=""
+                                            style="width: 200px;border-radius: 5px;border: 3px solid #1ca774;
+                                            height: 114px; object-fit: contain; padding:10px;"
+                                            src="{{ asset('default_uploads/stripe.png') }}" alt=""></a>
                                 </div>
                             </div>
                         </div>

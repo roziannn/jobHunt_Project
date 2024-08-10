@@ -109,5 +109,10 @@ Route::group(
 
         Route::get('/payment/success', [PaymentController::class, 'paymentSuccess'])->name('payment.success');
         Route::get('/payment/error', [PaymentController::class, 'paymentError'])->name('payment.error');
+
+
+        Route::get('/stripe/payment', [PaymentController::class, 'payWithStripe'])->name('stripe.payment');
+        Route::get('/stripe/success', [PaymentController::class, 'stripeSuccess'])->name('stripe.success');
+        Route::get('/stripe/cancel', [PaymentController::class, 'stripeCancel'])->name('stripe.cancel');
     }
 );
