@@ -12,6 +12,7 @@ use App\Http\Controllers\Admin\DashboardController;
 use App\Http\Controllers\Admin\IndustryTypeController;
 use App\Http\Controllers\Admin\LanguageController;
 use App\Http\Controllers\Admin\LocationController;
+use App\Http\Controllers\Admin\OrderController;
 use App\Http\Controllers\Admin\OrganizationTypeController;
 use App\Http\Controllers\Admin\PaymentSettingController;
 use App\Http\Controllers\Admin\PlanController;
@@ -77,10 +78,15 @@ Route::group(['middleware' => ['auth:admin'], 'prefix' => 'admin', 'as' => 'admi
     /** Plans Route*/
     Route::resource('plans', PlanController::class);
 
+    /** Order Route*/
+    Route::get('orders', [OrderController::class, 'index'])->name('orders.index');
+
     /** Payment Settings Route*/
     Route::get('payment-settings', [PaymentSettingController::class, 'index'])->name('payment-settings.index');
+
     Route::post('paypal-settings', [PaymentSettingController::class, 'updatePaypal'])->name('paypal-settings.update');
     Route::post('stripe-settings', [PaymentSettingController::class, 'updateStripe'])->name('stripe-settings.update');
+    Route::post('razorpay-settings', [PaymentSettingController::class, 'updateRazorpay'])->name('razorpay-settings.update');
 
     /** Site Settings Route*/
     Route::get('site-settings', [SiteSettingController::class, 'index'])->name('site-settings.index');

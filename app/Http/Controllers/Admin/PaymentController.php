@@ -10,6 +10,7 @@ use Illuminate\Support\Facades\Session;
 use Srmklive\PayPal\Services\PayPal as PayPalClient;
 use Stripe\Stripe;
 use Stripe\Checkout\Session as StripeSession;
+use Razorpay\Api\Api as RazorpayApi;
 
 
 class PaymentController extends Controller
@@ -52,6 +53,8 @@ class PaymentController extends Controller
     // Paypal payment
     function payWithPaypal()
     {
+        abort_if(!$this->checkSession(), 404);
+
         // handling payment redirect
         $config = $this->setPaypalConfig();
 
@@ -91,6 +94,8 @@ class PaymentController extends Controller
 
     function paypalSuccess(Request $request)
     {
+        abort_if(!$this->checkSession(), 404);
+
         $config = $this->setPaypalConfig();
 
         $provider = new PayPalClient($config);
@@ -130,6 +135,8 @@ class PaymentController extends Controller
     // Pay with Stripe
     function payWithStripe()
     {
+        abort_if(!$this->checkSession(), 404);
+
         Stripe::setApiKey(config('gatewaySettings.stripe_secret_key'));
 
         // calculate paypal amount
@@ -158,8 +165,91 @@ class PaymentController extends Controller
         return redirect()->away($response->url);
     }
 
-    function stripeSuccess()
+    function stripeSuccess(Request $request)
     {
-        //   Stripe::setApiKey();
+        abort_if(!$this->checkSession(), 404);
+
+        Stripe::setApiKey(config('gatewaySettings.stripe_secret_key'));
+        $sessionId = $request->session_id;
+
+        $response = StripeSession::retrieve($sessionId); //it will send the request data from stripe API and store the data in this response
+        if ($response->payment_status === 'paid') {
+            try {
+                // payment_intent is the transactionId*
+                OrderService::storeOrder(
+                    $response->payment_intent,
+                    'stripe',
+                    ($response->amount_total / 100),
+                    $response->currency,
+                    'paid'
+                );
+                OrderService::setUserPlan();
+
+                Session::forget('selected_plan'); // cleaning session
+                return redirect()->route('company.payment.success');
+            } catch (\Exception $e) {
+                logger('Payment ERROR >> ' . $e);
+            }
+        } else {
+            redirect()->route('company.payment.error')->withErrors(['error' => 'Payment failed! Something went wrong please try again.']);
+        }
+    }
+
+    function stripeCancel(Request $request)
+    {
+        redirect()->route('company.payment.error')->withErrors(['error' => 'Payment failed! Something went wrong please try again.']);
+    }
+
+    function razorpayRedirect(): View
+    {
+        abort_if(!$this->checkSession(), 404);
+
+        return view('frontend.pages.razorpay-redirect');
+    }
+
+    function payWithRazorpay(Request $request)
+    {
+        abort_if(!$this->checkSession(), 404);
+
+        $api = new RazorpayApi(
+            config('gatewaySettings.razorpay_key'),
+            config('gatewaySettings.razorpay_secret_key')
+        );
+
+        /**need to compare or double check. */
+        if (isset($request->razorpay_payment_id) && $request->filled('razorpay_payment_id')) {
+            $payableAmount = session('selected_plan')['price'] * config('gatewaySettings.razorpay_currency_rate') * 100;
+            try {
+                $response = $api->payment->fetch($request->razorpay_payment_id)->capture(['amount' => $payableAmount]);
+
+                if ($response['status'] === 'captured') {
+                    OrderService::storeOrder(
+                        $response->id,
+                        'razorpay',
+                        ($response->amount / 100),
+                        $response->currency,
+                        'paid'
+                    );
+                    OrderService::setUserPlan();
+
+                    Session::forget('selected_plan'); // cleaning session
+                    return redirect()->route('company.payment.success');
+                } else {
+                    redirect()->route('company.payment.error')->withErrors(['error' => 'Something went wrong please try again.']);
+                }
+            } catch (\Exception $e) {
+                logger($e);
+                redirect()->route('company.payment.error')->withErrors(['error' => $e->getMessage()]);
+            }
+        }
+    }
+
+    /** check session for selected plan */
+    function checkSession(): bool
+    {
+        if (session()->has('selected_plan')) {
+            return true;
+        }
+        return false;
     }
 }

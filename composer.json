@@ -15,6 +15,7 @@
         "laravel/sanctum": "^3.3",
         "laravel/tinker": "^2.8",
         "php-flasher/flasher-notyf-laravel": "^1.15",
+        "razorpay/razorpay": "2.*",
         "srmklive/paypal": "~3.0",
         "stripe/stripe-php": "^15.6"
     },

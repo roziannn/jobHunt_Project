@@ -25,21 +25,34 @@
                         <div class="col-md-8" data-wow-delay=".1s">
                             <h5 class="">Choose Your Payment Method</h5>
                             <div class="row pt-40">
-                                <div class="col-md-3">
-                                    <a href="{{ route('company.paypal.payment') }}"><img class=""
-                                            style="width: 200px;border-radius: 5px;border: 3px solid #1ca774;
+                                @if (config('gatewaySettings.paypal_status') === 'active')
+                                    <div class="col-md-3">
+                                        <a href="{{ route('company.paypal.payment') }}"><img class=""
+                                                style="width: 200px;border-radius: 5px;border: 3px solid #1ca774;
                                             height: 114px; object-fit: contain; padding:10px;"
-                                            src="{{ asset('default_uploads/paypal.jpg') }}" alt=""></a>
-                                </div>
-                                <div class="col-md-3">
-                                    {{-- <a href=""><img class=""
+                                                src="{{ asset('default_uploads/paypal.jpg') }}" alt=""></a>
+                                    </div>
+                                @endif
+                                @if (config('gatewaySettings.stripe_status') === 'active')
+                                    <div class="col-md-3">
+                                        {{-- <a href=""><img class=""
                                             style="width: 200px;border-radius: 5px;border: 3px solid #1ca774;"
                                             src="https://placehold.co/600x400" alt=""></a> --}}
-                                    <a href="{{ route('company.stripe.payment') }}"><img class=""
-                                            style="width: 200px;border-radius: 5px;border: 3px solid #1ca774;
+                                        <a href="{{ route('company.stripe.payment') }}"><img class=""
+                                                style="width: 200px;border-radius: 5px;border: 3px solid #1ca774;
                                             height: 114px; object-fit: contain; padding:10px;"
-                                            src="{{ asset('default_uploads/stripe.png') }}" alt=""></a>
-                                </div>
+                                                src="{{ asset('default_uploads/stripe.png') }}" alt=""></a>
+                                    </div>
+                                @endif
+                                @if (config('gatewaySettings.razorpay_status') === 'active')
+                                    <div class="col-md-3">
+                                        <a href="{{ route('company.razorpay-redirect') }}"><img class=""
+                                                style="width: 200px;border-radius: 5px;border: 3px solid #1ca774;
+                                                height: 114px; object-fit: contain;"
+                                                src="{{ asset('default_uploads/razorpay.png') }}" alt=""></a>
+                                    </div>
+                                @endif
+
                             </div>
                         </div>
 
@@ -47,7 +60,8 @@
                             <div class="box-pricing-item">
                                 <h3>{{ $plan->label }}</h3>
                                 <div class="box-info-price"><span
-                                        class="text-price color-brand-2">${{ $plan->price }}</span></div>
+                                        class="text-price color-brand-2">${{ $plan->price }}</span>
+                                </div>
                                 <ul class="list-package-feature">
                                     <li>{{ $plan->job_limit }} job limit</li>
                                     <li>{{ $plan->featured_job_limit }} featured job limit</li>

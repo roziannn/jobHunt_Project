@@ -14,6 +14,9 @@
             </li>
             <li class="menu-header">Starter</li>
 
+            <li class="{{ setSidebarActive(['admin.orders.*']) }}"><a class="nav-link"
+                    href="{{ route('admin.orders.index') }}"><i class="far fa-square"></i> <span>Orders</span></a></li>
+
             <li class="dropdown {{ setSidebarActive(['admin.industry-types.*', 'admin.organization-types.*']) }}">
                 <a href="#" class="nav-link has-dropdown" data-toggle="dropdown"><i class="fas fa-columns"></i>
                     <span>Attributes</span></a>
