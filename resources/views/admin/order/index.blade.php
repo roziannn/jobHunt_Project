@@ -12,7 +12,7 @@
                 <div class="card-header">
                     <h4>All Orders</h4>
                     <div class="card-header-form">
-                        <form action="{{ route('admin.industry-types.index') }}" method="GET">
+                        <form action="{{ route('admin.orders.index') }}" method="GET">
                             <div class="input-group">
                                 <input type="text" class="form-control" placeholder="Search" name="search"
                                     value="{{ request('search') }}">
@@ -74,13 +74,9 @@
                                         <td>
                                             <p class="badge bg-success text-light">{{ $item->payment_status }}</p>
                                         </td>
-
-
-                                        {{-- <td><a href="{{ route('admin.industry-types.edit', $item->id) }}"
-                                                class="btn-sm btn-primary"><i class="fas fa-edit"></i></a>
-                                            <a href="{{ route('admin.industry-types.destroy', $item->id) }}"
-                                                class="btn-sm btn-danger delete-item"><i class="fas fa-trash"></i></a>
-                                        </td> --}}
+                                        <td><a href="{{ route('admin.orders.show', $item->id) }}"
+                                                class="btn-sm btn btn-primary">Details</a>
+                                        </td>
                                     </tr>
                                 @endforeach
                             </tbody>
@@ -89,9 +85,9 @@
                 </div>
                 <div class="card-footer text-right">
                     <nav class="d-inline-block">
-                        {{-- @if ($industryTypes->hasPages())
-                            {{ $industryTypes->withQueryString()->links() }}
-                        @endif --}}
+                        @if ($orders->hasPages())
+                            {{ $orders->withQueryString()->links() }}
+                        @endif
                     </nav>
                 </div>
             </div>

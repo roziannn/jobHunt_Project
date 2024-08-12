@@ -14,6 +14,7 @@
         "laravel/framework": "^10.10",
         "laravel/sanctum": "^3.3",
         "laravel/tinker": "^2.8",
+        "laraveldaily/laravel-invoices": "3.3.1",
         "php-flasher/flasher-notyf-laravel": "^1.15",
         "razorpay/razorpay": "2.*",
         "srmklive/paypal": "~3.0",
