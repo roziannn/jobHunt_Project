@@ -1,36 +1,28 @@
 <?php
 
-namespace App\Http\Controllers\Admin;
+namespace App\Http\Controllers\Frontend;
 
 use App\Http\Controllers\Controller;
 use App\Models\Order;
-use Illuminate\View\View;
-use App\Traits\Searchable;
 use Illuminate\Http\Request;
+use Illuminate\View\View;
 use LaravelDaily\Invoices\Invoice;
 use LaravelDaily\Invoices\Classes\Buyer;
 use LaravelDaily\Invoices\Classes\Party;
 use LaravelDaily\Invoices\Classes\InvoiceItem;
 
-class OrderController extends Controller
+class CompanyOrderController extends Controller
 {
-    use Searchable;
-
     function index(): View
     {
-        $query = Order::query();
-        $query->with(['company', 'plan']);
-
-        $this->seacrh($query, ['package_name', 'transaction_id', 'order_id', 'payment_provider', 'payment_status']);
-        $orders = $query->orderBy('id', 'DESC')->paginate(20);
-
-        return view('admin.order.index', compact('orders'));
+        $orders = Order::where('company_id', auth()->user()->company->id)->paginate(10);
+        return view('frontend.company_dashboard.order.index', compact('orders'));
     }
 
     function show(string $id): View
     {
         $order = Order::findOrFail($id);
-        return view('admin.order.show', compact('order'));
+        return view('frontend.company_dashboard.order.show', compact('order'));
     }
 
     function invoice(string $id)
