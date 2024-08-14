@@ -1,15 +1,18 @@
 <?php
 
 use App\Http\Controllers\Admin\Auth\AuthenticatedSessionController;
-use App\Http\Controllers\Admin\Auth\ConfirmablePasswordController;
-use App\Http\Controllers\Admin\Auth\EmailVerificationNotificationController;
-use App\Http\Controllers\Admin\Auth\EmailVerificationPromptController;
 use App\Http\Controllers\Admin\Auth\NewPasswordController;
 use App\Http\Controllers\Admin\Auth\PasswordResetLinkController;
 use App\Http\Controllers\Admin\CityController;
 use App\Http\Controllers\Admin\CountryController;
 use App\Http\Controllers\Admin\DashboardController;
+use App\Http\Controllers\Admin\EducationController;
 use App\Http\Controllers\Admin\IndustryTypeController;
+use App\Http\Controllers\Admin\JobCategoryController;
+use App\Http\Controllers\Admin\JobController;
+use App\Http\Controllers\Admin\JobExperienceController;
+use App\Http\Controllers\Admin\JobRoleController;
+use App\Http\Controllers\Admin\JobTypeController;
 use App\Http\Controllers\Admin\LanguageController;
 use App\Http\Controllers\Admin\LocationController;
 use App\Http\Controllers\Admin\OrderController;
@@ -17,11 +20,11 @@ use App\Http\Controllers\Admin\OrganizationTypeController;
 use App\Http\Controllers\Admin\PaymentSettingController;
 use App\Http\Controllers\Admin\PlanController;
 use App\Http\Controllers\Admin\ProfessionController;
+use App\Http\Controllers\Admin\SalaryTypeController;
 use App\Http\Controllers\Admin\SiteSettingController;
 use App\Http\Controllers\Admin\SkillController;
 use App\Http\Controllers\Admin\StateController;
-use App\Models\Admin;
-use App\Models\Profession;
+use App\Http\Controllers\Admin\TagController;
 use Illuminate\Support\Facades\Route;
 
 Route::group(['middleware' => ['guest:admin'], 'prefix' => 'admin', 'as' => 'admin.'], function () {
@@ -82,6 +85,24 @@ Route::group(['middleware' => ['auth:admin'], 'prefix' => 'admin', 'as' => 'admi
     Route::get('orders', [OrderController::class, 'index'])->name('orders.index');
     Route::get('orders/{id}', [OrderController::class, 'show'])->name('orders.show');
     Route::get('orders/invoice/{id}', [OrderController::class, 'invoice'])->name('orders.invoice');
+
+    /** Job Category Route*/
+    Route::resource('job-categories', JobCategoryController::class);
+    /** Job Education Route*/
+    Route::resource('educations', EducationController::class);
+    /** Job Type Route*/
+    Route::resource('job-types', JobTypeController::class);
+    /** Job Salary Route*/
+    Route::resource('salary-types', SalaryTypeController::class);
+    /** Job Tag Route*/
+    Route::resource('tags', TagController::class);
+    /** Job Role Route*/
+    Route::resource('job-roles', JobRoleController::class);
+    /** Job Experience Route*/
+    Route::resource('job-experiences', JobExperienceController::class);
+
+    /** Jobs */
+    Route::resource('jobs', JobController::class);
 
     /** Payment Settings Route*/
     Route::get('payment-settings', [PaymentSettingController::class, 'index'])->name('payment-settings.index');

@@ -2,28 +2,27 @@
 
 namespace App\Http\Controllers\Admin;
 
+use App\Models\Tag;
 use App\Services\Notify;
 use Illuminate\View\View;
 use App\Traits\Searchable;
-use App\Models\IndustryType;
 use Illuminate\Http\Request;
-use Illuminate\Http\Response;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\RedirectResponse;
 
-class IndustryTypeController extends Controller
+class TagController extends Controller
 {
     use Searchable;
     /**
      * Display a listing of the resource.
      */
-    public function index(Request $request): View
+    public function index(): View
     {
-        $query = IndustryType::query();
+        $query = Tag::query();
         $this->seacrh($query, ['name']);
-        $industryTypes = $query->paginate(20);
+        $tags = $query->paginate(20);
 
-        return view('admin.industry-type.index', compact('industryTypes'));
+        return view('admin.job.tag.index', compact('tags'));
     }
 
     /**
@@ -31,7 +30,8 @@ class IndustryTypeController extends Controller
      */
     public function create(): View
     {
-        return view('admin.industry-type.create');
+
+        return view('admin.job.tag.create');
     }
 
     /**
@@ -40,25 +40,27 @@ class IndustryTypeController extends Controller
     public function store(Request $request): RedirectResponse
     {
         $request->validate([
-            'name' => ['required', 'max:255', 'unique:industry_types,name']
+            'name' => ['required', 'max:100']
         ]);
 
-        $type = new IndustryType();
+        $type = new Tag();
         $type->name = $request->name;
         $type->save();
 
-        Notify::createdNotification(); //static method for notify
+        Notify::createdNotification();
 
-        return to_route('admin.industry-types.index');
+        return to_route('admin.tags.index');
     }
+
 
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(string $id)
+    public function edit(string $id): View
     {
-        $industryType = IndustryType::findOrFail($id);
-        return view('admin.industry-type.edit', compact('industryType'));
+        $tag = Tag::findOrFail($id);
+
+        return view('admin.job.tag.edit', compact('tag'));
     }
 
     /**
@@ -67,27 +69,25 @@ class IndustryTypeController extends Controller
     public function update(Request $request, string $id)
     {
         $request->validate([
-            'name' => ['required', 'max:255', 'unique:industry_types,name,' . $id] //ignore the id while checking unique
+            'name' => ['required', 'max:100']
         ]);
 
-        $type = IndustryType::findOrFail($id);
-        $type->name = $request->name;
-        $type->save();
+        $tag = Tag::findOrFail($id);
+        $tag->name = $request->name;
+        $tag->save();
 
-        /* The first generate(created) slug will not update.*/
+        Notify::updatedNotification();
 
-        Notify::updatedNotification(); //static method for notify
-
-        return to_route('admin.industry-types.index');
+        return to_route('admin.tags.index');
     }
 
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(string $id): Response
+    public function destroy(string $id)
     {
         try {
-            IndustryType::findOrFail($id)->delete();
+            Tag::findOrFail($id)->delete();
             Notify::deletedNotification();
             return response(['message' => 'success'], 200);
         } catch (\Exception $e) {
