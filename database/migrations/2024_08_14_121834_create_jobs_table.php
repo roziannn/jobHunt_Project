@@ -24,25 +24,27 @@ return new class extends Migration
             $table->string('title');
             $table->string('slug');
             $table->string('vacancies');
-            $table->double('min_salary');
-            $table->double('max_salary');
+            $table->double('min_salary')->nullable();
+            $table->double('max_salary')->nullable();
+            $table->string('custom_salary')->nullable();
             $table->date('deadline');
             $table->text('description');
-            $table->enum('status', ['pending', 'active', 'expired']);
+            $table->enum('status', ['pending', 'active', 'expired'])->default('pending');
             $table->enum('apply_on', ['app', 'email', 'custom_url']);
             $table->string('apply_email')->nullable();
             $table->text('apply_url')->nullable();
-            $table->boolean('featured')->default(0);
-            $table->boolean('highlight')->default(0);
-            $table->date('featured_until')->nullable;
-            $table->date('highlight_until')->nullable;
+            $table->boolean('featured')->nullable();
+            $table->boolean('highlight')->nullable();
+            $table->date('featured_until')->nullable();
+            $table->date('highlight_until')->nullable();
             $table->integer('total_views')->default(0);
 
-            $table->foreignId('city_id');
-            $table->foreignId('state_id');
-            $table->foreignId('country_id');
+            $table->foreignId('city_id')->nullable();
+            $table->foreignId('state_id')->nullable();
+            $table->foreignId('country_id')->nullable();
+            $table->string('address')->nullable();
             $table->enum('salary_mode', ['range', 'custom']);
-            $table->string('company_name');
+            $table->string('company_name')->nullable();
 
             $table->timestamps();
         });
