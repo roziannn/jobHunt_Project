@@ -3953,6 +3953,10 @@ body:not(.sidebar-mini)
     z-index: 9999;
 }
 
+.ck-editor__editable_inline {
+    min-height: 300px;
+}
+
 .preloader_demo {
     position: fixed;
     top: 0;
