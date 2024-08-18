@@ -30,22 +30,66 @@
                     <div class="table-responsive">
                         <table class="table table-striped">
                             <tr>
-                                <th>Name</th>
-                                <th>Slug</th>
+                                <th>Job</th>
+                                <th>Category/Role</th>
+                                <th>Salary</th>
+                                <th>Deadline</th>
+                                <th>Status</th>
                                 <th style="width: 10%">Action</th>
                             </tr>
                             <tbody>
-                                {{-- @foreach ($tags as $item)
+                                @foreach ($jobs as $item)
                                     <tr>
-                                        <td>{{ $item->name }} </td>
-                                        <td>{{ $item->slug }} </td>
-                                        <td><a href="{{ route('admin.tags.edit', $item->id) }}"
+                                        <td>
+                                            <div class="d-flex align-items-center">
+                                                <div class="mr-2">
+                                                    <img style="width: 42px; height:42px; object-fit:cover;"
+                                                        src="{{ asset($item->company->logo) }}" alt="">
+                                                </div>
+                                                <div>
+                                                    <b> {{ $item->title }}</b>
+                                                    <br>
+                                                    <span>{{ $item->company?->name }} - {{ $item->jobType->name }}</span>
+                                                </div>
+                                            </div>
+                                        </td>
+
+                                        <td>
+                                            <div>
+                                                <b>
+                                                    {{ $item->category?->name }}
+                                                </b>
+                                                <br>
+                                                <span>{{ $item->jobRole?->name }}</span>
+                                            </div>
+                                        <td>
+                                            @if ($item->salary_mode === 'range')
+                                                <b> {{ $item->min_salary }} -
+                                                    {{ $item->max_salary }}
+                                                    {{ config('settings.site_default_currency') }}</b>
+                                                <br>
+                                                <span>{{ $item->salaryType?->name }}</span>
+                                            @elseif ($item->salary_mode === 'custom')
+                                                <b>{{ $item->custom_salary }}</b>
+                                                <br>
+                                                <span>{{ $item->salaryType?->name }}</span>
+                                            @endif
+                                        </td>
+                                        <td>{{ formatDate($item->deadline) }}</td>
+                                        <td>
+                                            @if ($item->deadline > date('Y-m-d'))
+                                                <span class="badge bg-warning text-dark">Active</span>
+                                            @else
+                                                <span class="badge bg-danger text-dark">Experied</span>
+                                            @endif
+                                        </td>
+                                        <td><a href="{{ route('admin.jobs.edit', $item->id) }}"
                                                 class="btn-sm btn-primary"><i class="fas fa-edit"></i></a>
-                                            <a href="{{ route('admin.tags.destroy', $item->id) }}"
+                                            <a href="{{ route('admin.jobs.destroy', $item->id) }}"
                                                 class="btn-sm btn-danger delete-item"><i class="fas fa-trash"></i></a>
                                         </td>
                                     </tr>
-                                @endforeach --}}
+                                @endforeach
                             </tbody>
                         </table>
                     </div>

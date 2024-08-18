@@ -2,36 +2,44 @@
 
 namespace App\Http\Controllers\Admin;
 
-use App\Http\Controllers\Controller;
-use App\Http\Requests\Admin\JobCreateRequest;
+use App\Models\Job;
+use App\Models\Tag;
+use App\Models\Skill;
+use App\Models\State;
+use App\Models\JobTag;
 use App\Models\Benefit;
 use App\Models\Company;
 use App\Models\Country;
+use App\Models\JobRole;
+use App\Models\JobType;
+use App\Services\Notify;
 use App\Models\Education;
-use App\Models\Job;
+use App\Models\JobSkills;
+use Illuminate\View\View;
+use App\Models\SalaryType;
+use App\Traits\Searchable;
 use App\Models\JobBenefits;
 use App\Models\JobCategory;
-use App\Models\JobExperience;
-use App\Models\JobRole;
-use App\Models\JobSkills;
-use App\Models\JobTag;
-use App\Models\JobType;
-use App\Models\SalaryType;
-use App\Models\Skill;
-use App\Models\Tag;
-use App\Services\Notify;
-use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
-use Illuminate\View\View;
+use App\Models\JobExperience;
+use App\Http\Controllers\Controller;
+use Illuminate\Http\RedirectResponse;
+use App\Http\Requests\Admin\JobCreateRequest;
+use App\Models\City;
 
 class JobController extends Controller
 {
+    use Searchable;
     /**
      * Display a listing of the resource.
      */
     public function index(): View
     {
-        return view('admin.job.index');
+        $query = Job::query();
+        $this->seacrh($query, ['title', 'slug']);
+        $jobs = $query->paginate(20);
+
+        return view('admin.job.index', compact('jobs'));
     }
 
     /**
@@ -148,7 +156,35 @@ class JobController extends Controller
      */
     public function edit(string $id)
     {
-        //
+        $job = Job::findOrFail($id);
+        $companies = Company::where(['profile_completion' => 1, 'visibility' => 1])->get();
+        $categories = JobCategory::all();
+        $countries = Country::all();
+        $states = State::where('country_id', $job->country_id)->get();
+        $cities = City::where('state_id', $job->state_id)->get();
+        $salaryType = SalaryType::all();
+        $experiences = JobExperience::all();
+        $jobRoles = JobRole::all();
+        $educations = Education::all();
+        $jobTypes = JobType::all();
+        $tags = Tag::all();
+        $skills = Skill::all();
+
+        return view('admin.job.edit', compact(
+            'companies',
+            'categories',
+            'countries',
+            'states',
+            'cities',
+            'salaryType',
+            'experiences',
+            'jobRoles',
+            'educations',
+            'jobTypes',
+            'tags',
+            'skills',
+            'job'
+        ));
     }
 
     /**
