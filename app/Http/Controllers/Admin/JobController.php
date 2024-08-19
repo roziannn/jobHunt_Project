@@ -190,9 +190,79 @@ class JobController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, string $id)
+    public function update(JobCreateRequest $request, string $id): RedirectResponse
     {
-        //
+        $job = Job::findOrFail($id);
+        $job->title = $request->title;
+        $job->company_id = $request->company;
+        $job->job_category_id = $request->category;
+        $job->vacancies = $request->vacancies;
+        $job->deadline = $request->deadline;
+
+        $job->country_id = $request->country;
+        $job->state_id = $request->state;
+        $job->city_id = $request->city;
+        $job->address = $request->address;
+
+        $job->salary_mode = $request->salary_mode;
+        $job->min_salary = $request->min_salary;
+        $job->max_salary = $request->max_salary;
+        $job->custom_salary = $request->custom_salary;
+        $job->salary_type_id = $request->salary_type;
+
+        $job->job_experience_id = $request->experience;
+        $job->job_role_id = $request->job_role;
+        $job->job_education_id = $request->education;
+        $job->job_type_id = $request->job_type;
+
+        $job->apply_on = $request->receive_application;
+        $job->featured = $request->featured;
+        $job->highlight = $request->highlight;
+        $job->description = $request->description;
+        $job->save();
+
+        //insert tags
+        JobTag::where('job_id', $id)->delete();
+        foreach ($request->tags as $tag) {
+            $createdTag = new JobTag();
+            $createdTag->job_id = $job->id;
+            $createdTag->tag_id = $tag;
+            $createdTag->save();
+        }
+
+        $selectedBenefits = JobBenefits::where('job_id', $id);
+        foreach ($selectedBenefits->get() as $selectedBenefit) {
+            Benefit::find($selectedBenefit->benefit_id)->delete();
+        }
+        $selectedBenefits->delete();
+
+        $benefits = explode(',', $request->benefits);
+        foreach ($benefits as $benefit) {
+            // store to benefit table first
+            $createdBenefit = new Benefit();
+            $createdBenefit->company_id = $job->company_id;
+            $createdBenefit->name = $benefit;
+            $createdBenefit->save();
+
+            // store to job_benefit table
+            $jobBenefit = new JobBenefits();
+            $jobBenefit->job_id = $job->id;
+            $jobBenefit->benefit_id = $createdBenefit->id;
+            $jobBenefit->save();
+        }
+
+        JobSkills::where('job_id', $id)->delete();
+        foreach ($request->skills as $skill) {
+            $createdSkill = new JobSkills();
+            $createdSkill->job_id = $job->id;
+            $createdSkill->skill_id = $skill;
+            $createdSkill->save();
+        }
+
+
+        Notify::updatedNotification();
+
+        return to_route('admin.jobs.index');
     }
 
     /**
@@ -200,6 +270,13 @@ class JobController extends Controller
      */
     public function destroy(string $id)
     {
-        //
+        try {
+            Job::findOrFail($id)->delete();
+            Notify::deletedNotification();
+            return response(['message' => 'success'], 200);
+        } catch (\Exception $e) {
+            logger($e);
+            return response(['message' => 'Something Went Wrong. Please Try Again!'], 500);
+        }
     }
 }

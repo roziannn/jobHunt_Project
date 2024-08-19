@@ -12,8 +12,9 @@
         </div>
         <div class="col-12">
             <div class="card-body">
-                <form action="{{ route('admin.jobs.store') }}" method="POST">
+                <form action="{{ route('admin.jobs.update', $job->id) }}" method="POST">
                     @csrf
+                    @method('PUT')
                     <div class="card">
                         <div class="card-header">
                             Job Details

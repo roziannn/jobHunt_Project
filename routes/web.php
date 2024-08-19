@@ -16,6 +16,7 @@ use App\Http\Controllers\Frontend\CheckoutPageController;
 use App\Http\Controllers\Frontend\CompanyOrderController;
 use App\Http\Controllers\Frontend\FrontendCandidatePageController;
 use App\Http\Controllers\Frontend\FrontendCompanyPageController;
+use App\Http\Controllers\Frontend\JobController;
 use App\Http\Controllers\Frontend\PricingPageController;
 
 /*
@@ -107,6 +108,9 @@ Route::group(
         Route::get('orders', [CompanyOrderController::class, 'index'])->name('orders.index');
         Route::get('orders/{id}', [CompanyOrderController::class, 'show'])->name('orders.show');
         Route::get('orders/invoice/{id}', [CompanyOrderController::class, 'invoice'])->name('orders.invoice');
+
+        /**Job Routes */
+        Route::resource('jobs', JobController::class);
 
         /*Payment Routes */
         Route::get('/payment/success', [PaymentController::class, 'paymentSuccess'])->name('payment.success');

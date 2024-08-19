@@ -466,6 +466,7 @@ namespace App\Models{
  * @property string|null $company_name
  * @property \Illuminate\Support\Carbon|null $created_at
  * @property \Illuminate\Support\Carbon|null $updated_at
+ * @property \Illuminate\Support\Carbon|null $deleted_at
  * @property-read \Illuminate\Database\Eloquent\Collection<int, \App\Models\JobBenefits> $benefits
  * @property-read int|null $benefits_count
  * @property-read \App\Models\JobCategory $category
@@ -480,6 +481,7 @@ namespace App\Models{
  * @method static \Illuminate\Database\Eloquent\Builder|Job findSimilarSlugs(string $attribute, array $config, string $slug)
  * @method static \Illuminate\Database\Eloquent\Builder|Job newModelQuery()
  * @method static \Illuminate\Database\Eloquent\Builder|Job newQuery()
+ * @method static \Illuminate\Database\Eloquent\Builder|Job onlyTrashed()
  * @method static \Illuminate\Database\Eloquent\Builder|Job query()
  * @method static \Illuminate\Database\Eloquent\Builder|Job whereAddress($value)
  * @method static \Illuminate\Database\Eloquent\Builder|Job whereApplyEmail($value)
@@ -492,6 +494,7 @@ namespace App\Models{
  * @method static \Illuminate\Database\Eloquent\Builder|Job whereCreatedAt($value)
  * @method static \Illuminate\Database\Eloquent\Builder|Job whereCustomSalary($value)
  * @method static \Illuminate\Database\Eloquent\Builder|Job whereDeadline($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Job whereDeletedAt($value)
  * @method static \Illuminate\Database\Eloquent\Builder|Job whereDescription($value)
  * @method static \Illuminate\Database\Eloquent\Builder|Job whereFeatured($value)
  * @method static \Illuminate\Database\Eloquent\Builder|Job whereFeaturedUntil($value)
@@ -514,7 +517,9 @@ namespace App\Models{
  * @method static \Illuminate\Database\Eloquent\Builder|Job whereTotalViews($value)
  * @method static \Illuminate\Database\Eloquent\Builder|Job whereUpdatedAt($value)
  * @method static \Illuminate\Database\Eloquent\Builder|Job whereVacancies($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Job withTrashed()
  * @method static \Illuminate\Database\Eloquent\Builder|Job withUniqueSlugConstraints(\Illuminate\Database\Eloquent\Model $model, string $attribute, array $config, string $slug)
+ * @method static \Illuminate\Database\Eloquent\Builder|Job withoutTrashed()
  */
 	class Job extends \Eloquent {}
 }
