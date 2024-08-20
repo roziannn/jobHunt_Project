@@ -6,6 +6,7 @@ use Cviebrock\EloquentSluggable\Sluggable;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
+use Illuminate\Database\Eloquent\Relations\HasOne;
 
 class Company extends Model
 {
@@ -73,5 +74,11 @@ class Company extends Model
     function companyCity(): BelongsTo
     {
         return $this->belongsTo(City::class, 'city', 'id');
+    }
+
+    function userPlan(): HasOne
+    {
+
+        return $this->hasOne(UserPlan::class, 'company_id', 'id');
     }
 }

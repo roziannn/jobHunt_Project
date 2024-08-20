@@ -40,7 +40,7 @@
                                     </div>
                                 </div>
                                 <div class="col-md-3 text-center">
-                                    <a href="{{ route('admin.jobs.create') }}" class="btn btn-primary"><i
+                                    <a href="{{ route('company.jobs.create') }}" class="btn btn-primary"><i
                                             class="fas fa-plus-circle"></i>
                                         Create New</a>
                                 </div>
@@ -100,9 +100,9 @@
                                                         <span class="badge bg-danger">Experied</span>
                                                     @endif
                                                 </td>
-                                                <td><a href="{{ route('admin.jobs.edit', $item->id) }}"
+                                                <td><a href="{{ route('company.jobs.edit', $item->id) }}"
                                                         class="me-3 text-primary"><i class="fas fa-edit"></i></a>
-                                                    <a href="{{ route('admin.jobs.destroy', $item->id) }}"
+                                                    <a href="{{ route('company.jobs.destroy', $item->id) }}"
                                                         class="text-danger delete-item"><i class="fas fa-trash"></i></a>
                                                 </td>
                                             </tr>

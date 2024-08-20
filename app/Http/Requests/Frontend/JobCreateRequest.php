@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Requests\Admin;
+namespace App\Http\Requests\Frontend;
 
 use Illuminate\Foundation\Http\FormRequest;
 
@@ -15,7 +15,6 @@ class JobCreateRequest extends FormRequest
     {
         return [
             'title' => ['required', 'max:255'],
-            'company' => ['required', 'integer'],
             'category' => ['required', 'integer'],
             'vacancies' => ['required', 'max:255'],
             'deadline' => ['required', 'date'],
