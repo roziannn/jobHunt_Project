@@ -94,7 +94,9 @@
                                                 </td>
                                                 <td>{{ formatDate($item->deadline) }}</td>
                                                 <td>
-                                                    @if ($item->deadline > date('Y-m-d'))
+                                                    @if ($item->status === 'pending')
+                                                        <span class="badge bg-warning">Pending</span>
+                                                    @elseif ($item->deadline > date('Y-m-d'))
                                                         <span class="badge bg-success">Active</span>
                                                     @else
                                                         <span class="badge bg-danger">Experied</span>

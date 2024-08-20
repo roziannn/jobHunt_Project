@@ -26,6 +26,7 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\RedirectResponse;
 use App\Http\Requests\Admin\JobCreateRequest;
 use App\Models\City;
+use Illuminate\Http\Response;
 
 class JobController extends Controller
 {
@@ -37,7 +38,7 @@ class JobController extends Controller
     {
         $query = Job::query();
         $this->seacrh($query, ['title', 'slug']);
-        $jobs = $query->paginate(20);
+        $jobs = $query->orderBy('id', 'desc')->paginate(20);
 
         return view('admin.job.index', compact('jobs'));
     }
@@ -104,6 +105,8 @@ class JobController extends Controller
         $job->featured = $request->featured;
         $job->highlight = $request->highlight;
         $job->description = $request->description;
+        $job->status = 'active';
+
         $job->save();
 
         //insert tags, benefits skills ect will go here
@@ -143,13 +146,6 @@ class JobController extends Controller
         return to_route('admin.jobs.index');
     }
 
-    /**
-     * Display the specified resource.
-     */
-    public function show(string $id)
-    {
-        //
-    }
 
     /**
      * Show the form for editing the specified resource.
@@ -278,5 +274,14 @@ class JobController extends Controller
             logger($e);
             return response(['message' => 'Something Went Wrong. Please Try Again!'], 500);
         }
+    }
+
+    function changeStatus(string $id): Response
+    {
+        $job = Job::findOrFail($id);
+        $job->status = $job->status == 'active' ? 'pending' : 'active';
+        $job->save();
+        Notify::updatedNotification();
+        return response(['message' => 'success'], 200);
     }
 }

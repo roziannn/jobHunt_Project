@@ -102,6 +102,7 @@ Route::group(['middleware' => ['auth:admin'], 'prefix' => 'admin', 'as' => 'admi
     Route::resource('job-experiences', JobExperienceController::class);
 
     /** Jobs */
+    Route::post('job-status/{id}', [JobController::class, 'changeStatus'])->name('job-status.update');
     Route::resource('jobs', JobController::class);
 
     /** Payment Settings Route*/

@@ -35,6 +35,7 @@
                                 <th>Salary</th>
                                 <th>Deadline</th>
                                 <th>Status</th>
+                                <th>Approve</th>
                                 <th style="width: 10%">Action</th>
                             </tr>
                             <tbody>
@@ -77,11 +78,24 @@
                                         </td>
                                         <td>{{ formatDate($item->deadline) }}</td>
                                         <td>
-                                            @if ($item->deadline > date('Y-m-d'))
-                                                <span class="badge bg-warning text-dark">Active</span>
+                                            @if ($item->status === 'pending')
+                                                <span class="badge bg-warning text-dark">Pending</span>
+                                            @elseif($item->deadline > date('Y-m-d'))
+                                                <span class="badge bg-primary text-dark">Active</span>
                                             @else
                                                 <span class="badge bg-danger text-dark">Experied</span>
                                             @endif
+                                        </td>
+                                        <td>
+                                            {{-- toggle approve post status --}}
+                                            <div class="form-group">
+                                                <label class="custom-switch mt-2">
+                                                    <input @checked($item->status === 'active') type="checkbox"
+                                                        data-id="{{ $item->id }}" name="custom-switch-checkbox"
+                                                        class="custom-switch-input post_status">
+                                                    <span class="custom-switch-indicator"></span>
+                                                </label>
+                                            </div>
                                         </td>
                                         <td><a href="{{ route('admin.jobs.edit', $item->id) }}"
                                                 class="btn-sm btn-primary"><i class="fas fa-edit"></i></a>
@@ -96,12 +110,37 @@
                 </div>
                 <div class="card-footer text-right">
                     <nav class="d-inline-block">
-                        {{-- @if ($tags->hasPages())
-                            {{ $tags->withQueryString()->links() }}
-                        @endif --}}
+                        @if ($jobs->hasPages())
+                            {{ $jobs->withQueryString()->links() }}
+                        @endif
                     </nav>
                 </div>
             </div>
         </div>
     </section>
 @endsection
+
+@push('scripts')
+    <script>
+        $(document).ready(function() {
+            $('.post_status').on('change', function() {
+                let id = $(this).data('id');
+                $.ajax({
+                    method: 'POST',
+                    url: '{{ route('admin.job-status.update', ':id') }}'.replace(":id", id),
+                    data: {
+                        _token: "{{ csrf_token() }}"
+                    },
+                    success: function(response) {
+                        if (response.message == 'success') {
+                            window.location.reload();
+                        }
+                    },
+                    error: function(xhr, status, error) {
+
+                    }
+                })
+            })
+        });
+    </script>
+@endpush
