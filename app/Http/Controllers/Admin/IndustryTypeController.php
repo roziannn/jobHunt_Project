@@ -37,7 +37,7 @@ class IndustryTypeController extends Controller
     /**
      * Store a newly created resource in storage.
      */
-    public function store(Request $request): RedirectResponse
+    public function store(Request $request): View
     {
         $request->validate([
             'name' => ['required', 'max:255', 'unique:industry_types,name']
@@ -49,7 +49,7 @@ class IndustryTypeController extends Controller
 
         Notify::createdNotification(); //static method for notify
 
-        return to_route('admin.industry-types.index');
+        return view('');
     }
 
     /**
