@@ -309,6 +309,7 @@ namespace App\Models{
  * @property-read \App\Models\IndustryType|null $industyType
  * @property-read \App\Models\OrganizationType|null $organizationType
  * @property-read \App\Models\TeamSize|null $teamSize
+ * @property-read \App\Models\UserPlan|null $userPlan
  * @method static \Illuminate\Database\Eloquent\Builder|Company findSimilarSlugs(string $attribute, array $config, string $slug)
  * @method static \Illuminate\Database\Eloquent\Builder|Company newModelQuery()
  * @method static \Illuminate\Database\Eloquent\Builder|Company newQuery()
@@ -471,6 +472,7 @@ namespace App\Models{
  * @property-read int|null $benefits_count
  * @property-read \App\Models\JobCategory $category
  * @property-read \App\Models\Company $company
+ * @property-read \App\Models\JobExperience|null $jobExperience
  * @property-read \App\Models\JobRole|null $jobRole
  * @property-read \App\Models\JobType|null $jobType
  * @property-read \App\Models\SalaryType|null $salaryType
@@ -626,6 +628,7 @@ namespace App\Models{
  * @property int $skill_id
  * @property \Illuminate\Support\Carbon|null $created_at
  * @property \Illuminate\Support\Carbon|null $updated_at
+ * @property-read \App\Models\Skill|null $skill
  * @method static \Illuminate\Database\Eloquent\Builder|JobSkills newModelQuery()
  * @method static \Illuminate\Database\Eloquent\Builder|JobSkills newQuery()
  * @method static \Illuminate\Database\Eloquent\Builder|JobSkills query()

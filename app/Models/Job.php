@@ -42,6 +42,12 @@ class Job extends Model
         return $this->belongsTo(JobRole::class, 'job_role_id', 'id');
     }
 
+    function jobExperience(): BelongsTo
+    {
+        return $this->belongsTo(JobExperience::class, 'job_experience_id', 'id');
+    }
+
+
     function salaryType(): BelongsTo
     {
         return $this->belongsTo(SalaryType::class, 'salary_type_id', 'id');

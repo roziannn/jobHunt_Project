@@ -10046,10 +10046,40 @@ ul.timeline > li:before {
     background: var(--colorPrimary);
     padding: 5px;
 }
+
 .bootstrap-tagsinput input {
     height: 40px;
 }
+
 .bootstrap-tagsinput {
     width: 100%;
     box-shadow: none;
+}
+
+.job-skill {
+    background: var(--colorPrimary) !important;
+    padding: 7px 10px 7px 10px !important;
+    color: white !important;
+}
+
+.job-skill:hover {
+    color: white !important;
+}
+
+.featured {
+    background: #ae00ae !important;
+    color: white !important;
+}
+
+.featured:hover {
+    color: white !important;
+}
+
+.highlight {
+    background: #f05d04 !important;
+    color: white !important;
+}
+
+.highlight:hover {
+    color: white !important;
 }

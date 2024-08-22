@@ -118,3 +118,26 @@ if (!function_exists('storePlanInformation')) {
         ]);
     }
 }
+
+/** Func format location */
+
+if (!function_exists('formatLocation')) {
+    function formatLocation($country = null, $state = null, $city = null, $address = null): string
+    {
+        $location = '';
+        if ($address) {
+            $location .= $address;
+        }
+        if ($city) {
+            $location .= $address ?  ", " . $city : $city;
+        }
+        if ($state) {
+            $location .=  $city ?  ", " . $state : $state;
+        }
+        if ($country) {
+            $location .=  $state ?  ", " . $country : $country;
+        }
+
+        return $location;
+    }
+}

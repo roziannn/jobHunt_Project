@@ -22,44 +22,83 @@
                 <div class="col-lg-9 col-md-12 col-sm-12 col-12 float-right">
                     <div class="content-page">
                         <div class="row display-list">
-                            <div class="col-xl-12 col-12">
-                                <div class="card-grid-2 hover-up"><span class="flash"></span>
-                                    <div class="row">
-                                        <div class="col-lg-6 col-md-6 col-sm-12">
-                                            <div class="card-grid-2-image-left">
-                                                <div class="image-box"><img src="assets/imgs/brands/brand-1.png"
-                                                        alt="joblist"></div>
-                                                <div class="right-info"><a class="name-job" href="">LinkedIn</a><span
-                                                        class="location-small">New York, US</span></div>
+                            @foreach ($jobs as $item)
+                                <div class="col-xl-12 col-12">
+                                    <div class="card-grid-2 hover-up"><span class="flash"></span>
+                                        <div class="row">
+                                            <div class="col-lg-6 col-md-6 col-sm-12">
+                                                <div class="card-grid-2-image-left">
+                                                    <div class="image-box"><img src="{{ $item->company?->logo }}"
+                                                            alt="joblist"></div>
+                                                    <div class="right-info"><a class="name-job"
+                                                            href="{{ route('companies.show', $item->company?->slug) }}">{{ $item->company?->name }}</a><span
+                                                            class="location-small">{{ formatLocation($item->company->companyCountry?->name, $item->company->companyState?->name) }}</span>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="col-lg-6 text-start text-md-end pr-60 col-md-6 col-sm-12">
+                                                <div class="pl-15 mb-15 mt-30">
+                                                    @if ($item->featured)
+                                                        <a class="btn btn-grey-small mr-5 featured"
+                                                            href="javascript:;">Featured</a>
+                                                    @endif
+                                                    @if ($item->highlight)
+                                                        <a class="btn btn-grey-small mr-5 highlight"
+                                                            href="javascript:;">Highlight</a>
+                                                    @endif
+                                                </div>
                                             </div>
                                         </div>
-                                        <div class="col-lg-6 text-start text-md-end pr-60 col-md-6 col-sm-12">
-                                            <div class="pl-15 mb-15 mt-30"><a class="btn btn-grey-small mr-5"
-                                                    href="#">Adobe XD</a><a class="btn btn-grey-small mr-5"
-                                                    href="#">Figma</a></div>
-                                        </div>
-                                    </div>
-                                    <div class="card-block-info">
-                                        <h4><a href="job-details.html">UI / UX Designer fulltime</a></h4>
-                                        <div class="mt-5"><span class="card-briefcase">Fulltime</span><span
-                                                class="card-time"><span>4</span><span> mins ago</span></span></div>
-                                        <p class="font-sm color-text-paragraph mt-10">Lorem ipsum dolor sit amet,
-                                            consectetur adipisicing
-                                            elit. Recusandae architecto eveniet, dolor quo repellendus pariatur</p>
-                                        <div class="card-2-bottom mt-20">
-                                            <div class="row">
-                                                <div class="col-lg-7 col-7"><span class="card-text-price">$500</span><span
-                                                        class="text-muted">/Hour</span></div>
-                                                <div class="col-lg-5 col-5 text-end">
-                                                    <div class="btn btn-apply-now" data-bs-toggle="modal"
-                                                        data-bs-target="#ModalApplyJobForm">
-                                                        Apply now</div>
+                                        <div class="card-block-info">
+                                            <h4><a href="job-details.html">{{ $item->title }}</a></h4>
+                                            <div class="mt-5">
+                                                <span class="card-briefcase">{{ $item->jobType->name }}</span>
+                                                <span class="card-briefcase">{{ $item->jobExperience->name }}</span>
+                                                <span
+                                                    class="card-time"><span>{{ $item->created_at->diffForHumans() }}</span>
+                                            </div>
+                                            {{-- <p class="font-sm color-text-paragraph mt-10">Lorem ipsum dolor sit amet,
+                                                consectetur adipisicing
+                                                elit. Recusandae architecto eveniet, dolor quo repellendus pariatur</p> --}}
+                                            <div class="pl-3 mb-15 mt-30">
+                                                @foreach ($item->skills as $jobSkill)
+                                                    @if ($loop->index < 6)
+                                                        <a class="btn btn-grey-small mr-5 job-skill"
+                                                            href="javascript:;">{{ $jobSkill->skill->name }}</a>
+                                                    @elseif ($loop->index == 7)
+                                                        <a class="btn btn-grey-small mr-5 job-skill"
+                                                            href="javascript:;">More..</a>
+                                                    @endif
+                                                @endforeach
+                                            </div>
+                                            <div class="card-2-bottom mt-20">
+                                                <div class="row">
+                                                    @if ($item->salary_mode == 'range')
+                                                        <div class="col-lg-7 col-7">
+                                                            <span class="card-text-price">{{ $item->min_salary }} -
+                                                                {{ $item->max_salary }}
+                                                                {{ config('settings.site_default_currency') }} </span>
+                                                            <span class="text-muted"></span>
+                                                        </div>
+                                                    @else
+                                                        <div class="col-lg-7 col-7">
+                                                            <span class="card-text-price">{{ $item->custom_salary }}
+                                                            </span>
+                                                            {{-- <span class="text-muted">/ {{ $item->job }}</span> --}}
+                                                        </div>
+                                                    @endif
+                                                    <div class="col-lg-5 col-5 text-end">
+                                                        <div class="btn">
+                                                            <i class="far fa-bookmark"></i>
+                                                            {{-- <i class="far fa-bookmark"></i> --}}
+                                                        </div>
+                                                    </div>
                                                 </div>
                                             </div>
                                         </div>
                                     </div>
                                 </div>
-                            </div>
+                            @endforeach
                         </div>
                     </div>
                     <div class="paginations">
