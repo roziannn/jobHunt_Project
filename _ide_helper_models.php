@@ -471,13 +471,17 @@ namespace App\Models{
  * @property-read \Illuminate\Database\Eloquent\Collection<int, \App\Models\JobBenefits> $benefits
  * @property-read int|null $benefits_count
  * @property-read \App\Models\JobCategory $category
+ * @property-read \App\Models\City|null $city
  * @property-read \App\Models\Company $company
+ * @property-read \App\Models\Country|null $country
+ * @property-read \App\Models\Education|null $jobEducation
  * @property-read \App\Models\JobExperience|null $jobExperience
  * @property-read \App\Models\JobRole|null $jobRole
  * @property-read \App\Models\JobType|null $jobType
  * @property-read \App\Models\SalaryType|null $salaryType
  * @property-read \Illuminate\Database\Eloquent\Collection<int, \App\Models\JobSkills> $skills
  * @property-read int|null $skills_count
+ * @property-read \App\Models\State|null $state
  * @property-read \Illuminate\Database\Eloquent\Collection<int, \App\Models\JobTag> $tags
  * @property-read int|null $tags_count
  * @method static \Illuminate\Database\Eloquent\Builder|Job findSimilarSlugs(string $attribute, array $config, string $slug)

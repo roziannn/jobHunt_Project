@@ -10083,3 +10083,7 @@ ul.timeline > li:before {
 .highlight:hover {
     color: white !important;
 }
+
+.box-map iframe {
+    height: 30vh;
+}
