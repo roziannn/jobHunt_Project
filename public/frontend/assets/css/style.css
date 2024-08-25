@@ -10087,3 +10087,8 @@ ul.timeline > li:before {
 .box-map iframe {
     height: 30vh;
 }
+
+.job-category li a {
+    display: block;
+    padding: 6px;
+}

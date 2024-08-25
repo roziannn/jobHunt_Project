@@ -5,6 +5,7 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Model;
 use Cviebrock\EloquentSluggable\Sluggable;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
+use Illuminate\Database\Eloquent\Relations\HasMany;
 
 class JobCategory extends Model
 {
@@ -19,5 +20,10 @@ class JobCategory extends Model
                 'source' => 'name'
             ]
         ];
+    }
+
+    function jobs(): HasMany
+    {
+        return $this->hasMany(Job::class, 'job_category_id', 'id');
     }
 }

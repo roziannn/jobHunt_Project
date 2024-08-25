@@ -11,18 +11,18 @@ $(document).ready(function () {
         var moneyFormat = wNumb({
             decimals: 0,
             thousand: ",",
-            prefix: ""
+            prefix: "",
         });
         noUiSlider.create(rangeSlider, {
-            start: 280,
+            start: 0,
             animate: false,
             tooltips: true,
             step: 1,
             range: {
                 min: 0,
-                max: 500
+                max: 100000,
             },
-            format: moneyFormat
+            format: moneyFormat,
         });
 
         // Set visual min and max values and also update value hidden form inputs

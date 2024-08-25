@@ -562,6 +562,8 @@ namespace App\Models{
  * @property string $slug
  * @property \Illuminate\Support\Carbon|null $created_at
  * @property \Illuminate\Support\Carbon|null $updated_at
+ * @property-read \Illuminate\Database\Eloquent\Collection<int, \App\Models\Job> $jobs
+ * @property-read int|null $jobs_count
  * @method static \Illuminate\Database\Eloquent\Builder|JobCategory findSimilarSlugs(string $attribute, array $config, string $slug)
  * @method static \Illuminate\Database\Eloquent\Builder|JobCategory newModelQuery()
  * @method static \Illuminate\Database\Eloquent\Builder|JobCategory newQuery()
