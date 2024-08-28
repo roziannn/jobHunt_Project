@@ -6,6 +6,7 @@ use Cviebrock\EloquentSluggable\Sluggable;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
+use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Database\Eloquent\Relations\HasOne;
 
 class Company extends Model
@@ -80,5 +81,10 @@ class Company extends Model
     {
 
         return $this->hasOne(UserPlan::class, 'company_id', 'id');
+    }
+
+    function jobs(): HasMany
+    {
+        return $this->hasMany(Job::class, 'company_id', 'id');
     }
 }

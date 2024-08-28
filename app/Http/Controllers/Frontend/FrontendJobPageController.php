@@ -28,6 +28,8 @@ class FrontendJobPageController extends Controller
         $query = Job::query();
         $query->where(['status' => 'active'])->where('deadline', '>=', date('Y-m-d'));
 
+        // advance filter conditional purpose
+
         if ($request->has('search') && $request->filled('search')) { //has search with value.
             $query->where('title', 'like', '%' . $request->search . '%');
         }
