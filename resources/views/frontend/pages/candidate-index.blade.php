@@ -20,7 +20,6 @@
     <section class="section-box mt-120">
         <div class="container">
             <div class="content-page">
-
                 <div class="row">
                     <div class="col-lg-3">
                         <div class="sidebar-shadow none-shadow mb-30">
@@ -409,23 +408,6 @@
                                                         <p class="font-sm color-text-paragraph-2"><b>I am
                                                                 available</b></p>
                                                     @endif
-
-                                                    {{-- <span>
-                                                        <img src="assets/imgs/template/icons/star.svg" alt="joblist">
-                                                    </span>
-                                                    <span>
-                                                        <img src="assets/imgs/template/icons/star.svg" alt="joblist">
-                                                    </span>
-                                                    <span>
-                                                        <img src="assets/imgs/template/icons/star.svg" alt="joblist">
-                                                    </span>
-                                                    <span>
-                                                        <img src="assets/imgs/template/icons/star.svg" alt="joblist">
-                                                    </span>
-                                                    <span>
-                                                        <img src="assets/imgs/template/icons/star.svg" alt="joblist">
-                                                    </span>
-                                                    <span class="ml-10 color-text-mutted font-xs">(65)</span> --}}
                                                 </div>
                                             </div>
                                         </div>
@@ -443,7 +425,8 @@
                                             <div class="employers-info align-items-center justify-content-center mt-15">
                                                 <div class="row">
                                                     <div class="col-6"><span class="d-flex align-items-center"><i
-                                                                class="fi-rr-marker mr-5 ml-0"></i><span
+                                                                class="fi-rr-marker mr-5 ml-0"
+                                                                style="font-size: 15px;"></i><span
                                                                 class="font-sm color-text-mutted">
                                                                 {{ $candidate?->candidateCountry->name }}</span></span>
                                                     </div>

@@ -4,6 +4,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
 use Cviebrock\EloquentSluggable\Sluggable;
+use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 
 class OrganizationType extends Model
@@ -17,5 +18,10 @@ class OrganizationType extends Model
                 'source' => 'name'
             ]
         ];
+    }
+
+    function companies(): HasMany
+    {
+        return $this->hasMany(Company::class, 'organization_type_id', 'id');
     }
 }

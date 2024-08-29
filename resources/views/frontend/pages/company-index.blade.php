@@ -22,7 +22,6 @@
             <div class="row flex-row-reverse">
                 <div class="col-lg-9 col-md-12 col-sm-12 col-12 float-right">
                     <div class="content-page company_page">
-
                         <div class="row text-center">
                             @forelse ($companies as $company)
                                 <div class="col-xl-4 col-lg-4 col-md-6 col-sm-12 col-12">
@@ -115,22 +114,55 @@
                                 </div>
                             </form>
 
-                            <div class="filter-block mb-20">
-                                <h5 class="medium-heading mb-15">Industry</h5>
-                                <div class="form-group">
-                                    <ul class="list-checkbox">
-                                        @foreach ($industryTypes as $item)
+                            <form action="">
+                                <div class="filter-block mb-20">
+                                    <h5 class="medium-heading mb-15">Industry</h5>
+                                    <div class="form-group">
+                                        <ul class="list-checkbox">
                                             <li>
-                                                <label>
-                                                    <a href="{{ route('companies.index', ['industry' => $item->slug]) }}"
-                                                        class="text-small">{{ $item->name }}</a>
-                                                </label><span class="number-item">{{ $item->companies_count }}</span>
+                                                <label class="d-flex">
+                                                    <input type="radio" name="industry" class="x-radio"
+                                                        value=""><span class="text-small">All</span>
+                                                </label>
                                             </li>
-                                        @endforeach
-                                    </ul>
+                                            @foreach ($industryTypes as $item)
+                                                <li>
+                                                    <label class="d-flex">
+                                                        <input type="radio" @checked($item->slug == request()->industry) name="industry"
+                                                            class="x-radio" value="{{ $item->slug }}"><span
+                                                            class="text-small">{{ $item->name }}</span>
+                                                    </label><span class="number-item">{{ $item->companies_count }}</span>
+                                                </li>
+                                            @endforeach
+                                        </ul>
+                                    </div>
                                 </div>
-                            </div>
-
+                                <div class="filter-block mb-20">
+                                    <h5 class="medium-heading mb-15">Organization</h5>
+                                    <div class="form-group">
+                                        <ul class="list-checkbox">
+                                            <li>
+                                                <label class="d-flex">
+                                                    <input type="radio" name="organization" class="x-radio"
+                                                        value=""><span class="text-small">All</span>
+                                                </label>
+                                            </li>
+                                            @foreach ($organizations as $item)
+                                                <li>
+                                                    <label class="d-flex">
+                                                        <input type="radio" @checked($item->slug == request()->organization)
+                                                            name="organization" class="x-radio"
+                                                            value="{{ $item->slug }}"><span
+                                                            class="text-small">{{ $item->name }}</span>
+                                                    </label><span class="number-item">{{ $item->companies_count }}</span>
+                                                </li>
+                                            @endforeach
+                                        </ul>
+                                        <button class="submit btn btn-default mt-10 rounded-1 w-100"
+                                            type="submit">Search</button>
+                                    </div>
+                                </div>
+                            </form>
                         </div>
                     </div>
                 </div>

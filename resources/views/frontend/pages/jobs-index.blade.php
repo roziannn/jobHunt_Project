@@ -22,7 +22,7 @@
                 <div class="col-lg-9 col-md-12 col-sm-12 col-12 float-right">
                     <div class="content-page">
                         <div class="row display-list">
-                            @foreach ($jobs as $item)
+                            @forelse ($jobs as $item)
                                 <div class="col-xl-12 col-12">
                                     <div class="card-grid-2 hover-up"><span class="flash"></span>
                                         <div class="row">
@@ -98,18 +98,17 @@
                                         </div>
                                     </div>
                                 </div>
-                            @endforeach
+                            @empty
+                                <h5 class="text-center">No data found.</h5>
+                            @endforelse
                         </div>
                     </div>
                     <div class="paginations">
-                        <ul class="pager">
-                            <li><a class="pager-prev" href="#"><i class="fas fa-arrow-left"></i></a></li>
-                            <li><a class="pager-number" href="#">1</a></li>
-                            <li><a class="pager-number" href="#">2</a></li>
-                            <li><a class="pager-number active" href="#">3</a></li>
-                            <li><a class="pager-number" href="#">4</a></li>
-                            <li><a class="pager-next" href="#"><i class="fas fa-arrow-right"></i></a></li>
-                        </ul>
+                        <nav class="d-inline-block">
+                            @if ($jobs->hasPages())
+                                {{ $jobs->withQueryString()->links() }}
+                            @endif
+                        </nav>
                     </div>
                 </div>
                 <div class="col-lg-3 col-md-12 col-sm-12 col-12">
@@ -228,7 +227,7 @@
                                                             value="{{ $item->slug }}"><span
                                                             class="text-small">{{ $item->name }}</span><span
                                                             class="checkmark"></span>
-                                                    </label><span class="number-item">25</span>
+                                                    </label>
                                                 </li>
                                             @endforeach
                                         </ul>

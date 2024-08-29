@@ -10092,3 +10092,12 @@ ul.timeline > li:before {
     display: block;
     padding: 6px;
 }
+
+.x-active {
+    color: var(--colorPrimary);
+}
+
+.x-radio {
+    height: 18px !important;
+    width: 40px !important;
+}
