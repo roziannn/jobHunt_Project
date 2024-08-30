@@ -21,6 +21,7 @@ class AppliedJob extends Model
         /** get the user id instead of candidate id bcs current situation in the Candidate table
          *  while store the apply-job, the colom candidate_id column was accidentally filled by auth->user->id
          * instead of the correct one ($user = auth()->user->id, then $candidate = where 'user_id', $user->id)->get() );
+         * OR, while store => auth()->user()->candidateProfile->id. bcs its was establish.
          */
     }
 }

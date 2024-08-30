@@ -87,10 +87,23 @@
                                                             {{-- <span class="text-muted">/ {{ $item->job }}</span> --}}
                                                         </div>
                                                     @endif
+
+                                                    @php
+                                                        $bookmarkedIds = \App\Models\JobBookmark::where(
+                                                            'candidate_id',
+                                                            auth()->user()->candidateProfile->id,
+                                                        )
+                                                            ->pluck('job_id')
+                                                            ->toArray();
+                                                    @endphp
+
                                                     <div class="col-lg-5 col-5 text-end">
-                                                        <div class="btn">
-                                                            <i class="far fa-bookmark"></i>
-                                                            {{-- <i class="far fa-bookmark"></i> --}}
+                                                        <div class="btn job-bookmark" data-id="{{ $item->id }}">
+                                                            @if (in_array($item->id, $bookmarkedIds))
+                                                                <i class="fas fa-bookmark"></i>
+                                                            @else
+                                                                <i class="far fa-bookmark"></i>
+                                                            @endif
                                                         </div>
                                                     </div>
                                                 </div>
@@ -293,6 +306,33 @@
                         $('.city').html(html);
                     },
                     error: function(xhr, status, error) {}
+                })
+            })
+
+            $('.job-bookmark').on('click', function(e) {
+                e.preventDefault();
+
+                let id = $(this).data('id');
+
+                $.ajax({
+                    method: 'GET',
+                    url: '{{ route('job.bookmark', ':id') }}'.replace(":id", id),
+                    data: {},
+                    success: function(response) {
+                        $('.job-bookmark').each(function() {
+                            let elementId = $(this).data('id');
+                            if (elementId == response.id) {
+                                $(this).find('i').addClass('fas fa-bookmark');
+                            }
+                        })
+                        notyf.success(response.message);
+                    },
+                    error: function(xhr, status, error) {
+                        let errors = xhr.responseJSON.errors;
+                        $.each(errors, function(index, value) {
+                            notyf.error(value[index]);
+                        });
+                    }
                 })
             })
         })

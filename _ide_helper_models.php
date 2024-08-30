@@ -586,6 +586,28 @@ namespace App\Models{
  * 
  *
  * @property int $id
+ * @property int $job_id
+ * @property int $candidate_id
+ * @property \Illuminate\Support\Carbon|null $created_at
+ * @property \Illuminate\Support\Carbon|null $updated_at
+ * @property-read \App\Models\Job|null $job
+ * @method static \Illuminate\Database\Eloquent\Builder|JobBookmark newModelQuery()
+ * @method static \Illuminate\Database\Eloquent\Builder|JobBookmark newQuery()
+ * @method static \Illuminate\Database\Eloquent\Builder|JobBookmark query()
+ * @method static \Illuminate\Database\Eloquent\Builder|JobBookmark whereCandidateId($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|JobBookmark whereCreatedAt($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|JobBookmark whereId($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|JobBookmark whereJobId($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|JobBookmark whereUpdatedAt($value)
+ */
+	class JobBookmark extends \Eloquent {}
+}
+
+namespace App\Models{
+/**
+ * 
+ *
+ * @property int $id
  * @property string $icon
  * @property string $name
  * @property string $slug
