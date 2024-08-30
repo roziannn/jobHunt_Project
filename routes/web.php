@@ -12,6 +12,7 @@ use App\Http\Controllers\Frontend\CompanyDashboardController;
 use App\Http\Controllers\Frontend\CandidateDashboardController;
 use App\Http\Controllers\Frontend\CandidateEducationController;
 use App\Http\Controllers\Frontend\CandidateExperienceController;
+use App\Http\Controllers\Frontend\CandidateMyJobController;
 use App\Http\Controllers\Frontend\CheckoutPageController;
 use App\Http\Controllers\Frontend\CompanyOrderController;
 use App\Http\Controllers\Frontend\FrontendCandidatePageController;
@@ -88,6 +89,9 @@ Route::group(
             CandidateProfileController::class,
             'accountPasswordUpdate'
         ])->name('profile.account-password.update');
+
+        /** my job route */
+        Route::get('applied-jobs', [CandidateMyJobController::class, 'index'])->name('applied-jobs.index');
     }
 );
 
@@ -115,6 +119,7 @@ Route::group(
         Route::get('orders/invoice/{id}', [CompanyOrderController::class, 'invoice'])->name('orders.invoice');
 
         /**Job Routes */
+        Route::get('applications/{id}', [JobController::class, 'applications'])->name('job.applications');
         Route::resource('jobs', JobController::class);
 
         /*Payment Routes */

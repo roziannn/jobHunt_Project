@@ -52,7 +52,7 @@
                                     <tr>
                                         <th style="width: 270px;">Job</th>
                                         <th>Category/Role</th>
-                                        <th>Salary</th>
+                                        <th>Applications</th>
                                         <th>Deadline</th>
                                         <th>Status</th>
                                         <th style="width: 10%">Action</th>
@@ -80,17 +80,7 @@
                                                         <span>{{ $item->jobRole?->name }}</span>
                                                     </div>
                                                 <td>
-                                                    @if ($item->salary_mode === 'range')
-                                                        <b> {{ $item->min_salary }} -
-                                                            {{ $item->max_salary }}
-                                                            {{ config('settings.site_default_currency') }}</b>
-                                                        <br>
-                                                        <span>{{ $item->salaryType?->name }}</span>
-                                                    @elseif ($item->salary_mode === 'custom')
-                                                        <b>{{ $item->custom_salary }}</b>
-                                                        <br>
-                                                        <span>{{ $item->salaryType?->name }}</span>
-                                                    @endif
+                                                    {{ $item->applications_count }} Candidates
                                                 </td>
                                                 <td>{{ formatDate($item->deadline) }}</td>
                                                 <td>
@@ -102,10 +92,22 @@
                                                         <span class="badge bg-danger">Experied</span>
                                                     @endif
                                                 </td>
-                                                <td><a href="{{ route('company.jobs.edit', $item->id) }}"
-                                                        class="me-3 text-primary"><i class="fas fa-edit"></i></a>
-                                                    <a href="{{ route('company.jobs.destroy', $item->id) }}"
-                                                        class="text-danger delete-item"><i class="fas fa-trash"></i></a>
+                                                <td>
+                                                    <div class="dropdown">
+                                                        <button class="btn btn-secondary dropdown-toggle" type="button"
+                                                            id="dropdownMenuButton" data-bs-toggle="dropdown"
+                                                            aria-haspopup="true" aria-expanded="false">
+                                                            <i class="fas fa-cog"></i>
+                                                        </button>
+                                                        <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                                                            <a class="dropdown-item"
+                                                                href="{{ route('company.job.applications', $item->id) }}">Applications</a>
+                                                            <a class="dropdown-item"
+                                                                href="{{ route('company.jobs.edit', $item->id) }}">Edit</a>
+                                                            <a class="dropdown-item  text-danger delete-item"
+                                                                href="{{ route('company.jobs.destroy', $item->id) }}"></i>Delete</a>
+                                                        </div>
+                                                    </div>
                                                 </td>
                                             </tr>
                                         @endforeach

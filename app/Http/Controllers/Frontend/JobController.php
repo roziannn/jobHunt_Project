@@ -25,6 +25,7 @@ use Illuminate\Http\Request;
 use App\Models\JobExperience;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Frontend\JobCreateRequest;
+use App\Models\AppliedJob;
 use App\Models\UserPlan;
 use Symfony\Component\HttpFoundation\RedirectResponse;
 
@@ -37,10 +38,22 @@ class JobController extends Controller
     public function index(): View
     {
         $query = Job::query();
+        $query->withCount('applications');
+
         $this->seacrh($query, ['title', 'slug']);
+
         $jobs = $query->where('company_id', auth()->user()->company->id)->orderBy('id', 'desc')->paginate(20);
 
+
         return view('frontend.company_dashboard.job.index', compact('jobs'));
+    }
+
+    function applications(string $id): View
+    {
+        $applications = AppliedJob::where('job_id', $id)->paginate(10);
+        $jobTitle = Job::select('title')->where('id', $id)->first();
+
+        return view('frontend.company_dashboard.applications.index', compact('applications', 'jobTitle'));
     }
 
     /**

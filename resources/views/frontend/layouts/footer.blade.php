@@ -3,7 +3,7 @@
         <div class="row justify-content-between">
             <div class="footer-col-1 col-md-3 col-sm-12">
                 <a class="footer_logo" href="index.html">
-                    <img alt="joblist" src="assets/imgs/template/logo_2.png">
+                    <img alt="joblist" src="{{ asset('frontend/assets/imgs/template/logo_2.png') }}">
                 </a>
                 <div class="mt-20 mb-20 font-xs color-text-paragraph-2">joblist is the heart of the design
                     community and the
