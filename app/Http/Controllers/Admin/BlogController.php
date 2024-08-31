@@ -22,7 +22,8 @@ class BlogController extends Controller
     {
         $query = Blog::query();
         $this->seacrh($query, ['title', 'slug']);
-        $blogs = $query->orderBy('id', 'DESC')->paginate(20);
+        $blogs = $query->where('status', 1)->orderBy('id', 'DESC')->paginate(20);
+
 
         return view('admin.blog.index', compact('blogs'));
     }

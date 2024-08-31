@@ -6,14 +6,21 @@ use App\Models\Blog;
 use Illuminate\View\View;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use App\Traits\Searchable;
 
 class FrontendBlogPageController extends Controller
 {
+    use Searchable;
+
     function index(): View
     {
-        $blogs = Blog::where('status', 1)->latest()->paginate(12);
+        $query = Blog::query();
+        $this->seacrh($query, ['title', 'slug']);
+        $blogs = $query->where('status', 1)->orderBy('id', 'DESC')->paginate(20);
 
-        return view('frontend.pages.blog-index', compact('blogs'));
+        $featured = Blog::where('status', 1)->where('featured', 1)->orderBy('id', 'DESC')->take(10)->get();
+
+        return view('frontend.pages.blog-index', compact('blogs', 'featured'));
     }
 
     function show(string $slug): View
