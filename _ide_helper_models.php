@@ -93,6 +93,38 @@ namespace App\Models{
  * 
  *
  * @property int $id
+ * @property string $image
+ * @property string $title
+ * @property string $slug
+ * @property int $author_id
+ * @property string $description
+ * @property int $status
+ * @property \Illuminate\Support\Carbon|null $created_at
+ * @property \Illuminate\Support\Carbon|null $updated_at
+ * @property-read \App\Models\Admin|null $author
+ * @method static \Illuminate\Database\Eloquent\Builder|Blog findSimilarSlugs(string $attribute, array $config, string $slug)
+ * @method static \Illuminate\Database\Eloquent\Builder|Blog newModelQuery()
+ * @method static \Illuminate\Database\Eloquent\Builder|Blog newQuery()
+ * @method static \Illuminate\Database\Eloquent\Builder|Blog query()
+ * @method static \Illuminate\Database\Eloquent\Builder|Blog whereAuthorId($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Blog whereCreatedAt($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Blog whereDescription($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Blog whereId($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Blog whereImage($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Blog whereSlug($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Blog whereStatus($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Blog whereTitle($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Blog whereUpdatedAt($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Blog withUniqueSlugConstraints(\Illuminate\Database\Eloquent\Model $model, string $attribute, array $config, string $slug)
+ */
+	class Blog extends \Eloquent {}
+}
+
+namespace App\Models{
+/**
+ * 
+ *
+ * @property int $id
  * @property int $user_id
  * @property int|null $experience_id
  * @property int|null $profession_id

@@ -3,6 +3,7 @@
 use App\Http\Controllers\Admin\Auth\AuthenticatedSessionController;
 use App\Http\Controllers\Admin\Auth\NewPasswordController;
 use App\Http\Controllers\Admin\Auth\PasswordResetLinkController;
+use App\Http\Controllers\Admin\BlogController;
 use App\Http\Controllers\Admin\CityController;
 use App\Http\Controllers\Admin\CountryController;
 use App\Http\Controllers\Admin\DashboardController;
@@ -104,6 +105,9 @@ Route::group(['middleware' => ['auth:admin'], 'prefix' => 'admin', 'as' => 'admi
     /** Jobs */
     Route::post('job-status/{id}', [JobController::class, 'changeStatus'])->name('job-status.update');
     Route::resource('jobs', JobController::class);
+
+    /** Blogs */
+    Route::resource('blogs', BlogController::class);
 
     /** Payment Settings Route*/
     Route::get('payment-settings', [PaymentSettingController::class, 'index'])->name('payment-settings.index');
