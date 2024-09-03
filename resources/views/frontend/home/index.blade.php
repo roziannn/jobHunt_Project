@@ -1,14 +1,12 @@
 @extends('frontend.layouts.master')
 @section('contents')
-    <div class="bg-homepage1"></div>
-
     @include('frontend.home.sections.hero-section')
 
     <div class="mt-100"></div>
 
-    {{-- @include('frontend.home.sections.category-section') --}}
+    @include('frontend.home.sections.category-section')
 
-    {{-- @include('frontend.home.sections.featured-job-section') --}}
+    @include('frontend.home.sections.featured-job-section')
 
     {{-- @include('frontend.home.sections.why-choose-us-section') --}}
 

@@ -99,6 +99,7 @@ namespace App\Models{
  * @property int $author_id
  * @property string $description
  * @property int $status
+ * @property int $featured
  * @property \Illuminate\Support\Carbon|null $created_at
  * @property \Illuminate\Support\Carbon|null $updated_at
  * @property-read \App\Models\Admin|null $author
@@ -109,6 +110,7 @@ namespace App\Models{
  * @method static \Illuminate\Database\Eloquent\Builder|Blog whereAuthorId($value)
  * @method static \Illuminate\Database\Eloquent\Builder|Blog whereCreatedAt($value)
  * @method static \Illuminate\Database\Eloquent\Builder|Blog whereDescription($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Blog whereFeatured($value)
  * @method static \Illuminate\Database\Eloquent\Builder|Blog whereId($value)
  * @method static \Illuminate\Database\Eloquent\Builder|Blog whereImage($value)
  * @method static \Illuminate\Database\Eloquent\Builder|Blog whereSlug($value)
@@ -462,6 +464,31 @@ namespace App\Models{
  * @method static \Illuminate\Database\Eloquent\Builder|Experience whereUpdatedAt($value)
  */
 	class Experience extends \Eloquent {}
+}
+
+namespace App\Models{
+/**
+ * 
+ *
+ * @property int $id
+ * @property string $image
+ * @property string $background_image
+ * @property string $title
+ * @property string $subtitle
+ * @property \Illuminate\Support\Carbon|null $created_at
+ * @property \Illuminate\Support\Carbon|null $updated_at
+ * @method static \Illuminate\Database\Eloquent\Builder|Hero newModelQuery()
+ * @method static \Illuminate\Database\Eloquent\Builder|Hero newQuery()
+ * @method static \Illuminate\Database\Eloquent\Builder|Hero query()
+ * @method static \Illuminate\Database\Eloquent\Builder|Hero whereBackgroundImage($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Hero whereCreatedAt($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Hero whereId($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Hero whereImage($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Hero whereSubtitle($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Hero whereTitle($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Hero whereUpdatedAt($value)
+ */
+	class Hero extends \Eloquent {}
 }
 
 namespace App\Models{

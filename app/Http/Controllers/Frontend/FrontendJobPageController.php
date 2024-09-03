@@ -49,8 +49,13 @@ class FrontendJobPageController extends Controller
         }
 
         if ($request->has('category') && $request->filled('category')) {
-            $categoryIds = JobCategory::whereIn('slug', $request->category)->pluck('id')->toArray(); // whereIn : search automaticly depending on Array value.
-            $query->whereIn('job_category_id', $categoryIds);
+            if (is_array($request->category)) {
+                $categoryIds = JobCategory::whereIn('slug', $request->category)->pluck('id')->toArray(); // whereIn : search automaticly depending on Array value.
+                $query->whereIn('job_category_id', $categoryIds);
+            } else {
+                $category = JobCategory::where('slug', $request->category)->first();
+                $query->where('job_category_id', $category->id);
+            }
         }
 
         if ($request->has('min_salary') && $request->filled('min_salary') &&  $request->min_salary > 0) {
@@ -81,7 +86,7 @@ class FrontendJobPageController extends Controller
         $openJob = Job::where('company_id', $job->company_id)->where('status', 'active')
             ->where('deadline', '>=', date('Y-m-d'))->count();
 
-        $alreadyApplied = AppliedJob::where(['job_id' => $job->id, 'candidate_id' => auth()->user()->id])->exists();
+        $alreadyApplied = AppliedJob::where(['job_id' => $job->id, 'candidate_id' => auth()?->user()?->id])->exists();
 
         return view('frontend.pages.jobs-show', compact('job', 'openJob', 'alreadyApplied'));
     }

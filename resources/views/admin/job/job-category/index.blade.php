@@ -30,8 +30,9 @@
                     <div class="table-responsive">
                         <table class="table table-striped">
                             <tr>
-                                <th>Name</th>
                                 <th>Icon</th>
+                                <th>Name</th>
+                                <th>Show at Popular</th>
                                 <th style="width: 10%">Action</th>
                             </tr>
                             <tbody>
@@ -39,6 +40,14 @@
                                     <tr>
                                         <td><i style="font-size:24px;" class="{{ $item->icon }}"></i> </td>
                                         <td>{{ $item->name }} </td>
+                                        <td>
+                                            @if ($item->show_at_popular === 1)
+                                                <span class="badge badge-success">Yes</span>
+                                            @else
+                                                <span class="badge badge-danger">No</span>
+                                            @endif
+
+                                        </td>
                                         <td><a href="{{ route('admin.job-categories.edit', $item->id) }}"
                                                 class="btn-sm btn-primary"><i class="fas fa-edit"></i></a>
                                             <a href="{{ route('admin.job-categories.destroy', $item->id) }}"

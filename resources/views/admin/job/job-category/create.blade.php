@@ -26,7 +26,14 @@
                             <input type="text" class="form-control {{ hasError($errors, 'name') }}" name="name"
                                 value="{{ old('name') }}">
                             <x-input-error :messages="$errors->get('name')" class="mt-2" />
-
+                        </div>
+                        <div class="form-group">
+                            <label for="">Show At Popular</label>
+                            <select name="show_at_popular" class="form-control {{ hasError($errors, 'show_at_popular') }}">
+                                <option value="0">No</option>
+                                <option value="1">Yes</option>
+                            </select>
+                            <x-input-error :messages="$errors->get('show_at_popular')" class="mt-2" />
                         </div>
                         <div class="form-group">
                             <button type="submit" class="btn btn-primary">Create</button>
