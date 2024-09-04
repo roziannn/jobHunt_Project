@@ -33,6 +33,7 @@
                                 <th>Icon</th>
                                 <th>Name</th>
                                 <th>Show at Popular</th>
+                                <th>Show at Featured</th>
                                 <th style="width: 10%">Action</th>
                             </tr>
                             <tbody>
@@ -46,7 +47,13 @@
                                             @else
                                                 <span class="badge badge-danger">No</span>
                                             @endif
-
+                                        </td>
+                                        <td>
+                                            @if ($item->show_at_featured === 1)
+                                                <span class="badge badge-success">Yes</span>
+                                            @else
+                                                <span class="badge badge-danger">No</span>
+                                            @endif
                                         </td>
                                         <td><a href="{{ route('admin.job-categories.edit', $item->id) }}"
                                                 class="btn-sm btn-primary"><i class="fas fa-edit"></i></a>

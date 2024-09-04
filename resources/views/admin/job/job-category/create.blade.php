@@ -36,6 +36,15 @@
                             <x-input-error :messages="$errors->get('show_at_popular')" class="mt-2" />
                         </div>
                         <div class="form-group">
+                            <label for="">Show At Featured</label>
+                            <select name="show_at_featured"
+                                class="form-control {{ hasError($errors, 'show_at_featured') }}">
+                                <option value="0">No</option>
+                                <option value="1">Yes</option>
+                            </select>
+                            <x-input-error :messages="$errors->get('show_at_featured')" class="mt-2" />
+                        </div>
+                        <div class="form-group">
                             <button type="submit" class="btn btn-primary">Create</button>
                         </div>
                     </form>

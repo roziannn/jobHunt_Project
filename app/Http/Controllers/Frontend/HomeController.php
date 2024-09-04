@@ -24,6 +24,8 @@ class HomeController extends Controller
             $query->where(['status' => 'active'])->where('deadline', '>=', date('Y-m-d'));
         }])->where('show_at_popular', 1)->get();
 
+        $featuredCategories = JobCategory::where('show_at_featured', 1)->take(10)->get();
+
         $plans = Plan::where(['frontend_show' => 1, 'homepage_show' => 1])->get();
 
         return view('frontend.home.index', compact(
@@ -32,7 +34,8 @@ class HomeController extends Controller
             'jobCategories',
             'countries',
             'jobCount',
-            'popularCategories'
+            'popularCategories',
+            'featuredCategories'
         ));
     }
 }

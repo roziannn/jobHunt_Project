@@ -670,6 +670,8 @@ namespace App\Models{
  * @property string $icon
  * @property string $name
  * @property string $slug
+ * @property int $show_at_popular
+ * @property int $show_at_featured
  * @property \Illuminate\Support\Carbon|null $created_at
  * @property \Illuminate\Support\Carbon|null $updated_at
  * @property-read \Illuminate\Database\Eloquent\Collection<int, \App\Models\Job> $jobs
@@ -682,6 +684,8 @@ namespace App\Models{
  * @method static \Illuminate\Database\Eloquent\Builder|JobCategory whereIcon($value)
  * @method static \Illuminate\Database\Eloquent\Builder|JobCategory whereId($value)
  * @method static \Illuminate\Database\Eloquent\Builder|JobCategory whereName($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|JobCategory whereShowAtFeatured($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|JobCategory whereShowAtPopular($value)
  * @method static \Illuminate\Database\Eloquent\Builder|JobCategory whereSlug($value)
  * @method static \Illuminate\Database\Eloquent\Builder|JobCategory whereUpdatedAt($value)
  * @method static \Illuminate\Database\Eloquent\Builder|JobCategory withUniqueSlugConstraints(\Illuminate\Database\Eloquent\Model $model, string $attribute, array $config, string $slug)
