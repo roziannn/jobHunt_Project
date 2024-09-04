@@ -10,6 +10,7 @@ use App\Models\JobCategory;
 use Illuminate\Http\Request;
 use Illuminate\Contracts\View\View;
 use App\Http\Controllers\Controller;
+use App\Models\WhyChooseUs;
 
 class HomeController extends Controller
 {
@@ -25,6 +26,7 @@ class HomeController extends Controller
         }])->where('show_at_popular', 1)->get();
 
         $featuredCategories = JobCategory::where('show_at_featured', 1)->take(10)->get();
+        $whyChooseUs = WhyChooseUs::first();
 
         $plans = Plan::where(['frontend_show' => 1, 'homepage_show' => 1])->get();
 
@@ -35,7 +37,8 @@ class HomeController extends Controller
             'countries',
             'jobCount',
             'popularCategories',
-            'featuredCategories'
+            'featuredCategories',
+            'whyChooseUs'
         ));
     }
 }
