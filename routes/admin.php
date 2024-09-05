@@ -5,6 +5,7 @@ use App\Http\Controllers\Admin\Auth\NewPasswordController;
 use App\Http\Controllers\Admin\Auth\PasswordResetLinkController;
 use App\Http\Controllers\Admin\BlogController;
 use App\Http\Controllers\Admin\CityController;
+use App\Http\Controllers\Admin\CounterController;
 use App\Http\Controllers\Admin\CountryController;
 use App\Http\Controllers\Admin\DashboardController;
 use App\Http\Controllers\Admin\EducationController;
@@ -13,9 +14,11 @@ use App\Http\Controllers\Admin\IndustryTypeController;
 use App\Http\Controllers\Admin\JobCategoryController;
 use App\Http\Controllers\Admin\JobController;
 use App\Http\Controllers\Admin\JobExperienceController;
+use App\Http\Controllers\Admin\JobLocationController;
 use App\Http\Controllers\Admin\JobRoleController;
 use App\Http\Controllers\Admin\JobTypeController;
 use App\Http\Controllers\Admin\LanguageController;
+use App\Http\Controllers\Admin\LearnMoreController;
 use App\Http\Controllers\Admin\LocationController;
 use App\Http\Controllers\Admin\OrderController;
 use App\Http\Controllers\Admin\OrganizationTypeController;
@@ -114,8 +117,17 @@ Route::group(['middleware' => ['auth:admin'], 'prefix' => 'admin', 'as' => 'admi
     /** Hero Section */
     Route::resource('heros', HeroController::class);
 
-    /** Hero Section */
+    /** Why Choose Us Section */
     Route::resource('why-choose-us', WhyChooseUsController::class);
+
+    /** Learn More Section */
+    Route::resource('learn-more', LearnMoreController::class);
+
+    /** Counter Section */
+    Route::resource('counter', CounterController::class);
+
+    /** Job Location Section */
+    Route::resource('job-location', JobLocationController::class);
 
     /** Payment Settings Route*/
     Route::get('payment-settings', [PaymentSettingController::class, 'index'])->name('payment-settings.index');

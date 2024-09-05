@@ -410,9 +410,44 @@ namespace App\Models{
  * 
  *
  * @property int $id
+ * @property int $counter_one
+ * @property string $title_one
+ * @property int $counter_two
+ * @property string $title_two
+ * @property int $counter_three
+ * @property string $title_three
+ * @property int $counter_four
+ * @property string $title_four
+ * @property \Illuminate\Support\Carbon|null $created_at
+ * @property \Illuminate\Support\Carbon|null $updated_at
+ * @method static \Illuminate\Database\Eloquent\Builder|Counter newModelQuery()
+ * @method static \Illuminate\Database\Eloquent\Builder|Counter newQuery()
+ * @method static \Illuminate\Database\Eloquent\Builder|Counter query()
+ * @method static \Illuminate\Database\Eloquent\Builder|Counter whereCounterFour($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Counter whereCounterOne($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Counter whereCounterThree($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Counter whereCounterTwo($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Counter whereCreatedAt($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Counter whereId($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Counter whereTitleFour($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Counter whereTitleOne($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Counter whereTitleThree($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Counter whereTitleTwo($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Counter whereUpdatedAt($value)
+ */
+	class Counter extends \Eloquent {}
+}
+
+namespace App\Models{
+/**
+ * 
+ *
+ * @property int $id
  * @property string $name
  * @property \Illuminate\Support\Carbon|null $created_at
  * @property \Illuminate\Support\Carbon|null $updated_at
+ * @property-read \Illuminate\Database\Eloquent\Collection<int, \App\Models\Company> $companies
+ * @property-read int|null $companies_count
  * @method static \Illuminate\Database\Eloquent\Builder|Country newModelQuery()
  * @method static \Illuminate\Database\Eloquent\Builder|Country newQuery()
  * @method static \Illuminate\Database\Eloquent\Builder|Country query()
@@ -721,6 +756,30 @@ namespace App\Models{
  * 
  *
  * @property int $id
+ * @property string $image
+ * @property int $country_id
+ * @property string|null $status
+ * @property \Illuminate\Support\Carbon|null $created_at
+ * @property \Illuminate\Support\Carbon|null $updated_at
+ * @property-read \App\Models\Country|null $country
+ * @method static \Illuminate\Database\Eloquent\Builder|JobLocation newModelQuery()
+ * @method static \Illuminate\Database\Eloquent\Builder|JobLocation newQuery()
+ * @method static \Illuminate\Database\Eloquent\Builder|JobLocation query()
+ * @method static \Illuminate\Database\Eloquent\Builder|JobLocation whereCountryId($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|JobLocation whereCreatedAt($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|JobLocation whereId($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|JobLocation whereImage($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|JobLocation whereStatus($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|JobLocation whereUpdatedAt($value)
+ */
+	class JobLocation extends \Eloquent {}
+}
+
+namespace App\Models{
+/**
+ * 
+ *
+ * @property int $id
  * @property string $name
  * @property string $slug
  * @property \Illuminate\Support\Carbon|null $created_at
@@ -827,6 +886,33 @@ namespace App\Models{
  * @method static \Illuminate\Database\Eloquent\Builder|Language withUniqueSlugConstraints(\Illuminate\Database\Eloquent\Model $model, string $attribute, array $config, string $slug)
  */
 	class Language extends \Eloquent {}
+}
+
+namespace App\Models{
+/**
+ * 
+ *
+ * @property int $id
+ * @property string $image
+ * @property string $title
+ * @property string $main_title
+ * @property string $subtitle
+ * @property string|null $url
+ * @property \Illuminate\Support\Carbon|null $created_at
+ * @property \Illuminate\Support\Carbon|null $updated_at
+ * @method static \Illuminate\Database\Eloquent\Builder|LearnMore newModelQuery()
+ * @method static \Illuminate\Database\Eloquent\Builder|LearnMore newQuery()
+ * @method static \Illuminate\Database\Eloquent\Builder|LearnMore query()
+ * @method static \Illuminate\Database\Eloquent\Builder|LearnMore whereCreatedAt($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|LearnMore whereId($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|LearnMore whereImage($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|LearnMore whereMainTitle($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|LearnMore whereSubtitle($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|LearnMore whereTitle($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|LearnMore whereUpdatedAt($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|LearnMore whereUrl($value)
+ */
+	class LearnMore extends \Eloquent {}
 }
 
 namespace App\Models{
@@ -1170,5 +1256,40 @@ namespace App\Models{
  * @method static \Illuminate\Database\Eloquent\Builder|UserPlan whereUpdatedAt($value)
  */
 	class UserPlan extends \Eloquent {}
+}
+
+namespace App\Models{
+/**
+ * 
+ *
+ * @property int $id
+ * @property string|null $icon_one
+ * @property string|null $title_one
+ * @property string|null $subtitle_one
+ * @property string|null $icon_two
+ * @property string|null $title_two
+ * @property string|null $subtitle_two
+ * @property string|null $icon_three
+ * @property string|null $title_three
+ * @property string|null $subtitle_three
+ * @property \Illuminate\Support\Carbon|null $created_at
+ * @property \Illuminate\Support\Carbon|null $updated_at
+ * @method static \Illuminate\Database\Eloquent\Builder|WhyChooseUs newModelQuery()
+ * @method static \Illuminate\Database\Eloquent\Builder|WhyChooseUs newQuery()
+ * @method static \Illuminate\Database\Eloquent\Builder|WhyChooseUs query()
+ * @method static \Illuminate\Database\Eloquent\Builder|WhyChooseUs whereCreatedAt($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|WhyChooseUs whereIconOne($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|WhyChooseUs whereIconThree($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|WhyChooseUs whereIconTwo($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|WhyChooseUs whereId($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|WhyChooseUs whereSubtitleOne($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|WhyChooseUs whereSubtitleThree($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|WhyChooseUs whereSubtitleTwo($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|WhyChooseUs whereTitleOne($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|WhyChooseUs whereTitleThree($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|WhyChooseUs whereTitleTwo($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|WhyChooseUs whereUpdatedAt($value)
+ */
+	class WhyChooseUs extends \Eloquent {}
 }
 

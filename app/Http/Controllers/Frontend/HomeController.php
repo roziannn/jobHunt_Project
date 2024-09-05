@@ -5,12 +5,16 @@ namespace App\Http\Controllers\Frontend;
 use App\Models\Job;
 use App\Models\Hero;
 use App\Models\Plan;
+use App\Models\Company;
+use App\Models\Counter;
 use App\Models\Country;
+use App\Models\LearnMore;
 use App\Models\JobCategory;
+use App\Models\WhyChooseUs;
 use Illuminate\Http\Request;
 use Illuminate\Contracts\View\View;
 use App\Http\Controllers\Controller;
-use App\Models\WhyChooseUs;
+use App\Models\JobLocation;
 
 class HomeController extends Controller
 {
@@ -27,6 +31,17 @@ class HomeController extends Controller
 
         $featuredCategories = JobCategory::where('show_at_featured', 1)->take(10)->get();
         $whyChooseUs = WhyChooseUs::first();
+        $learnMore = LearnMore::first();
+        $counter = Counter::first();
+
+        $companies = Company::select('id', 'logo', 'name', 'slug', 'country')
+            ->where(['profile_completion' => 1, 'visibility' => 1])->withCount(['jobs' => function ($query) {
+                $query->where(['status' => 'active'])->where('deadline', '>=', date('Y-m-d'));
+            }])
+            ->latest()->take(45)->get();
+
+        /*Job locations section*/
+        $locations = JobLocation::all();
 
         $plans = Plan::where(['frontend_show' => 1, 'homepage_show' => 1])->get();
 
@@ -38,7 +53,11 @@ class HomeController extends Controller
             'jobCount',
             'popularCategories',
             'featuredCategories',
-            'whyChooseUs'
+            'whyChooseUs',
+            'learnMore',
+            'counter',
+            'companies',
+            'locations'
         ));
     }
 }

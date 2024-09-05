@@ -77,7 +77,14 @@
                 </ul>
             </li>
 
-            <li class="dropdown {{ setSidebarActive(['admin.heros.*', 'admin.why-choose-us.*', 'admin.cities.*']) }}">
+            <li
+                class="dropdown {{ setSidebarActive([
+                    'admin.heros.*',
+                    'admin.why-choose-us.*',
+                    'admin.learn-more.*',
+                    'admin.counter.*',
+                    'admin.job-location*',
+                ]) }}">
                 <a href="#" class="nav-link has-dropdown" data-toggle="dropdown"><i class="fas fa-columns"></i>
                     <span>Sections</span></a>
                 <ul class="dropdown-menu">
@@ -85,6 +92,12 @@
                             href="{{ route('admin.heros.index') }}">Hero</a></li>
                     <li class="{{ setSidebarActive(['admin.why-choose-us.*']) }}"><a class="nav-link"
                             href="{{ route('admin.why-choose-us.index') }}">Why Choose Us</a></li>
+                    <li class="{{ setSidebarActive(['admin.learn-more.*']) }}"><a class="nav-link"
+                            href="{{ route('admin.learn-more.index') }}">Learn More</a></li>
+                    <li class="{{ setSidebarActive(['admin.counter.*']) }}"><a class="nav-link"
+                            href="{{ route('admin.counter.index') }}">Counter</a></li>
+                    <li class="{{ setSidebarActive(['admin.job-location.*']) }}"><a class="nav-link"
+                            href="{{ route('admin.job-location.index') }}">Job Location</a></li>
                 </ul>
             </li>
 

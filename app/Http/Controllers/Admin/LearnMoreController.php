@@ -2,25 +2,27 @@
 
 namespace App\Http\Controllers\Admin;
 
-use App\Models\Hero;
+use App\Services\Notify;
+use App\Models\LearnMore;
 use Illuminate\View\View;
 use Illuminate\Http\Request;
-use App\Traits\FileUploadTrait;
 use App\Http\Controllers\Controller;
-use App\Services\Notify;
+use App\Traits\FileUploadTrait;
 
-class HeroController extends Controller
+class LearnMoreController extends Controller
 {
     use FileUploadTrait;
+
     /**
      * Display a listing of the resource.
      */
     public function index(): View
     {
-        $hero = Hero::first();
+        $learn = LearnMore::first();
 
-        return view('admin.hero.index', compact('hero'));
+        return view('admin.learn-more.index', compact('learn'));
     }
+
 
     /**
      * Update the specified resource in storage.
@@ -29,21 +31,22 @@ class HeroController extends Controller
     {
         $request->validate([
             'image' => ['nullable', 'image', 'max:3000'],
-            'background_image' => ['nullable', 'image', 'max:3000'],
             'title' => ['required', 'max:255'],
-            'subtitle' => ['required', 'max:255']
+            'main_title' => ['required', 'max:255'],
+            'subtitle' => ['required', 'max:255'],
+            'url' => ['nullable'],
         ]);
 
         $imagePath = $this->uploadFile($request, 'image');
-        $bgPath = $this->uploadFile($request, 'background_image');
 
         $formData = [];
         if ($imagePath) $formData['image'] = $imagePath;
-        if ($bgPath) $formData['background_image'] = $bgPath;
         $formData['title'] = $request->title;
+        $formData['main_title'] = $request->main_title;
         $formData['subtitle'] = $request->subtitle;
+        $formData['url'] = $request->url;
 
-        Hero::updateOrCreate(
+        LearnMore::updateOrCreate(
             ['id' => 1],
             $formData
         );
