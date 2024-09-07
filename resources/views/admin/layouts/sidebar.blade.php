@@ -84,6 +84,7 @@
                     'admin.learn-more.*',
                     'admin.counter.*',
                     'admin.job-location*',
+                    'admin.reviews*',
                 ]) }}">
                 <a href="#" class="nav-link has-dropdown" data-toggle="dropdown"><i class="fas fa-columns"></i>
                     <span>Sections</span></a>
@@ -98,6 +99,8 @@
                             href="{{ route('admin.counter.index') }}">Counter</a></li>
                     <li class="{{ setSidebarActive(['admin.job-location.*']) }}"><a class="nav-link"
                             href="{{ route('admin.job-location.index') }}">Job Location</a></li>
+                    <li class="{{ setSidebarActive(['admin.reviews.*']) }}"><a class="nav-link"
+                            href="{{ route('admin.reviews.index') }}">Reviews</a></li>
                 </ul>
             </li>
 

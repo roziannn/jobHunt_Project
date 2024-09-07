@@ -14,7 +14,9 @@ use App\Models\WhyChooseUs;
 use Illuminate\Http\Request;
 use Illuminate\Contracts\View\View;
 use App\Http\Controllers\Controller;
+use App\Models\Blog;
 use App\Models\JobLocation;
+use App\Models\Review;
 
 class HomeController extends Controller
 {
@@ -41,7 +43,13 @@ class HomeController extends Controller
             ->latest()->take(45)->get();
 
         /*Job locations section*/
-        $locations = JobLocation::all();
+        $locations = JobLocation::latest()->take(8)->get();
+
+        /*Reviews section*/
+        $reviews = Review::latest()->take(10)->get();
+
+        /*Blogs section*/
+        $blogs = Blog::latest()->take(6)->get();
 
         $plans = Plan::where(['frontend_show' => 1, 'homepage_show' => 1])->get();
 
@@ -57,7 +65,9 @@ class HomeController extends Controller
             'learnMore',
             'counter',
             'companies',
-            'locations'
+            'locations',
+            'reviews',
+            'blogs'
         ));
     }
 }

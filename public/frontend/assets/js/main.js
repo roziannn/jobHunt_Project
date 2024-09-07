@@ -329,7 +329,7 @@
             spaceBetween: 30,
             slidesPerView: 4,
             slidesPerGroup: 1,
-            loop: true,
+            loop: false,
             navigation: {
                 nextEl: ".swiper-button-next-border",
                 prevEl: ".swiper-button-prev-border",

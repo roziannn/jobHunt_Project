@@ -20,7 +20,7 @@
 
     @include('frontend.home.sections.job-by-location-section')
 
-    {{-- @include('frontend.home.sections.review-section') --}}
+    @include('frontend.home.sections.review-section')
 
-    {{-- @include('frontend.home.sections.blog-section') --}}
+    @include('frontend.home.sections.blog-section')
 @endsection
