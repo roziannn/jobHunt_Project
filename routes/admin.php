@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\Admin\AboutController;
 use App\Http\Controllers\Admin\Auth\AuthenticatedSessionController;
 use App\Http\Controllers\Admin\Auth\NewPasswordController;
 use App\Http\Controllers\Admin\Auth\PasswordResetLinkController;
@@ -132,6 +133,9 @@ Route::group(['middleware' => ['auth:admin'], 'prefix' => 'admin', 'as' => 'admi
 
     /** Review Section */
     Route::resource('reviews', ReviewController::class);
+
+    /** About Us Page */
+    Route::resource('about-us', AboutController::class);
 
     /** Payment Settings Route*/
     Route::get('payment-settings', [PaymentSettingController::class, 'index'])->name('payment-settings.index');

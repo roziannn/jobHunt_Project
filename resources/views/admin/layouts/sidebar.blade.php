@@ -104,6 +104,16 @@
                 </ul>
             </li>
 
+            <li class="dropdown {{ setSidebarActive(['admin.about-us.*']) }}">
+                <a href="#" class="nav-link has-dropdown" data-toggle="dropdown"><i
+                        class="fas fa-columns"></i>
+                    <span>Pages</span></a>
+                <ul class="dropdown-menu">
+                    <li class="{{ setSidebarActive(['admin.about-us.*']) }}"><a class="nav-link"
+                            href="{{ route('admin.about-us.index') }}">About Us</a></li>
+                </ul>
+            </li>
+
             <li class="{{ setSidebarActive(['admin.blogs.*']) }}"><a class="nav-link"
                     href="{{ route('admin.blogs.index') }}"><i class="far fa-square"></i> <span>Blogs</span></a></li>
 

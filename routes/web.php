@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\Admin\PaymentController;
+use App\Http\Controllers\Frontend\AboutUsPageController;
 use App\Models\CandidateExperience;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\ProfileController;
@@ -16,6 +17,7 @@ use App\Http\Controllers\Frontend\CandidateJobBookmarkController;
 use App\Http\Controllers\Frontend\CandidateMyJobController;
 use App\Http\Controllers\Frontend\CheckoutPageController;
 use App\Http\Controllers\Frontend\CompanyOrderController;
+use App\Http\Controllers\Frontend\ContactController;
 use App\Http\Controllers\Frontend\FrontendBlogPageController;
 use App\Http\Controllers\Frontend\FrontendCandidatePageController;
 use App\Http\Controllers\Frontend\FrontendCompanyPageController;
@@ -67,6 +69,14 @@ Route::get('job-bookmark/{id}', [CandidateJobBookmarkController::class, 'save'])
 /** blogs route */
 Route::get('blogs', [FrontendBlogPageController::class, 'index'])->name('blogs.index');
 Route::get('blogs/{slug}', [FrontendBlogPageController::class, 'show'])->name('blogs.show');
+
+/** about-us route */
+Route::get('about-us', [AboutUsPageController::class, 'index'])->name('about-us.index');
+
+/** contact route */
+Route::get('contact', [ContactController::class, 'index'])->name('contact.index');
+Route::post('contact', [ContactController::class, 'sendMail'])->name('send-mail');
+
 
 /** Candidate Dashboard Routes */
 Route::group(
