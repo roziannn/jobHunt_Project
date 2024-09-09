@@ -104,13 +104,15 @@
                 </ul>
             </li>
 
-            <li class="dropdown {{ setSidebarActive(['admin.about-us.*']) }}">
+            <li class="dropdown {{ setSidebarActive(['admin.about-us.*', 'admin.page-builder.*']) }}">
                 <a href="#" class="nav-link has-dropdown" data-toggle="dropdown"><i
                         class="fas fa-columns"></i>
                     <span>Pages</span></a>
                 <ul class="dropdown-menu">
                     <li class="{{ setSidebarActive(['admin.about-us.*']) }}"><a class="nav-link"
                             href="{{ route('admin.about-us.index') }}">About Us</a></li>
+                    <li class="{{ setSidebarActive(['admin.page-builder.*']) }}"><a class="nav-link"
+                            href="{{ route('admin.page-builder.index') }}">Custom/Builder Pages</a></li>
                 </ul>
             </li>
 

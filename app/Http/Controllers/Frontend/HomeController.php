@@ -15,6 +15,7 @@ use Illuminate\Http\Request;
 use Illuminate\Contracts\View\View;
 use App\Http\Controllers\Controller;
 use App\Models\Blog;
+use App\Models\CustomerPageBuilder;
 use App\Models\JobLocation;
 use App\Models\Review;
 
@@ -69,5 +70,13 @@ class HomeController extends Controller
             'reviews',
             'blogs'
         ));
+    }
+
+    function customPage(string $slug): View
+    {
+
+        $page = CustomerPageBuilder::where('slug', $slug)->firstOrFail();
+
+        return view('frontend.pages.custom-page', compact('page'));
     }
 }
