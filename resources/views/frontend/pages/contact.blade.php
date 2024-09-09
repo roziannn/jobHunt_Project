@@ -79,21 +79,29 @@
             $("#contact-form").on('submit', function(e) {
                 e.preventDefault();
                 let formData = $(this).serialize();
+                let button = $('.submit');
+
                 $.ajax({
                     method: 'POST',
                     url: '{{ route('send-mail') }}',
                     data: formData,
                     beforeSend: function() {
-
+                        button.text("Sending...")
+                        button.prop('disabled', true);
                     },
                     success: function(response) {
-
+                        button.text("Send message")
+                        button.prop('disabled', false);
+                        $('#contact-form').trigger('reset');
+                        notyf.success(response.message);
                     },
                     error: function(xhr, status, error) {
                         let errors = xhr.responseJSON.errors;
                         $.each(errors, function(index, value) {
                             notyf.error(value[0]);
                         });
+                        button.text("Send message")
+                        button.prop('disabled', false);
                     }
                 })
             });
