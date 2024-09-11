@@ -22,8 +22,8 @@ $currentUrl = url()->current();
                                     <span class="submit-btn">
                                         <input type="submit" class="button-secondary" value="@lang('menu-builder::messages.choose')">
                                     </span>
-                                    <span class="add-new-menu-action"> @lang('menu-builder::messages.or') <a
-                                            href="{{ $currentUrl }}?action=edit&menu=0">@lang('menu-builder::messages.create_new_menu')</a>. </span>
+                                    {{-- <span class="add-new-menu-action"> @lang('menu-builder::messages.or') <a
+                                            href="{{ $currentUrl }}?action=edit&menu=0">@lang('menu-builder::messages.create_new_menu')</a>. </span> --}}
                                 </form>
                             </div>
                             <div id="nav-menus-frame">
@@ -150,8 +150,7 @@ $currentUrl = url()->current();
                                             <div class="menu-edit ">
                                                 <div id="nav-menu-header">
                                                     <div class="major-publishing-actions">
-                                                        <label class="menu-name-label howto open-label"
-                                                            for="menu-name">
+                                                        <label class="menu-name-label howto open-label" for="menu-name">
                                                             <span>@lang('menu-builder::messages.name')</span>
                                                             <input name="menu-name" id="menu-name" type="text"
                                                                 class="menu-name regular-text menu-item-textbox"
@@ -376,11 +375,11 @@ $currentUrl = url()->current();
                                                                     class="button button-primary menu-save">@lang('menu-builder::messages.create_menu')</a>
                                                             </div>
                                                         @elseif(request()->has('menu'))
-                                                            <span class="delete-action"> <a
+                                                            {{-- <span class="delete-action"> <a
                                                                     class="submitdelete deletion menu-delete"
                                                                     onclick="deletemenu()"
                                                                     href="javascript:void(9)">@lang('menu-builder::messages.delete_menu')</a>
-                                                            </span>
+                                                            </span> --}}
                                                             <div class="publishing-action">
 
                                                                 <a onclick="getmenus()" name="save_menu"
