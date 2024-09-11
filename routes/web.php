@@ -24,6 +24,7 @@ use App\Http\Controllers\Frontend\FrontendCompanyPageController;
 use App\Http\Controllers\Frontend\FrontendJobPageController;
 use App\Http\Controllers\Frontend\JobController;
 use App\Http\Controllers\Frontend\PricingPageController;
+use App\Http\Controllers\NewsletterController;
 
 /*
 |--------------------------------------------------------------------------
@@ -79,6 +80,9 @@ Route::post('contact', [ContactController::class, 'sendMail'])->name('send-mail'
 
 /** custom page route */
 Route::get('page/{slug}', [HomeController::class, 'customPage'])->name('custom-page');
+
+/** custom page route */
+Route::post('newsletter', [NewsletterController::class, 'store'])->name('newsletter.store');
 
 
 /** Candidate Dashboard Routes */

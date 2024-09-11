@@ -22,6 +22,7 @@ use App\Http\Controllers\Admin\JobTypeController;
 use App\Http\Controllers\Admin\LanguageController;
 use App\Http\Controllers\Admin\LearnMoreController;
 use App\Http\Controllers\Admin\LocationController;
+use App\Http\Controllers\Admin\NewsletterController;
 use App\Http\Controllers\Admin\OrderController;
 use App\Http\Controllers\Admin\OrganizationTypeController;
 use App\Http\Controllers\Admin\PaymentSettingController;
@@ -140,6 +141,11 @@ Route::group(['middleware' => ['auth:admin'], 'prefix' => 'admin', 'as' => 'admi
 
     /** Custom Page Builder*/
     Route::resource('page-builder', CustomPageBuilderController::class);
+
+    /** Newsletter*/
+    Route::get('newsletter', [NewsletterController::class, 'index'])->name('newsletter.index');
+    Route::delete('newsletter/{id}', [NewsletterController::class, 'destroy'])->name('newsletter.destroy');
+    Route::post('newsletter', [NewsletterController::class, 'sendMail'])->name('newsletter.send-mail');
 
     /** Payment Settings Route*/
     Route::get('payment-settings', [PaymentSettingController::class, 'index'])->name('payment-settings.index');
