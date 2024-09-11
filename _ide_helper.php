@@ -18017,6 +18017,61 @@ namespace Barryvdh\DomPDF\Facade {
             }
     }
 
+namespace Efectn\Menu\Facades {
+            /**
+     * 
+     *
+     */        class Menu {
+                    /**
+         * 
+         *
+         * @static 
+         */        public static function render()
+        {
+                        /** @var \Efectn\Menu\MenuBuilder $instance */
+                        return $instance->render();
+        }
+                    /**
+         * 
+         *
+         * @static 
+         */        public static function scripts()
+        {
+                        /** @var \Efectn\Menu\MenuBuilder $instance */
+                        return $instance->scripts();
+        }
+                    /**
+         * 
+         *
+         * @static 
+         */        public static function select($name = 'menu', $menulist = [])
+        {
+                        /** @var \Efectn\Menu\MenuBuilder $instance */
+                        return $instance->select($name, $menulist);
+        }
+                    /**
+         * Returns empty array if menu not found now.
+         * 
+         * Thanks @sovichet
+         *
+         * @param $name
+         * @return array 
+         * @static 
+         */        public static function getByName($name)
+        {
+                        return \Efectn\Menu\MenuBuilder::getByName($name);
+        }
+                    /**
+         * 
+         *
+         * @static 
+         */        public static function get($menu_id)
+        {
+                        return \Efectn\Menu\MenuBuilder::get($menu_id);
+        }
+            }
+    }
+
 namespace LaravelDaily\Invoices\Facades {
             /**
      * Class Invoice
@@ -22781,6 +22836,7 @@ namespace  {
             class Debugbar extends \Barryvdh\Debugbar\Facades\Debugbar {}
             class Pdf extends \Barryvdh\DomPDF\Facade\Pdf {}
             class PDF extends \Barryvdh\DomPDF\Facade\Pdf {}
+            class Menu extends \Efectn\Menu\Facades\Menu {}
             class Invoice extends \LaravelDaily\Invoices\Facades\Invoice {}
             class Flasher extends \Flasher\Laravel\Facade\Flasher {}
             class Notyf extends \Flasher\Notyf\Laravel\Facade\Notyf {}
