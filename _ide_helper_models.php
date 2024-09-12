@@ -1382,6 +1382,7 @@ namespace App\Models{
  * @property int $profile_verified
  * @property \Illuminate\Support\Carbon|null $created_at
  * @property \Illuminate\Support\Carbon|null $updated_at
+ * @property-read \App\Models\Plan|null $plan
  * @method static \Illuminate\Database\Eloquent\Builder|UserPlan newModelQuery()
  * @method static \Illuminate\Database\Eloquent\Builder|UserPlan newQuery()
  * @method static \Illuminate\Database\Eloquent\Builder|UserPlan query()

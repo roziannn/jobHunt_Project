@@ -141,3 +141,17 @@ if (!function_exists('formatLocation')) {
         return $location;
     }
 }
+
+/** Func Calculate Earnings */
+if (!function_exists('calcEarnings')) {
+    function calcEarnings($amounts)
+    {
+        $total = 0;
+        foreach ($amounts as $value) {
+            $amount = intval(preg_replace('/{^0-9}/', '', $value));
+            // dd($amount);
+            $total += $amount;
+        }
+        return $total;
+    }
+}

@@ -27,20 +27,20 @@
                             <div class="row">
                                 <div class="col-lg-4 col-md-6">
                                     <div class="dash_overview_item bg-info-subtle">
-                                        <h2>12 <span>job applied</span></h2>
+                                        <h2>{{ $jobPosts }} <span>pending jobs</span></h2>
                                         <span class="icon"><i class="fas fa-briefcase"></i></span>
                                     </div>
                                 </div>
                                 <div class="col-lg-4 col-md-6">
                                     <div class="dash_overview_item bg-danger-subtle">
-                                        <h2>12 <span>job applied</span></h2>
+                                        <h2>{{ $totalJobs }} <span>total jobs</span></h2>
                                         <span class="icon"><i class="fas fa-briefcase"></i></span>
                                     </div>
                                 </div>
                                 <div class="col-lg-4 col-md-6">
                                     <div class="dash_overview_item bg-warning-subtle">
-                                        <h2>12 <span>job applied</span></h2>
-                                        <span class="icon"><i class="fas fa-briefcase"></i></span>
+                                        <h2>{{ $totalOrders }} <span>package orders</span></h2>
+                                        <span class="icon"><i class="fas fa-cart-plus"></i></span>
                                     </div>
                                 </div>
                             </div>
@@ -61,6 +61,38 @@
                                     </div>
                                 </div>
                             @endif
+                            <br>
+                            <div class="card">
+                                <div class="card-body">
+                                    <table class="table">
+                                        <thead>
+                                            <h5>Package Information</h5>
+                                        </thead>
+                                        <tbody>
+                                            <tr>
+                                                <th scope="row">1</th>
+                                                <td><b>Current Package</b></td>
+                                                <td>{{ $userPackage->plan->label }} Package</td>
+                                            </tr>
+                                            <tr>
+                                                <th scope="row">2</th>
+                                                <td>Job Post Available</td>
+                                                <td>{{ $userPackage->job_limit }}</td>
+                                            </tr>
+                                            <tr>
+                                                <th scope="row">3</th>
+                                                <td>Featured Post Available</td>
+                                                <td>{{ $userPackage->featured_job_limit }}</td>
+                                            </tr>
+                                            <tr>
+                                                <th scope="row">4</th>
+                                                <td>Highlight Post Available</td>
+                                                <td>{{ $userPackage->featured_job_limit }}</td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
                         </div>
                     </div>
                 </div>
