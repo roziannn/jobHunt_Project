@@ -8,6 +8,9 @@ use Illuminate\View\View;
 use App\Traits\Searchable;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use App\Models\Candidate;
+use App\Models\CandidateSkill;
+use App\Models\JobSkills;
 use Illuminate\Http\RedirectResponse;
 
 class SkillController extends Controller
@@ -86,6 +89,11 @@ class SkillController extends Controller
      */
     public function destroy(string $id)
     {
+        $skillExist = JobSkills::where('skill_id', $id)->exists();
+        $candidateSkillExists = CandidateSkill::where('skill_id', $id)->exists();
+        if ($skillExist || $candidateSkillExists) {
+            return response(['message' => 'This item is already been used can\'t delete!'], 500);
+        }
         try {
             Skill::findOrFail($id)->delete();
             Notify::deletedNotification();

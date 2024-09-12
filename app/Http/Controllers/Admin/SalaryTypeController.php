@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Admin;
 
+use App\Models\Job;
 use App\Services\Notify;
 use Illuminate\View\View;
 use App\Models\SalaryType;
@@ -86,6 +87,10 @@ class SalaryTypeController extends Controller
      */
     public function destroy(string $id)
     {
+        $jobExist = Job::where('salary_type_id', $id)->exists();
+        if ($jobExist) {
+            return response(['message' => 'This item is already been used can\'t delete!'], 500);
+        }
         try {
             SalaryType::findOrFail($id)->delete();
             Notify::deletedNotification();

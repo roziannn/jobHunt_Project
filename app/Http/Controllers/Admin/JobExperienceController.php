@@ -8,6 +8,8 @@ use App\Traits\Searchable;
 use Illuminate\Http\Request;
 use App\Models\JobExperience;
 use App\Http\Controllers\Controller;
+use App\Models\Candidate;
+use App\Models\Job;
 use Illuminate\Http\RedirectResponse;
 
 class JobExperienceController extends Controller
@@ -86,6 +88,11 @@ class JobExperienceController extends Controller
      */
     public function destroy(string $id)
     {
+        $jobExperience = Job::where('job_experience_id', $id)->exists();
+        $candidateExists = Candidate::where('experience_id', $id)->exists();
+        if ($jobExperience || $candidateExists) {
+            return response(['message' => 'This item is already been used can\'t delete!'], 500);
+        }
         try {
             JobExperience::findOrFail($id)->delete();
             Notify::deletedNotification();

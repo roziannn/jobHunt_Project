@@ -8,6 +8,7 @@ use Illuminate\View\View;
 use App\Traits\Searchable;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use App\Models\CandidateLanguage;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Response;
 
@@ -85,6 +86,10 @@ class LanguageController extends Controller
      */
     public function destroy(string $id): Response
     {
+        $langExists = CandidateLanguage::where('language_id', $id)->exists();
+        if ($langExists) {
+            return response(['message' => 'This item is already been used can\'t delete!'], 500);
+        }
         try {
             Language::findOrFail($id)->delete();
             Notify::deletedNotification();

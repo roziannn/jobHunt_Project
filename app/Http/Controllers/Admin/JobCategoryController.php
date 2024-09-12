@@ -8,6 +8,7 @@ use App\Traits\Searchable;
 use App\Models\JobCategory;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use App\Models\Job;
 use Illuminate\Http\RedirectResponse;
 
 class JobCategoryController extends Controller
@@ -94,6 +95,11 @@ class JobCategoryController extends Controller
      */
     public function destroy(string $id)
     {
+        // validation check, if theres id already used it cant be delete
+        $jobExist = Job::where('job_category_id', $id)->exists();
+        if ($jobExist) {
+            return response(['message' => 'This item is already been used can\'t delete!'], 500);
+        }
         try {
             JobCategory::findOrFail($id)->delete();
             Notify::deletedNotification();

@@ -2,12 +2,13 @@
 
 namespace App\Http\Controllers\Admin;
 
-use Illuminate\View\View;
-use Illuminate\Http\Request;
-use App\Http\Controllers\Controller;
+use App\Models\Job;
 use App\Models\JobType;
 use App\Services\Notify;
+use Illuminate\View\View;
 use App\Traits\Searchable;
+use Illuminate\Http\Request;
+use App\Http\Controllers\Controller;
 use Illuminate\Http\RedirectResponse;
 
 class JobTypeController extends Controller
@@ -86,6 +87,10 @@ class JobTypeController extends Controller
      */
     public function destroy(string $id)
     {
+        $jobExist = Job::where('job_type_id', $id)->exists();
+        if ($jobExist) {
+            return response(['message' => 'This item is already been used can\'t delete!'], 500);
+        }
         try {
             JobType::findOrFail($id)->delete();
             Notify::deletedNotification();

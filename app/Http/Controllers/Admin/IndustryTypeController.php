@@ -9,6 +9,7 @@ use App\Models\IndustryType;
 use Illuminate\Http\Request;
 use Illuminate\Http\Response;
 use App\Http\Controllers\Controller;
+use App\Models\Company;
 use Illuminate\Http\RedirectResponse;
 
 class IndustryTypeController extends Controller
@@ -86,6 +87,10 @@ class IndustryTypeController extends Controller
      */
     public function destroy(string $id): Response
     {
+        $companyExists = Company::where('industry_type_id', $id)->exists();
+        if ($companyExists) {
+            return response(['message' => 'This item is already been used can\'t delete!'], 500);
+        }
         try {
             IndustryType::findOrFail($id)->delete();
             Notify::deletedNotification();

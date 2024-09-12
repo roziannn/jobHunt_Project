@@ -2,14 +2,15 @@
 
 namespace App\Http\Controllers\Admin;
 
+use App\Models\Company;
 use App\Services\Notify;
 use Illuminate\View\View;
+use App\Traits\Searchable;
 use Illuminate\Http\Request;
+use Illuminate\Http\Response;
 use App\Models\OrganizationType;
 use App\Http\Controllers\Controller;
-use App\Traits\Searchable;
 use Illuminate\Http\RedirectResponse;
-use Illuminate\Http\Response;
 
 class OrganizationTypeController extends Controller
 {
@@ -85,6 +86,10 @@ class OrganizationTypeController extends Controller
      */
     public function destroy(string $id): Response
     {
+        $companyExists = Company::where('organization_type_id', $id)->exists();
+        if ($companyExists) {
+            return response(['message' => 'This item is already been used can\'t delete!'], 500);
+        }
         try {
             OrganizationType::findOrFail($id)->delete();
             Notify::deletedNotification();

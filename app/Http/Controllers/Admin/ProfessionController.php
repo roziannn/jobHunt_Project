@@ -9,6 +9,7 @@ use App\Models\Profession;
 use App\Traits\Searchable;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use App\Models\Candidate;
 use Illuminate\Http\RedirectResponse;
 
 class ProfessionController extends Controller
@@ -88,6 +89,10 @@ class ProfessionController extends Controller
      */
     public function destroy(string $id)
     {
+        $professionExists = Candidate::where('profession_id', $id)->exists();
+        if ($professionExists) {
+            return response(['message' => 'This item is already been used can\'t delete!'], 500);
+        }
         try {
             Profession::findOrFail($id)->delete();
             Notify::deletedNotification();

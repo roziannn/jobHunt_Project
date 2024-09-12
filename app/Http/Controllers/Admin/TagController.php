@@ -8,6 +8,7 @@ use Illuminate\View\View;
 use App\Traits\Searchable;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use App\Models\JobTag;
 use Illuminate\Http\RedirectResponse;
 
 class TagController extends Controller
@@ -86,6 +87,10 @@ class TagController extends Controller
      */
     public function destroy(string $id)
     {
+        $jobtagExists = JobTag::where('tag_id', $id)->exists();
+        if ($jobtagExists) {
+            return response(['message' => 'This item is already been used can\'t delete!'], 500);
+        }
         try {
             Tag::findOrFail($id)->delete();
             Notify::deletedNotification();
