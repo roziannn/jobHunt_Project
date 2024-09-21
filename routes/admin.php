@@ -6,6 +6,7 @@ use App\Http\Controllers\Admin\Auth\NewPasswordController;
 use App\Http\Controllers\Admin\Auth\PasswordResetLinkController;
 use App\Http\Controllers\Admin\BlogController;
 use App\Http\Controllers\Admin\CityController;
+use App\Http\Controllers\Admin\ClearDatabaseController;
 use App\Http\Controllers\Admin\CounterController;
 use App\Http\Controllers\Admin\CountryController;
 use App\Http\Controllers\Admin\CustomPageBuilderController;
@@ -158,6 +159,11 @@ Route::group(['middleware' => ['auth:admin'], 'prefix' => 'admin', 'as' => 'admi
 
     /** Social Icon Route*/
     Route::resource('social-icon', SocialIconController::class);
+
+    /** Clear Database Route*/
+
+    Route::get('clear-database', [ClearDatabaseController::class, 'index'])->name('clear-database.index');
+    Route::post('clear-database', [ClearDatabaseController::class, 'clearDatabase'])->name('clear-database');
 
     /** Payment Settings Route*/
     Route::get('payment-settings', [PaymentSettingController::class, 'index'])->name('payment-settings.index');
