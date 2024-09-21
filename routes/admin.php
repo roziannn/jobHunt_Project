@@ -32,6 +32,7 @@ use App\Http\Controllers\Admin\PaymentSettingController;
 use App\Http\Controllers\Admin\PlanController;
 use App\Http\Controllers\Admin\ProfessionController;
 use App\Http\Controllers\Admin\ReviewController;
+use App\Http\Controllers\Admin\RolePermissionController;
 use App\Http\Controllers\Admin\SalaryTypeController;
 use App\Http\Controllers\Admin\SiteSettingController;
 use App\Http\Controllers\Admin\SkillController;
@@ -159,6 +160,9 @@ Route::group(['middleware' => ['auth:admin'], 'prefix' => 'admin', 'as' => 'admi
 
     /** Social Icon Route*/
     Route::resource('social-icon', SocialIconController::class);
+
+    /** Role Permission Route*/
+    Route::resource('role', RolePermissionController::class);
 
     /** Clear Database Route*/
 
