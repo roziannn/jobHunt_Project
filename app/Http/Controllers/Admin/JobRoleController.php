@@ -17,6 +17,12 @@ class JobRoleController extends Controller
     /**
      * Display a listing of the resource.
      */
+
+    function __construct()
+    {
+        $this->middleware(['permission:job attributes']);
+    }
+
     public function index(): View
     {
         $query = JobRole::query();

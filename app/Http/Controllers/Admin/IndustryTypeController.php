@@ -18,6 +18,11 @@ class IndustryTypeController extends Controller
     /**
      * Display a listing of the resource.
      */
+    function __construct()
+    {
+        $this->middleware(['permission:job attributes']);
+    }
+
     public function index(Request $request): View
     {
         $query = IndustryType::query();

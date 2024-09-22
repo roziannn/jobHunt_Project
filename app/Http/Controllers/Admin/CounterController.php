@@ -10,6 +10,11 @@ use App\Http\Controllers\Controller;
 
 class CounterController extends Controller
 {
+    function __construct()
+    {
+        $this->middleware(['permission:sections']);
+    }
+
     /**
      * Display a listing of the resource.
      */
@@ -19,7 +24,6 @@ class CounterController extends Controller
 
         return view('admin.counter.index', compact('counter'));
     }
-
 
     /**
      * Update the specified resource in storage.

@@ -10,6 +10,11 @@ use Illuminate\View\View;
 
 class SocialIconController extends Controller
 {
+    function __construct()
+    {
+        $this->middleware(['permission:pages']);
+    }
+
     /**
      * Display a listing of the resource.
      */

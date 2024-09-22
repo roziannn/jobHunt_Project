@@ -16,6 +16,11 @@ use Illuminate\Http\RedirectResponse;
 
 class PaymentSettingController extends Controller
 {
+    function __construct()
+    {
+        $this->middleware(['permission:payment settings']);
+    }
+
     function index(): View
     {
 

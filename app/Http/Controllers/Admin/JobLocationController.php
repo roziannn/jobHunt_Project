@@ -17,6 +17,10 @@ class JobLocationController extends Controller
 {
     use FileUploadTrait;
 
+    function __construct()
+    {
+        $this->middleware(['permission:sections']);
+    }
     /**
      * Display a listing of the resource.
      */
