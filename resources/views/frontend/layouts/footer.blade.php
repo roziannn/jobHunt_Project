@@ -1,4 +1,4 @@
-<section class="section-box subscription_box">
+<section class="section-box subscription_box mt-100">
     <div class="container">
         <div class="box-newsletter">
             <div class="newsletter_textarea">
@@ -35,7 +35,7 @@
                 $footerFour = \Menu::getByName('Footer Four'); //return array
             @endphp
             <div class="footer-col-1 col-md-3 col-sm-12">
-                <a class="footer_logo" href="index.html">
+                <a class="footer_logo" href="{{ url('/') }}">
                     <img alt="joblist" src="{{ asset($footerDetails?->logo) }}">
                 </a>
                 <div class="mt-20 mb-20 font-xs color-text-paragraph-2">{{ $footerDetails?->details }}</div>

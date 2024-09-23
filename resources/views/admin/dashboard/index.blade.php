@@ -251,3 +251,29 @@
         @endif
     </section>
 @endsection
+
+
+@push('scripts')
+    <script>
+        $(document).ready(function() {
+            $('.post_status').on('change', function() {
+                let id = $(this).data('id');
+                $.ajax({
+                    method: 'POST',
+                    url: '{{ route('admin.job-status.update', ':id') }}'.replace(":id", id),
+                    data: {
+                        _token: "{{ csrf_token() }}"
+                    },
+                    success: function(response) {
+                        if (response.message == 'success') {
+                            window.location.reload();
+                        }
+                    },
+                    error: function(xhr, status, error) {
+
+                    }
+                })
+            })
+        });
+    </script>
+@endpush

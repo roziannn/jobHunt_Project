@@ -127,16 +127,16 @@
                                     </div>
                                 </div>
                             @empty
-                                <h5 class="text-center">No data found.</h5>
+                                <h5 class="text-center">No data found!.</h5>
                             @endforelse
 
                             <div class="col-12">
                                 <div class="paginations mt-35">
-                                    <nav class="d-inline-block">
+                                    <ul class="pager">
                                         @if ($candidates->hasPages())
                                             {{ $candidates->withQueryString()->links() }}
                                         @endif
-                                    </nav>
+                                    </ul>
                                 </div>
                             </div>
                         </div>

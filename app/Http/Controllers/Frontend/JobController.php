@@ -42,7 +42,7 @@ class JobController extends Controller
 
         $this->seacrh($query, ['title', 'slug']);
 
-        $jobs = $query->where('company_id', auth()->user()->company->id)->orderBy('id', 'desc')->paginate(20);
+        $jobs = $query->where('company_id', auth()->user()->company?->id)->orderBy('id', 'desc')->paginate(20);
 
 
         return view('frontend.company_dashboard.job.index', compact('jobs'));

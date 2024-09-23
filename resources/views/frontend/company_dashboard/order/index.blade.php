@@ -66,12 +66,12 @@
                                 </table>
                             </div>
                         </div>
-                        <div class="card-footer text-right">
-                            <nav class="d-inline-block">
+                        <div class="paginations">
+                            <ul class="pager">
                                 @if ($orders->hasPages())
                                     {{ $orders->withQueryString()->links() }}
                                 @endif
-                            </nav>
+                            </ul>
                         </div>
                     </div>
                 </div>

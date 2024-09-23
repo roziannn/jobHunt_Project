@@ -16,7 +16,9 @@
 
     @include('frontend.home.sections.top-recruiters-section')
 
-    @include('frontend.home.sections.pricing-plan-section')
+    @if (auth()->user()?->role != 'candidate')
+        @include('frontend.home.sections.pricing-plan-section')
+    @endif
 
     @include('frontend.home.sections.job-by-location-section')
 

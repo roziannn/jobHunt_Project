@@ -67,7 +67,7 @@ class FrontendJobPageController extends Controller
             $query->whereIn('job_type_id', $typeIds);
         }
 
-        $jobs = $query->paginate(20);
+        $jobs = $query->paginate(8);
 
 
         return view('frontend.pages.jobs-index', compact(

@@ -25,7 +25,7 @@
             <div class="max-width-price">
                 <div class="block-pricing mt-70">
                     <div class="row">
-                        @foreach ($plans as $item)
+                        @forelse ($plans as $item)
                             <div class="col-xl-4 col-lg-6 col-md-6 wow animate__animated animate__fadeInUp">
                                 <div class="box-pricing-item">
                                     <h3>{{ $item->label }}</h3>
@@ -41,10 +41,15 @@
                                             <li><strike> Profile verified </strike></li>
                                         @endif
                                     </ul>
-                                    <div><a class="btn btn-border" href="#">Choose plan</a></div>
+                                    <div><a class="btn btn-border" href="{{ route('checkout.index', $item->id) }}">Choose
+                                            plan</a></div>
                                 </div>
                             </div>
-                        @endforeach
+                        @empty
+                            <div class="my-5">
+                                <h5 class="text-center">No data found!.</h5>
+                            </div>
+                        @endforelse
                     </div>
                 </div>
             </div>

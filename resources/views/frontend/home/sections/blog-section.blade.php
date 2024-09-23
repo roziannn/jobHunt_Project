@@ -11,7 +11,7 @@
         <div class="mt-50">
             <div class="box-swiper style-nav-top">
                 <div class="swiper-container swiper-group-3 swiper">
-                    <div class="swiper-wrapper pb-70 pt-5">
+                    <div class="swiper-wrapper pt-5">
                         @foreach ($blogs as $item)
                             <div class="swiper-slide">
                                 <div class="card-grid-3 hover-up wow animate__animated animate__fadeIn">

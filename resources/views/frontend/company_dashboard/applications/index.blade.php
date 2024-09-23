@@ -67,12 +67,12 @@
                                 </table>
                             </div>
                         </div>
-                        <div class="card-footer text-right">
-                            <nav class="d-inline-block">
+                        <div class="paginations">
+                            <ul class="pager">
                                 @if ($applications->hasPages())
                                     {{ $applications->withQueryString()->links() }}
                                 @endif
-                            </nav>
+                            </ul>
                         </div>
                     </div>
                 </div>

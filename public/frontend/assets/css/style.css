@@ -1914,7 +1914,7 @@ label {
     color: #1ca774;
     font-family: "Plus Jakarta Sans", sans-serif;
     font-weight: bold;
-    font-size: 22px;
+    font-size: 17px;
 }
 
 .futured_jobs .card-grid-2 .card-text-price b {
@@ -10110,4 +10110,18 @@ ul.timeline > li:before {
 .number-element i {
     font-size: 34px;
     margin-top: 4px;
+}
+
+.page-item.active .page-link {
+    background: #1ca774;
+    border: 1px solid beige;
+    padding: 8px 15px 7px 15px;
+    margin-left: 5px;
+    margin-right: 5px;
+}
+
+.page-item.disabled .page-link {
+    border: 1px solid beige;
+    padding: 8px 15px 7px 15px;
+    margin-left: 5px;
 }

@@ -31,6 +31,7 @@ use App\Http\Controllers\Admin\OrganizationTypeController;
 use App\Http\Controllers\Admin\PaymentSettingController;
 use App\Http\Controllers\Admin\PlanController;
 use App\Http\Controllers\Admin\ProfessionController;
+use App\Http\Controllers\Admin\ProfileUpdateController;
 use App\Http\Controllers\Admin\ReviewController;
 use App\Http\Controllers\Admin\RolePermissionController;
 use App\Http\Controllers\Admin\RoleUserController;
@@ -65,6 +66,11 @@ Route::group(['middleware' => ['guest:admin'], 'prefix' => 'admin', 'as' => 'adm
 Route::group(['middleware' => ['auth:admin'], 'prefix' => 'admin', 'as' => 'admin.'], function () {
     Route::post('logout', [AuthenticatedSessionController::class, 'destroy'])
         ->name('logout');
+
+    /** Profile Update Route*/
+    Route::get('profile', [ProfileUpdateController::class, 'index'])->name('profile.index');
+    Route::post('profile', [ProfileUpdateController::class, 'update'])->name('profile.update');
+    Route::post('profile-password', [ProfileUpdateController::class, 'passwordUpdate'])->name('profile.password');
 
     /** Dashboard Route*/
     Route::get('dashboard', [DashboardController::class, 'index'])->name('dashboard');
@@ -182,6 +188,7 @@ Route::group(['middleware' => ['auth:admin'], 'prefix' => 'admin', 'as' => 'admi
     /** Site Settings Route*/
     Route::get('site-settings', [SiteSettingController::class, 'index'])->name('site-settings.index');
     Route::post('general-settings', [SiteSettingController::class, 'updateGeneralSetting'])->name('general-settings.update');
+    Route::post('logo-settings', [SiteSettingController::class, 'updateLogoSetting'])->name('logo-settings.update');
 });
 
 

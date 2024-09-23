@@ -3,7 +3,7 @@
         <div class="main-header">
             <div class="header-left">
                 <div class="header-logo"><a class="d-flex" href="{{ url('/') }}"><img alt="joblist"
-                            src="{{ asset('frontend/assets/imgs/template/logo.png') }}"></a></div>
+                            src="{{ config('settings.site_logo') }}"></a></div>
             </div>
             <div class="header-nav">
                 <nav class="nav-main-menu">
@@ -21,8 +21,10 @@
                                     </ul>
                                 </li>
                             @else
+                                {{-- @if ($menu['link'] != '/pricing') --}}
                                 <li class="has-children"><a class=""
                                         href="{{ $menu['link'] }}">{{ $menu['label'] }}</a></li>
+                                {{-- @endif --}}
                             @endif
                         @endforeach
                     </ul>

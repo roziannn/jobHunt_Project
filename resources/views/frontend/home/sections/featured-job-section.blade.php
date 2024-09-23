@@ -41,7 +41,7 @@
                                         </div>
                                         <div class="card-block-info">
                                             <h6><a
-                                                    href="{{ route('jobs.show', $job->slug) }}">{{ Str::limit($job->title, 30, '...') }}</a>
+                                                    href="{{ route('jobs.show', $job->slug) }}">{{ Str::limit($job->title, 28, '...') }}</a>
                                             </h6>
                                             <div class="mt-5"><span
                                                     class="card-briefcase">{{ $job->jobType->name }}</span><span

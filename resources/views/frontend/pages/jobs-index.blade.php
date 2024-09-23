@@ -117,11 +117,11 @@
                         </div>
                     </div>
                     <div class="paginations">
-                        <nav class="d-inline-block">
+                        <ul class="pager">
                             @if ($jobs->hasPages())
                                 {{ $jobs->withQueryString()->links() }}
                             @endif
-                        </nav>
+                        </ul>
                     </div>
                 </div>
                 <div class="col-lg-3 col-md-12 col-sm-12 col-12">

@@ -77,18 +77,20 @@
                                     </tr>
                                 @empty
                                     <tr>
-                                        <td colspan="3" class="text-center"> No result found!. </td>
+                                        <td colspan="5" class="text-center"> No data found!. </td>
                                     </tr>
                                 @endforelse
                             </tbody>
                         </table>
                     </div>
                 </div>
-                <nav class="d-inline-block">
-                    @if ($bookmarks->hasPages())
-                        {{ $bookmarks->withQueryString()->links() }}
-                    @endif
-                </nav>
+                <div class="paginations">
+                    <ul class="pager">
+                        @if ($bookmarks->hasPages())
+                            {{ $bookmarks->withQueryString()->links() }}
+                        @endif
+                    </ul>
+                </div>
             </div>
         </div>
     </section>
