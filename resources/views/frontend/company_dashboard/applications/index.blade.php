@@ -43,15 +43,15 @@
                                                             src="{{ asset($item->candidate?->image) }}" alt="">
                                                         <br>
                                                         <div>
-                                                            <span>{{ $item->candidate->full_name }} </span>
+                                                            <span>{{ $item->candidate?->full_name }} </span>
                                                             <br>
                                                             <span>
-                                                                {{ $item->candidate->profession->name }}</span>
+                                                                {{ $item->candidate?->profession->name }}</span>
                                                         </div>
                                                     </div>
                                                 </td>
                                                 <td>
-                                                    {{ $item->candidate->experience->name }}
+                                                    {{ $item->candidate?->experience->name }}
                                                 </td>
                                                 <td>
                                                     <a href="{{ route('candidates.show', $item->candidate->slug) }}"

@@ -379,7 +379,7 @@
                                                     <div class="form-group">
                                                         <label for="description">Description <span class="text-danger">
                                                                 *</span></label>
-                                                        <textarea id="editor" name="description"></textarea>
+                                                        <textarea id="editor" name="description" value="{{ old('description') }}"></textarea>
                                                     </div>
                                                 </div>
                                             </div>

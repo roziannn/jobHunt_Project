@@ -12,10 +12,10 @@
                     </div>
                     <div class="col-xl-8 col-lg-12">
                         <div class="block-banner">
-                            <h1 class="heading-banner wow animate__animated animate__fadeInUp" style="color: white">
+                            <h1 class="heading-banner wow animate__animated animate__fadeInUp">
                                 {{ $hero?->title }}</h1>
                             <div class="banner-description mt-20 wow animate__animated animate__fadeInUp"
-                                style="color: white" data-wow-delay=".1s">
+                                data-wow-delay=".1s">
                                 {{ $hero?->subtitle }}
                             </div>
                             <div class="form-find mt-40 wow animate__animated animate__fadeIn" data-wow-delay=".2s">

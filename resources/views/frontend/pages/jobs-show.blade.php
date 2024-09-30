@@ -35,6 +35,7 @@
                         <div class="btn btn-apply-icon btn-apply btn-apply-big hover-up apply-now"
                             style="background-color:#8d8c8d">
                             Applied</div>
+                    @elseif ($checkCompany)
                     @else
                         <div class="btn btn-apply-icon btn-apply btn-apply-big hover-up apply-now">Apply now</div>
                     @endif

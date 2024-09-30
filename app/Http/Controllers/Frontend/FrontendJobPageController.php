@@ -12,6 +12,7 @@ use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Models\AppliedJob;
 use App\Models\City;
+use App\Models\Company;
 use Illuminate\Http\Response;
 use Illuminate\Validation\ValidationException;
 
@@ -87,8 +88,9 @@ class FrontendJobPageController extends Controller
             ->where('deadline', '>=', date('Y-m-d'))->count();
 
         $alreadyApplied = AppliedJob::where(['job_id' => $job->id, 'candidate_id' => auth()?->user()?->id])->exists();
+        $checkCompany =  Company::where(['user_id' => auth()?->user()?->id])->first();
 
-        return view('frontend.pages.jobs-show', compact('job', 'openJob', 'alreadyApplied'));
+        return view('frontend.pages.jobs-show', compact('job', 'openJob', 'alreadyApplied', 'checkCompany'));
     }
 
     function applyJob(String $id)
@@ -100,6 +102,11 @@ class FrontendJobPageController extends Controller
         $alreadyApplied = AppliedJob::where(['job_id' => $id, 'candidate_id' => auth()->user()->id])->exists();
         if ($alreadyApplied) {
             throw ValidationException::withMessages(['You already applied to this job.']);
+        }
+
+        $checkCompany = Company::where(['user_id' => auth()->user()->id])->first();
+        if ($checkCompany) {
+            throw ValidationException::withMessages(['You are candidate. Can\'t applied to this job.']);
         }
 
         $applyJob = new AppliedJob();

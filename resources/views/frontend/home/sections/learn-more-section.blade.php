@@ -10,7 +10,7 @@
                         {{ $learnMore?->subtitle }}</div>
                     <div class="mt-40">
                         <div class="wow animate__animated animate__fadeInUp"><a class="btn btn-default"
-                                href="jobs-grid.html">Search Jobs</a>
+                                href="{{ route('jobs.index') }}">Search Jobs</a>
                             @if ($learnMore?->url)
                                 <a class="btn btn-link" target="_blank" href="{{ $learnMore?->url }}">Learn More</a>
                             @endif

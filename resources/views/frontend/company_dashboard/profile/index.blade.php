@@ -155,7 +155,7 @@
                                     </div>
                                     <div class="col-md-6">
                                         <div class="form-group">
-                                            <label class="font-sm color-text-mutted mb-10">Website</label>
+                                            <label class="font-sm color-text-mutted mb-10">Website ( use https:// )</label>
                                             <input class="form-control {{ $errors->has('website') ? 'is-invalid' : '' }}"
                                                 type="text" name="website" id="website"
                                                 value="{{ $companyInfo?->website }}">
@@ -216,7 +216,7 @@
                                             <label class="font-sm color-text-mutted mb-10">City</label>
                                             <select name="city" id="city"
                                                 class="form-control form-icons city select-active {{ $errors->has('city') ? 'is-invalid' : '' }}"
-                                                value="{{ $companyInfo?->city }}">
+                                                value="{{ old('city'), $companyInfo?->city }}">
                                                 @foreach ($cities as $item)
                                                     <option @selected($item->id === $companyInfo?->city) value="{{ $item->id }}">
                                                         {{ $item->name }}</option>

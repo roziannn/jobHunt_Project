@@ -31,12 +31,11 @@
                                 </a>
                             </div>
                         @endforeach
-
                     </div>
                 </div>
             </div>
         </div>
-        <div class="swiper-button-next swiper-button-next-1"></div>
-        <div class="swiper-button-prev swiper-button-prev-1"></div>
+        {{-- <div class="swiper-button-next"></div>
+        <div class="swiper-button-prev"></div> --}}
     </div>
 </section>

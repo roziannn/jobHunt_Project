@@ -28,6 +28,7 @@ class CompanyProfileController extends Controller
     function index(): View
     {
         $companyInfo = Company::where('user_id', auth()->user()->id)->first();
+        // dd($companyInfo);
 
         $industryTypes = IndustryType::all();
         $organizationTypes = OrganizationType::all();

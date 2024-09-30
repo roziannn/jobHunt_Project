@@ -51,11 +51,6 @@
                                 aria-labelledby="tab-short-bio">
                                 <h4>Biography</h4>
                                 {!! $candidate?->bio !!}
-                                Deleniti
-                                asperiores, commodi quae ipsum quas est itaque, ipsa, dolore beatae voluptates nemo
-                                blanditiis iste
-                                eius officia minus. Id nisi, consequuntur sunt impedit quidem, vitae mollitia!</p>
-
 
                             </div>
                         </div>

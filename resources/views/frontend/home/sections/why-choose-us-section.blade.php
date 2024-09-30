@@ -14,7 +14,7 @@
                             <i class="{{ $whyChooseUs?->icon_one }}"></i>
                         </h1>
                         <h4 class="mb-20">{{ $whyChooseUs?->title_one }}</h4>
-                        <p class="font-lg color-text-paragraph-2">{{ $whyChooseUs?->title_two }}</p>
+                        <p class="font-lg color-text-paragraph-2">{{ $whyChooseUs?->subtitle_one }}</p>
                     </div>
                 </div>
                 <div class="col-lg-4 col-md-6">
@@ -34,7 +34,7 @@
                                 alt="choose"> --}}
                         </h1>
                         <h4 class="mb-20">{{ $whyChooseUs?->title_three }}</h4>
-                        <p class="font-lg color-text-paragraph-2">{{ $whyChooseUs?->title_three }}</p>
+                        <p class="font-lg color-text-paragraph-2">{{ $whyChooseUs?->subtitle_three }}</p>
                     </div>
                 </div>
             </div>

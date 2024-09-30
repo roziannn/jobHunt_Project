@@ -2,7 +2,7 @@
     <div class="section-box wow animate__animated animate__fadeIn">
         <div class="container">
             <div class="text-center">
-                <h2 class="section-title mb-10 wow animate__animated animate__fadeInUp">What Say Our Clients
+                <h2 class="section-title mb-10 wow animate__animated animate__fadeInUp">What Our Clients Say
                 </h2>
                 <p class="font-lg color-text-paragraph-2 wow animate__animated animate__fadeInUp">Thousands of
                     employee get

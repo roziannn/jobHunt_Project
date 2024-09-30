@@ -62,7 +62,7 @@
                                     <div class="form-group">
                                         <label for="">Title Two</label>
                                         <input type="text" class="form-control {{ hasError($errors, 'title_two') }}"
-                                            name="title_two" value="{{ old('title_two', $whyChooseUs?->title_one) }}">
+                                            name="title_two" value="{{ old('title_two', $whyChooseUs?->title_two) }}">
                                         <x-input-error :messages="$errors->get('title_two')" class="mt-2" />
                                     </div>
                                 </div>
